@@ -9,13 +9,14 @@ import type {
   PutParams,
   Result,
 } from '~/types'
+import { AXIOS_TIMEOUT } from '~/constants'
+import { getCurrentApiUrl } from '~/config'
 
-const AXIOS_TIMEOUT = 5000
 type GeneratePageResult<T> = Result<PageData<T>>
 
 function createAxios(mergeConfig?: () => AxiosRequestConfig) {
   const _axios = axios.create({
-    baseURL: import.meta.env.VITE_BASE_API_URL as string,
+    baseURL: getCurrentApiUrl(),
     timeout: AXIOS_TIMEOUT,
   })
   _axios.interceptors.request.use(
@@ -38,14 +39,16 @@ function createAxios(mergeConfig?: () => AxiosRequestConfig) {
 }
 
 function handleUrlParams(params?: AnyObject | AnyObject[]) {
-  // if (!params) return ''
-  // if (!G.isArray(params)) params = [params]
-  const paramStr = ''
-  // for (const [k, v] of params.flatMap((i: AnyObject) => Object.entries(i))) {
-  //   if (!v || (G.isArray(v) && G.emptyArray(v))) continue
-  //   const values = G.isArray(v) ? [...v] : [v]
-  //   values.forEach(i => paramStr += `&${encodeURIComponent(k)}=${encodeURIComponent(i as string)}`)
-  // }
+  if (!params) return ''
+  if (!isArray(params)) params = [params]
+  let paramStr = ''
+  params
+    .flatMap((i: AnyObject) => Object.entries(i))
+    .filter(([_, value]) => (isArray(value) && !empty(value)) || !!value)
+    .forEach(([key, value]) => {
+      const values = isArray(value) ? [...value] : [value]
+      values.forEach(i => paramStr += `&${encodeURIComponent(key)}=${encodeURIComponent(i as string)}`)
+    })
   return `?${paramStr.slice(1)}`
 }
 
@@ -59,23 +62,27 @@ export class BaseRequest {
     return new BaseRequest(config)
   }
 
-  get<T>(url: string, { params }: GetParams) {
+  get<T>(url: string, { params }: GetParams = {}, searchPage = false) {
     url += handleUrlParams(params)
+    if (searchPage) return this.axios.get<T, GeneratePageResult<T>>(url)
     return this.axios.get<T, Result<T>>(url)
   }
 
-  post<T>(url: string, { params, body = {} }: PostParams) {
+  post<T>(url: string, { params, body = {} }: PostParams = {}, searchPage = false) {
     url += handleUrlParams(params)
+    if (searchPage) this.axios.post<T, GeneratePageResult<T>>(url, body)
     return this.axios.post<T, Result<T>>(url, body)
   }
 
-  put<T>(url: string, { params, body = {} }: PutParams) {
+  put<T>(url: string, { params, body = {} }: PutParams = {}, searchPage = false) {
     url += handleUrlParams(params)
+    if (searchPage) return this.axios.put<T, GeneratePageResult<T>>(url, body)
     return this.axios.put<T, Result<T>>(url, body)
   }
 
-  delete<T>(url: string, { params }: DeleteParams) {
+  delete<T>(url: string, { params }: DeleteParams = {}, searchPage = false) {
     url += handleUrlParams(params)
+    if (searchPage) return this.axios.delete<T, GeneratePageResult<T>>(url)
     return this.axios.delete<T, Result<T>>(url)
   }
 }

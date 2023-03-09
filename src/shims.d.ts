@@ -1,6 +1,10 @@
 /// <reference types="vite/client" />
 
-declare interface Window {}
+declare interface Window {
+  g: {
+    url: string
+  }
+}
 
 
 declare module '*.vue' {
