@@ -30,6 +30,7 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/head',
         '@vueuse/core',
+        'pinia',
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [

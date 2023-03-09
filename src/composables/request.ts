@@ -70,7 +70,7 @@ export class BaseRequest {
 
   post<T>(url: string, { params, body = {} }: PostParams = {}, searchPage = false) {
     url += handleUrlParams(params)
-    if (searchPage) this.axios.post<T, GeneratePageResult<T>>(url, body)
+    if (searchPage) return this.axios.post<T, GeneratePageResult<T>>(url, body)
     return this.axios.post<T, Result<T>>(url, body)
   }
 

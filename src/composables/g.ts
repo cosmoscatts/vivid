@@ -1,3 +1,11 @@
+import dayjs from 'dayjs'
+import lodash from 'lodash'
+
+export {
+  dayjs,
+  lodash,
+}
+
 export function isString(p: any): p is string {
   return typeof p === 'string'
 }
@@ -27,8 +35,12 @@ export function isNull(p: any): p is null {
   return p === null
 }
 
-export function clone<T = any>(data: T) {
+export function clone<T = any>(data: T): T {
   return JSON.parse(JSON.stringify(data)) as T
+}
+
+export function deepClone<T = any>(obj: T): T {
+  return lodash.cloneDeep<T>(obj)
 }
 
 export function makeNonNullStr(str?: string | null) {
