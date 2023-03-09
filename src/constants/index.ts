@@ -4,6 +4,7 @@ export {
   DEFAULT_AVATAR,
 }
 
+export * from './menus'
 export * from './names'
 
 export const APP_NAME = ''
@@ -13,6 +14,10 @@ export const SHORT_LOGO = ''
 
 export const AXIOS_TIMEOUT = 5000
 
+/**
+ * 数据来源
+ */
+export const IS_MOCK = true
 /**
  * 是否显示【页面设置】按钮
  */

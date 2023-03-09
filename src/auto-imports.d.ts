@@ -18,9 +18,11 @@ declare global {
   const Modal: typeof import('./composables/arco')['Modal']
   const R: typeof import('./composables/request')['R']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
+  const assert: typeof import('./composables/g')['assert']
   const assignObj: typeof import('./composables/g')['assignObj']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const batchInvoke: typeof import('./composables/g')['batchInvoke']
   const breakpoints: typeof import('./composables/screen')['breakpoints']
   const clone: typeof import('./composables/g')['clone']
   const computed: typeof import('vue')['computed']
@@ -57,9 +59,11 @@ declare global {
   const getRandomDate: typeof import('./composables/common')['getRandomDate']
   const getRandomInteger: typeof import('./composables/common')['getRandomInteger']
   const getRandomName: typeof import('./composables/common')['getRandomName']
+  const getTypeName: typeof import('./composables/g')['getTypeName']
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
+  const invoke: typeof import('./composables/g')['invoke']
   const isArray: typeof import('./composables/g')['isArray']
   const isBoolean: typeof import('./composables/g')['isBoolean']
   const isDefined: typeof import('@vueuse/core')['isDefined']
@@ -89,6 +93,7 @@ declare global {
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
   const noNull: typeof import('./composables/g')['noNull']
+  const noop: typeof import('./composables/g')['noop']
   const notNullish: typeof import('./composables/g')['notNullish']
   const notUndefined: typeof import('./composables/g')['notUndefined']
   const onActivated: typeof import('vue')['onActivated']
@@ -137,6 +142,7 @@ declare global {
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const syncRef: typeof import('@vueuse/core')['syncRef']
   const syncRefs: typeof import('@vueuse/core')['syncRefs']
+  const tap: typeof import('./composables/g')['tap']
   const templateRef: typeof import('@vueuse/core')['templateRef']
   const throttledRef: typeof import('@vueuse/core')['throttledRef']
   const throttledWatch: typeof import('@vueuse/core')['throttledWatch']
@@ -144,6 +150,7 @@ declare global {
   const toReactive: typeof import('@vueuse/core')['toReactive']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
+  const toString: typeof import('./composables/g')['toString']
   const triggerRef: typeof import('vue')['triggerRef']
   const tryOnBeforeMount: typeof import('@vueuse/core')['tryOnBeforeMount']
   const tryOnBeforeUnmount: typeof import('@vueuse/core')['tryOnBeforeUnmount']
@@ -352,9 +359,11 @@ declare module 'vue' {
     readonly Modal: UnwrapRef<typeof import('./composables/arco')['Modal']>
     readonly R: UnwrapRef<typeof import('./composables/request')['R']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
+    readonly assert: UnwrapRef<typeof import('./composables/g')['assert']>
     readonly assignObj: UnwrapRef<typeof import('./composables/g')['assignObj']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly batchInvoke: UnwrapRef<typeof import('./composables/g')['batchInvoke']>
     readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
     readonly clone: UnwrapRef<typeof import('./composables/g')['clone']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -391,9 +400,11 @@ declare module 'vue' {
     readonly getRandomDate: UnwrapRef<typeof import('./composables/common')['getRandomDate']>
     readonly getRandomInteger: UnwrapRef<typeof import('./composables/common')['getRandomInteger']>
     readonly getRandomName: UnwrapRef<typeof import('./composables/common')['getRandomName']>
+    readonly getTypeName: UnwrapRef<typeof import('./composables/g')['getTypeName']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
+    readonly invoke: UnwrapRef<typeof import('./composables/g')['invoke']>
     readonly isArray: UnwrapRef<typeof import('./composables/g')['isArray']>
     readonly isBoolean: UnwrapRef<typeof import('./composables/g')['isBoolean']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
@@ -423,6 +434,7 @@ declare module 'vue' {
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly noNull: UnwrapRef<typeof import('./composables/g')['noNull']>
+    readonly noop: UnwrapRef<typeof import('./composables/g')['noop']>
     readonly notNullish: UnwrapRef<typeof import('./composables/g')['notNullish']>
     readonly notUndefined: UnwrapRef<typeof import('./composables/g')['notUndefined']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
@@ -471,6 +483,7 @@ declare module 'vue' {
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
+    readonly tap: UnwrapRef<typeof import('./composables/g')['tap']>
     readonly templateRef: UnwrapRef<typeof import('@vueuse/core')['templateRef']>
     readonly throttledRef: UnwrapRef<typeof import('@vueuse/core')['throttledRef']>
     readonly throttledWatch: UnwrapRef<typeof import('@vueuse/core')['throttledWatch']>
@@ -478,6 +491,7 @@ declare module 'vue' {
     readonly toReactive: UnwrapRef<typeof import('@vueuse/core')['toReactive']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
+    readonly toString: UnwrapRef<typeof import('./composables/g')['toString']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>
     readonly tryOnBeforeUnmount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeUnmount']>

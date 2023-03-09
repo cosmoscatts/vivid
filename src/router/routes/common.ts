@@ -8,6 +8,7 @@ export default [
       requiresAuth: false,
       cached: false,
       layout: 'blank',
+      isWhite: true,
     },
   },
   {
@@ -19,6 +20,18 @@ export default [
       requiresAuth: true,
       cached: false,
       layout: 'default',
+      isWhite: true,
+    },
+  },
+  {
+    path: '/redirect/:path(.*)',
+    name: 'Redirect',
+    component: () => import('~/pages/redirect/index.vue'),
+    meta: {
+      requiresAuth: true,
+      cached: false,
+      layout: 'blank',
+      isWhite: true,
     },
   },
   {
@@ -30,6 +43,7 @@ export default [
       requiresAuth: false,
       cached: false,
       layout: 'blank',
+      isWhite: true,
     },
   },
   {
@@ -41,6 +55,7 @@ export default [
       requiresAuth: false,
       cached: false,
       layout: 'blank',
+      isWhite: true,
     },
   },
   {
@@ -52,6 +67,7 @@ export default [
       requiresAuth: false,
       cached: false,
       layout: 'blank',
+      isWhite: true,
     },
   },
 ]
