@@ -1,4 +1,4 @@
-interface ConfigSettings {
+export interface Settings {
   layout: 'vertical' | 'horizontal'
   showLogo: boolean
   showTabs: boolean
@@ -14,7 +14,7 @@ interface ConfigSettings {
   tabShapeStyle: 'default' | 'chrome'
 }
 
-export const APP_SETTINGS: ConfigSettings = {
+export const defaultSettings: Settings = {
   layout: 'vertical',
   showLogo: true,
   showTabs: true,
