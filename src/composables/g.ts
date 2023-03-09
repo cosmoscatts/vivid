@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'
 import lodash from 'lodash'
 
+import type { Fn, Nullable } from '~/types'
+
 export {
   dayjs,
   lodash,
@@ -67,4 +69,72 @@ export function assignObj<S extends object, T extends object>(
       target[key as keyof T] = value
     }
   })
+}
+
+/**
+ * Type guard to filter out null-ish values
+ *
+ * @category Guards
+ * @example array.filter(notNullish)
+ */
+export function notNullish<T>(v: T | null | undefined): v is NonNullable<T> {
+  return v != null
+}
+
+/**
+ * Type guard to filter out null values
+ *
+ * @example array.filter(noNull)
+ */
+export function noNull<T>(v: T | null): v is Exclude<T, null> {
+  return v !== null
+}
+
+/**
+ * Type guard to filter out null-ish values
+ *
+ * @example array.filter(notUndefined)
+ */
+export function notUndefined<T>(v: T): v is Exclude<T, undefined> {
+  return v !== undefined
+}
+
+/**
+ * Type guard to filter out falsy values
+ *
+ * @example array.filter(isTruthy)
+ */
+export function isTruthy<T>(v: T): v is NonNullable<T> {
+  return Boolean(v)
+}
+
+/**
+ * Call every function in an array
+ */
+export function batchInvoke(functions: Nullable<Fn>[]) {
+  functions.forEach(fn => fn && fn())
+}
+
+/**
+ * Call the function
+ */
+export function invoke(fn: Fn) {
+  return fn()
+}
+
+/**
+ * Pass the value through the callback, and return the value
+ *
+ * @example
+ * ```
+ * function createUser(name: string): User {
+ *   return tap(new User, user => {
+ *     user.name = name
+ *   })
+ * }
+ * ```
+ */
+export function tap<T>(value: T, callback: (value: T) => void): T {
+  callback(value)
+  return value
 }

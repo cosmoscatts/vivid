@@ -32,6 +32,7 @@ specifiers:
   masto: ^5.10.0
   nprogress: ^0.2.0
   pinia: ^2.0.33
+  pinia-plugin-persist-uni: ^1.2.0
   pnpm: ^7.28.0
   simple-git: ^3.17.0
   simple-git-hooks: ^2.8.1
@@ -64,6 +65,7 @@ dependencies:
   masto: registry.npmmirror.com/masto/5.10.0
   nprogress: registry.npmmirror.com/nprogress/0.2.0
   pinia: registry.npmmirror.com/pinia/2.0.33_hmuptsblhheur2tugfgucj7gc4
+  pinia-plugin-persist-uni: registry.npmmirror.com/pinia-plugin-persist-uni/1.2.0_pinia@2.0.33+vue@3.2.47
   simple-git: registry.npmmirror.com/simple-git/3.17.0
   std-env: registry.npmmirror.com/std-env/3.3.2
   vue: registry.npmmirror.com/vue/3.2.47
@@ -7047,6 +7049,24 @@ packages:
     dev: false
     optional: true
 
+  registry.npmmirror.com/pinia-plugin-persist-uni/1.2.0_pinia@2.0.33+vue@3.2.47:
+    resolution: {integrity: sha512-9ZLdeB+nfeu0WD7WEv19E1u2cWbnK/J8fDR5w56JPGoQtbU4Uy8VLKSvfHlbuVzGxBaE1DhG4/ulWVm3oAArpg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pinia-plugin-persist-uni/-/pinia-plugin-persist-uni-1.2.0.tgz}
+    id: registry.npmmirror.com/pinia-plugin-persist-uni/1.2.0
+    name: pinia-plugin-persist-uni
+    version: 1.2.0
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0
+      pinia: ^2.0.0
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      pinia: registry.npmmirror.com/pinia/2.0.33_hmuptsblhheur2tugfgucj7gc4
+      vue: registry.npmmirror.com/vue/3.2.47
+      vue-demi: registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.47
+    dev: false
+
   registry.npmmirror.com/pinia/2.0.33_hmuptsblhheur2tugfgucj7gc4:
     resolution: {integrity: sha512-HOj1yVV2itw6rNIrR2f7+MirGNxhORjrULL8GWgRwXsGSvEqIQ+SE0MYt6cwtpegzCda3i+rVTZM+AM7CG+kRg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pinia/-/pinia-2.0.33.tgz}
     id: registry.npmmirror.com/pinia/2.0.33
@@ -8934,6 +8954,24 @@ packages:
       - supports-color
       - terser
     dev: true
+
+  registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.47:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.12.5.tgz}
+    id: registry.npmmirror.com/vue-demi/0.12.5
+    name: vue-demi
+    version: 0.12.5
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: registry.npmmirror.com/vue/3.2.47
+    dev: false
 
   registry.npmmirror.com/vue-demi/0.13.11_vue@3.2.47:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.11.tgz}

@@ -21,6 +21,7 @@ declare global {
   const assignObj: typeof import('./composables/g')['assignObj']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const breakpoints: typeof import('./composables/screen')['breakpoints']
   const clone: typeof import('./composables/g')['clone']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
@@ -53,20 +54,29 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getRandomDate: typeof import('./composables/common')['getRandomDate']
+  const getRandomInteger: typeof import('./composables/common')['getRandomInteger']
+  const getRandomName: typeof import('./composables/common')['getRandomName']
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
   const isArray: typeof import('./composables/g')['isArray']
   const isBoolean: typeof import('./composables/g')['isBoolean']
   const isDefined: typeof import('@vueuse/core')['isDefined']
+  const isExtraLargeScreen: typeof import('./composables/screen')['isExtraLargeScreen']
+  const isMediumScreen: typeof import('./composables/screen')['isMediumScreen']
+  const isMobile: typeof import('./composables/screen')['isMobile']
   const isNull: typeof import('./composables/g')['isNull']
   const isNumber: typeof import('./composables/g')['isNumber']
   const isObject: typeof import('./composables/g')['isObject']
+  const isPC: typeof import('./composables/screen')['isPC']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
+  const isSmallScreen: typeof import('./composables/screen')['isSmallScreen']
   const isString: typeof import('./composables/g')['isString']
+  const isTruthy: typeof import('./composables/g')['isTruthy']
   const isUndefined: typeof import('./composables/g')['isUndefined']
   const lodash: typeof import('./composables/g')['lodash']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
@@ -78,6 +88,9 @@ declare global {
   const mapWritableState: typeof import('pinia')['mapWritableState']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
+  const noNull: typeof import('./composables/g')['noNull']
+  const notNullish: typeof import('./composables/g')['notNullish']
+  const notUndefined: typeof import('./composables/g')['notUndefined']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
   const onBeforeRouteLeave: typeof import('vue-router')['onBeforeRouteLeave']
@@ -342,6 +355,7 @@ declare module 'vue' {
     readonly assignObj: UnwrapRef<typeof import('./composables/g')['assignObj']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
     readonly clone: UnwrapRef<typeof import('./composables/g')['clone']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
@@ -374,20 +388,29 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getRandomDate: UnwrapRef<typeof import('./composables/common')['getRandomDate']>
+    readonly getRandomInteger: UnwrapRef<typeof import('./composables/common')['getRandomInteger']>
+    readonly getRandomName: UnwrapRef<typeof import('./composables/common')['getRandomName']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isArray: UnwrapRef<typeof import('./composables/g')['isArray']>
     readonly isBoolean: UnwrapRef<typeof import('./composables/g')['isBoolean']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
+    readonly isExtraLargeScreen: UnwrapRef<typeof import('./composables/screen')['isExtraLargeScreen']>
+    readonly isMediumScreen: UnwrapRef<typeof import('./composables/screen')['isMediumScreen']>
+    readonly isMobile: UnwrapRef<typeof import('./composables/screen')['isMobile']>
     readonly isNull: UnwrapRef<typeof import('./composables/g')['isNull']>
     readonly isNumber: UnwrapRef<typeof import('./composables/g')['isNumber']>
     readonly isObject: UnwrapRef<typeof import('./composables/g')['isObject']>
+    readonly isPC: UnwrapRef<typeof import('./composables/screen')['isPC']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly isSmallScreen: UnwrapRef<typeof import('./composables/screen')['isSmallScreen']>
     readonly isString: UnwrapRef<typeof import('./composables/g')['isString']>
+    readonly isTruthy: UnwrapRef<typeof import('./composables/g')['isTruthy']>
     readonly isUndefined: UnwrapRef<typeof import('./composables/g')['isUndefined']>
     readonly lodash: UnwrapRef<typeof import('./composables/g')['lodash']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
@@ -399,6 +422,9 @@ declare module 'vue' {
     readonly mapWritableState: UnwrapRef<typeof import('pinia')['mapWritableState']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
+    readonly noNull: UnwrapRef<typeof import('./composables/g')['noNull']>
+    readonly notNullish: UnwrapRef<typeof import('./composables/g')['notNullish']>
+    readonly notUndefined: UnwrapRef<typeof import('./composables/g')['notUndefined']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
     readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>
