@@ -1,0 +1,16 @@
+<script setup lang="ts">
+const tabStore = useTabStore()
+</script>
+
+<template>
+  <div>
+    <slot />
+    <RouterView v-slot="{ Component, route }">
+      <CommonTransition>
+        <KeepAlive :include="tabStore.cachedTabNames" :max="10">
+          <component :is="Component" :key="route.path" />
+        </KeepAlive>
+      </CommonTransition>
+    </RouterView>
+  </div>
+</template>

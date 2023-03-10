@@ -33,6 +33,7 @@ declare global {
   const controlledComputed: typeof import('@vueuse/core')['controlledComputed']
   const controlledRef: typeof import('@vueuse/core')['controlledRef']
   const createApp: typeof import('vue')['createApp']
+  const createArcoTheme: typeof import('./composables/dark')['createArcoTheme']
   const createEventHook: typeof import('@vueuse/core')['createEventHook']
   const createGlobalState: typeof import('@vueuse/core')['createGlobalState']
   const createInjectionState: typeof import('@vueuse/core')['createInjectionState']
@@ -66,6 +67,7 @@ declare global {
   const invoke: typeof import('./composables/g')['invoke']
   const isArray: typeof import('./composables/g')['isArray']
   const isBoolean: typeof import('./composables/g')['isBoolean']
+  const isDark: typeof import('./composables/dark')['isDark']
   const isDefined: typeof import('@vueuse/core')['isDefined']
   const isExtraLargeScreen: typeof import('./composables/screen')['isExtraLargeScreen']
   const isMediumScreen: typeof import('./composables/screen')['isMediumScreen']
@@ -151,6 +153,7 @@ declare global {
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const toString: typeof import('./composables/g')['toString']
+  const toggleDark: typeof import('./composables/dark')['toggleDark']
   const triggerRef: typeof import('vue')['triggerRef']
   const tryOnBeforeMount: typeof import('@vueuse/core')['tryOnBeforeMount']
   const tryOnBeforeUnmount: typeof import('@vueuse/core')['tryOnBeforeUnmount']
@@ -376,6 +379,7 @@ declare module 'vue' {
     readonly controlledComputed: UnwrapRef<typeof import('@vueuse/core')['controlledComputed']>
     readonly controlledRef: UnwrapRef<typeof import('@vueuse/core')['controlledRef']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createArcoTheme: UnwrapRef<typeof import('./composables/dark')['createArcoTheme']>
     readonly createEventHook: UnwrapRef<typeof import('@vueuse/core')['createEventHook']>
     readonly createGlobalState: UnwrapRef<typeof import('@vueuse/core')['createGlobalState']>
     readonly createInjectionState: UnwrapRef<typeof import('@vueuse/core')['createInjectionState']>
@@ -409,6 +413,7 @@ declare module 'vue' {
     readonly invoke: UnwrapRef<typeof import('./composables/g')['invoke']>
     readonly isArray: UnwrapRef<typeof import('./composables/g')['isArray']>
     readonly isBoolean: UnwrapRef<typeof import('./composables/g')['isBoolean']>
+    readonly isDark: UnwrapRef<typeof import('./composables/dark')['isDark']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
     readonly isExtraLargeScreen: UnwrapRef<typeof import('./composables/screen')['isExtraLargeScreen']>
     readonly isMediumScreen: UnwrapRef<typeof import('./composables/screen')['isMediumScreen']>
@@ -494,6 +499,7 @@ declare module 'vue' {
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toString: UnwrapRef<typeof import('./composables/g')['toString']>
+    readonly toggleDark: UnwrapRef<typeof import('./composables/dark')['toggleDark']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>
     readonly tryOnBeforeUnmount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeUnmount']>

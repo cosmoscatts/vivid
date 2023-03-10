@@ -1,7 +1,7 @@
 <script setup lang="ts">
-
+const uiStore = useUiStore()
 </script>
 
 <template>
-  <RouterView />
+  <LayoutProvider />
 </template>

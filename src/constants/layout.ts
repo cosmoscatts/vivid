@@ -8,8 +8,8 @@ export const LAYOUT_PARAMS = {
   footHeight: 50,
   backTopRight: 20,
   backTopBottom: 75,
-  backTopvisibilityHeight: 250,
+  backTopVisibilityHeight: 250,
   settingsDrawerWidth: 330,
-  settingsDrawerRight: 25,
-  settingsDrawerBottom: 350,
+  settingsButtonRight: 25,
+  settingsButtonBottom: 350,
 }

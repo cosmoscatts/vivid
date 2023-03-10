@@ -2,7 +2,7 @@ import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { NOT_FOUND, NO_PERMISSION } from '../constants'
 import { Conditional, checkRoutePermission, getRoutesInPermission } from '~/utils'
 
-export function createPermissionGuard(
+export default function createPermissionGuard(
   to: RouteLocationNormalized,
   _from: RouteLocationNormalized,
   next: NavigationGuardNext,

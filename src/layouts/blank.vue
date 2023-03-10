@@ -1,3 +1,3 @@
 <template>
-  <div>Blank</div>
+  <LayoutMain />
 </template>

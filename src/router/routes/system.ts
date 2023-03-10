@@ -2,7 +2,7 @@ export default [
   {
     path: '/system/user',
     name: 'User',
-    component: () => import('~/pages/user/index.vue'),
+    component: () => import('~/pages/system/user/index.vue'),
     meta: {
       title: '用户管理',
       requiresAuth: true,
@@ -13,7 +13,7 @@ export default [
   {
     path: '/system/role',
     name: 'Role',
-    component: () => import('~/pages/role/index.vue'),
+    component: () => import('~/pages/system/role/index.vue'),
     meta: {
       title: '角色管理',
       requiresAuth: true,

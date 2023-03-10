@@ -1,5 +1,9 @@
 export default [
   {
+    path: '/',
+    redirect: '/login',
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('~/pages/login/index.vue'),
