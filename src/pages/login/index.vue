@@ -1,3 +1,6 @@
 <template>
-  <div>Login</div>
+  <div>
+    <div>Login</div>
+    <LayoutLogo />
+  </div>
 </template>

@@ -1,11 +1,17 @@
+import LOGO from '~/images/logo.png'
+import SHORT_LOGO from '~/images/short-logo.png'
 import DEFAULT_AVATAR from '~/images/default-avatar.png'
 
 export {
+  LOGO,
+  SHORT_LOGO,
   DEFAULT_AVATAR,
 }
 
 export * from './menus'
 export * from './names'
+export * from './layout'
+export * from './menu-icons'
 
 export const APP_META = {
   author: 'Cosmoscatts',
@@ -14,9 +20,6 @@ export const APP_META = {
   github: 'https://github.com/cosmoscatts/vivid',
   copyRight: 'VIVID - Made by Cosmoscatts',
 }
-
-export const LOGO = ''
-export const SHORT_LOGO = ''
 
 export const TABS_STORAGE_KEY = `${APP_META.name}_TABS`
 export const SETTINGS_STORAGE_KEY = `${APP_META.name}_SETTINGS`

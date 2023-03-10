@@ -32,6 +32,7 @@ declare module '@vue/runtime-core' {
     LayoutProvider: typeof import('./components/layout/provider/LayoutProvider.vue')['default']
     LayoutSettings: typeof import('./components/layout/settings/LayoutSettings.vue')['default']
     LayoutSide: typeof import('./components/layout/side/LayoutSide.vue')['default']
+    LayoutSmallScreenSide: typeof import('./components/layout/side/LayoutSmallScreenSide.vue')['default']
     LayoutTabs: typeof import('./components/layout/tab/LayoutTabs.vue')['default']
     LayoutVertical: typeof import('./components/layout/LayoutVertical.vue')['default']
     PreloadAnimationPage: typeof import('./components/PreloadAnimationPage.vue')['default']

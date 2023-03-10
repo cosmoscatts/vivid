@@ -27,7 +27,7 @@
   },
   "vueCompilerOptions": {
     "plugins": [
-      "@vue-macros/volar/define-model",
+      // "@vue-macros/volar/define-model",
       "@vue-macros/volar/define-props",
       "@vue-macros/volar/define-slots",
       "@vue-macros/volar/define-options"

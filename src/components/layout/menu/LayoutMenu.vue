@@ -1,104 +1,80 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
-import { APP_LAYOUT_PARAMS, APP_MENU } from '~/config'
+import { LAYOUT_PARAMS, MENU_ICON_MAP } from '~/constants'
 import type { Menu } from '~/types'
 
-interface MenuOption {
-  key: string
-  title: string
-  path?: string
-  icon?: Component
-  children?: MenuOption[]
-}
-
-const { mode, showCollapseButton = true } = defineProps<{
-  mode?: 'vertical' | 'horizontal'
-  showCollapseButton?: boolean
-}>()
+const { mode, noCollapse = false } = defineProps<{ mode: 'vertical' | 'horizontal'; noCollapse?: boolean }>()
 
 const route = useRoute()
 const uiStore = useUiStore()
 const authStore = useAuthStore()
 
-const generateMenuOption = (menuItem: Menu): MenuOption => {
-  const { iconMap } = APP_MENU
-  const { id, title, icon, path, children } = menuItem
-  return {
-    key: String(id),
-    title,
-    path,
-    icon: (icon && iconMap[icon])
-      ? iconMap[icon]
-      : undefined,
-    children: children?.map((child: Menu) => generateMenuOption(child)),
+const selectedKeys = computed(() => {
+  const fn: (item: Menu) => Menu[] = (item: Menu) => {
+    if (!item.children?.length) return [item]
+    return [
+      item,
+      ...item.children.flatMap((i: Menu) => fn(i), Infinity),
+    ]
   }
+
+  return authStore.menus
+    .flatMap(fn, Infinity)
+    .filter(item => item.path === route.path)
+    .map(item => item.id)
+    .filter(notNullish)
+})
+
+const collapse = computed(() => {
+  if (noCollapse) return false
+  return uiStore.collaspeSide.state
+})
+
+function hasIcon(icon: string) {
+  if (!icon) return false
+  return Object.keys(MENU_ICON_MAP).includes(item.icon)
 }
 
-const menuOptions = computed<MenuOption[]>(() => (
-  authStore.menus.map(i => generateMenuOption(i))
-))
-const selectedKeys = computed(() => {
-  const allOptions = menuOptions.value.flatMap((i) => {
-    return i.children
-      ? [i, ...i.children]
-      : [i]
-  })
-  return allOptions.filter(i => i.path === route.path).map(j => j.key)
-})
-const collapsed = computed(() => [false, uiStore.collaspeSide.get()][Number(uiStore.settings.layout === 'vertical' && !mode && showCollapseButton !== false)])
+function formatIcon(icon: string) {
+  return MENU_ICON_MAP[icon]
+}
 </script>
 
 <template>
   <div
-    flex-x-center hw-full bg-transparent of-hidden
-    :class="mode !== 'vertical' && uiStore.settings.layout === 'horizontal' ? 'items-center' : ''"
+    hw-full flex-x-center bg-transparent of-hidden
+    :class="['', 'items-center'][Number(mode === 'horizontal')]"
   >
     <a-menu
-      wfull hfull
-      :mode="mode ?? uiStore.settings.layout"
-      :auto-open="true"
-      :accordion="true"
+      hw-full :mode="mode"
+      auto-open accordion auto-open-selected
       :selected-keys="selectedKeys"
-      :collapsed="collapsed"
-      :collapsed-width="APP_LAYOUT_PARAMS.sideMenuCollapsedWidth"
-      auto-open-selected
-      :breakpoint="['', 'lg'][Number([uiStore.settings.layout].includes('vertical') && !mode && showCollapseButton !== false)]"
-      :show-collapse-button="showCollapseButton"
+      :collapsed="collapse"
+      :collapsed-width="LAYOUT_PARAMS.sideMenuCollapsedWidth"
+      :breakpoint="['', 'lg'][Number(mode === 'vertical')]"
       @collapse="uiStore.collaspeSide.toggle"
     >
-      <template v-for="{ key, title, path, icon, children } of menuOptions">
-        <template v-if="children?.length">
-          <a-sub-menu :key="key">
-            <template v-if="icon" #icon>
-              <Component :is="icon" />
-            </template>
-            <template #title>
-              {{ title }}
-            </template>
-            <RouterLink
-              v-for="{ key: childKey, title: childTitle, path: childPath, icon: childIcon } of children"
-              :key="childPath"
-              :to="childPath!"
-            >
-              <a-menu-item :key="childKey">
-                <template v-if="childIcon" #icon>
-                  <Component :is="childIcon" />
-                </template>
-                {{ childTitle }}
-              </a-menu-item>
-            </RouterLink>
-          </a-sub-menu>
-        </template>
-        <template v-else>
-          <RouterLink :key="key" :to="path!">
-            <a-menu-item :key="key">
-              <template #icon>
-                <Component :is="icon" />
+      <template v-for="{ id, title, path, icon, children } of authStore.menus">
+        <a-sub-menu v-if="children?.length" :key="id" :title="title">
+          <template v-if="hasIcon(icon)" #icon>
+            <Component :is="formatIcon(icon)" />
+          </template>
+          <RouterLink v-for="child of children" :key="child.path" :to="child.path">
+            <a-menu-item :key="child.id">
+              <template v-if="hasIcon(child.icon)" #icon>
+                <Component :is="formatIcon(child.icon)" />
               </template>
-              {{ title }}
+              {{ child.title }}
             </a-menu-item>
           </RouterLink>
-        </template>
+        </a-sub-menu>
+        <RouterLink v-else :key="path" :to="path">
+          <a-menu-item :key="id">
+            <template v-if="hasIcon(icon)" #icon>
+              <Component :is="formatIcon(icon)" />
+            </template>
+            {{ title }}
+          </a-menu-item>
+        </RouterLink>
       </template>
     </a-menu>
   </div>

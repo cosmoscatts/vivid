@@ -18,7 +18,7 @@ export const useUiStore = defineStore('uiStore', () => {
   return {
     settings,
     settingsCopy,
-    collaspeSide: {
+    collapseSide: {
       state: computed(() => {
         if (settings.layout === 'horizontal' || isMobile.value) return false
         return collapse.bool.value

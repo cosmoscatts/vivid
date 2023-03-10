@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import lodash from 'lodash'
-
+import lottie from 'lottie-web'
+import type { RendererType } from 'lottie-web'
 import type { Fn, Nullable } from '~/types'
 
 export {
@@ -149,3 +150,26 @@ export const getTypeName = (v: any) => {
   return (typeof v === 'object' || typeof v === 'function') ? type : typeof v
 }
 export const noop = () => {}
+
+export interface LottieParams {
+  containerId: string
+  path: string
+  loop?: boolean
+  renderer?: RendererType
+}
+
+const getElement = (id: string) => document.querySelector(id)!
+
+export const useLottie = ({
+  containerId,
+  path,
+  loop = true,
+  renderer = 'svg',
+}: LottieParams) => lottie.loadAnimation({
+  path,
+  loop,
+  renderer,
+  container: getElement(containerId),
+})
+
+export const useListLottie = (list: LottieParams[]) => list.forEach(item => useLottie(item))
