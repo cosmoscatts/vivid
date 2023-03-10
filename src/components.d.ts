@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     AButton: typeof import('@arco-design/web-vue')['Button']
     AResult: typeof import('@arco-design/web-vue')['Result']
     ASpace: typeof import('@arco-design/web-vue')['Space']
+    CommonIcon: typeof import('./components/common/CommonIcon.vue')['default']
     CommonTransition: typeof import('./components/common/CommonTransition.vue')['default']
     LayoutFoot: typeof import('./components/layout/foot/LayoutFoot.vue')['default']
     LayoutHorizontal: typeof import('./components/layout/LayoutHorizontal.vue')['default']

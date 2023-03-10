@@ -1,4 +1,5 @@
 import type { Tab } from '~/types'
+import { applyCachedTabs, cacheTabs } from '~/utils'
 
 export const useTabStore = defineStore('tabStore', () => {
   const tabs = ref<Tab[]>([])
@@ -14,21 +15,21 @@ export const useTabStore = defineStore('tabStore', () => {
     if (uiStore.settings.cacheTabs) {
       tabs.value = applyCachedTabs()
     } else {
-      if (!Token.get()) tabs.value = []
+      tabs.value = []
     }
   }
 
   const cacheIfNeed = () => { // 开启 tab 缓存，则需要写入缓存
     const uiStore = useUiStore()
     if (uiStore.settings.cacheTabs) {
-      cacheTabs(G.clone(tabs.value))
+      cacheTabs(clone(tabs.value))
     }
   }
 
   const addTab = (tab: Tab) => {
     return new Promise((resolve) => {
       if (tab.path && !tabs.value.map(i => i.path).includes(tab.path)) {
-        tabs.value.push(G.clone(tab))
+        tabs.value.push(clone(tab))
         cacheIfNeed()
       }
       resolve({ tabs })
@@ -83,9 +84,7 @@ export const useTabStore = defineStore('tabStore', () => {
     removeListTabs,
     removeAllTabs,
   }
-},
-{ persist: { enabled: true } },
-)
+}, { persist: { enabled: true } })
 
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useTabStore, import.meta.hot))
