@@ -3,5 +3,6 @@
 </script>
 
 <template>
+  <div>1</div>
   <RouterView />
 </template>

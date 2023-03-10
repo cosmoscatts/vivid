@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('@arco-design/web-vue')['Button']
+    AppProvider: typeof import('./components/AppProvider.vue')['default']
     AResult: typeof import('@arco-design/web-vue')['Result']
     ASpace: typeof import('@arco-design/web-vue')['Space']
     CommonIcon: typeof import('./components/common/CommonIcon.vue')['default']

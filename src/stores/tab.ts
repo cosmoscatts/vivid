@@ -1,5 +1,5 @@
 import type { Tab } from '~/types'
-import { applyCachedTabs, cacheTabs } from '~/utils'
+import { applyCachedTabs, cacheTabs, getRoutesInPermission } from '~/utils'
 
 export const useTabStore = defineStore('tabStore', () => {
   const tabs = ref<Tab[]>([])
@@ -13,7 +13,8 @@ export const useTabStore = defineStore('tabStore', () => {
   const createTabs = () => {
     const uiStore = useUiStore()
     if (uiStore.settings.cacheTabs) {
-      tabs.value = applyCachedTabs()
+      const pathInPermission = getRoutesInPermission()
+      tabs.value = applyCachedTabs().filter(i => pathInPermission.includes(i.path))
     } else {
       tabs.value = []
     }

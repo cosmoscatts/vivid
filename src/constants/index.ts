@@ -7,14 +7,20 @@ export {
 export * from './menus'
 export * from './names'
 
-export const APP_NAME = 'VIVID'
+export const APP_META = {
+  author: 'Cosmoscatts',
+  name: 'VIVID',
+  description: 'Vue3 管理系统（Arco Design）',
+  github: 'https://github.com/cosmoscatts/vivid',
+  copyRight: 'VIVID - Made by Cosmoscatts',
+}
 
 export const LOGO = ''
 export const SHORT_LOGO = ''
 
-export const TABS_STORAGE_KEY = `${APP_NAME}_TABS`
-export const SETTINGS_STORAGE_KEY = `${APP_NAME}_SETTINGS`
-export const THEME_MODE_KEY = `${APP_NAME}_THEME_MODE`
+export const TABS_STORAGE_KEY = `${APP_META.name}_TABS`
+export const SETTINGS_STORAGE_KEY = `${APP_META.name}_SETTINGS`
+export const THEME_MODE_KEY = `${APP_META.name}_THEME_MODE`
 
 export const AXIOS_TIMEOUT = 5000
 
