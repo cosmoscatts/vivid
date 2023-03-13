@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { APP_LAYOUT_PARAMS as params } from '~/constants'
+import { LAYOUT_PARAMS as params } from '~/constants'
 
 defineProps<{ targetContainer: string }>()
 </script>

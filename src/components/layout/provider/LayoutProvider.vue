@@ -1,4 +1,28 @@
 <script setup lang="ts">
+import { LAYOUT_PARAMS as params } from '~/constants'
+const uiStore = useUiStore()
+const refFullWrapper = ref()
+const refContentWrapper = ref()
+const backTopTarget = computed(() => {
+  return uiStore.settings.fixNav
+    ? '#content-wrapper'
+    : '#full-wrapper'
+})
+const diffHeight = computed(() => {
+  let height = params.navHeight
+  if (uiStore.settings.showTabs) height += params.tabHeight
+  return height
+})
+const fullWrapperWidth = computed(() => {
+  return isMobile.value
+    ? '100%'
+    : `calc(100% - ${uiStore.collaspeSide.state ? params.sideCollapsedWidth : params.sideWidth}px)`
+})
+const fullWrapperLeft = computed(() => {
+  return isMobile.value
+    ? '0px'
+    : `${uiStore.collaspeSide.state ? params.sideCollapsedWidth : params.sideWidth}px`
+})
 </script>
 
 <template>
@@ -10,8 +34,8 @@
       ref="refFullWrapper"
       absolute h-full of="x-hidden y-auto"
       :style="{
-        width: mainWrapperWidth,
-        left: mainWrapperLeft,
+        width: fullWrapperWidth,
+        left: fullWrapperLeft,
       }"
     >
       <a-layout-header
@@ -22,8 +46,8 @@
             : ''"
       >
         <slot name="header">
-          <TheNav w-full :style="{ height: `${navHeight}px` }" />
-          <TheTabs v-show="uiStore.settings.showTabs" wfull :style="{ height: `${tabHeight}px` }" />
+          <LayoutNav w-full :style="{ height: `${params.navHeight}px` }" />
+          <LayoutTabs v-show="uiStore.settings.showTabs" wfull :style="{ height: `${params.tabHeight}px` }" />
         </slot>
       </a-layout-header>
       <a-layout
@@ -34,8 +58,8 @@
             !uiStore.settings.fixNav
               ? 0
               : uiStore.settings.showTabs
-                ? navHeight + tabHeight + 1
-                : navHeight + 1
+                ? navHeight + tabHeight
+                : navHeight
           }px`,
           minHeight: `calc(100% - ${diffHeight}px)`,
           overflow: uiStore.settings.fixNav
@@ -45,20 +69,20 @@
       >
         <a-layout-content>
           <slot name="main">
-            <TheMain ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
+            <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
           </slot>
         </a-layout-content>
         <a-layout-footer
           v-if="uiStore.settings.showFoot"
-          :style="{ height: `${footHeight}px` }"
+          :style="{ height: `${params.footHeight}px` }"
         >
           <slot name="foot">
             <LayoutFoot hw-full />
           </slot>
         </a-layout-footer>
       </a-layout>
-      <TheSettings v-if="uiStore.settings.showAppSettings" />
+      <LayoutSettings v-if="uiStore.settings.showAppSettings" />
     </a-layout>
-    <BackTop :target-container="backTopTarget" />
+    <LayoutBackTop :target-container="backTopTarget" />
   </a-layout>
 </template>
