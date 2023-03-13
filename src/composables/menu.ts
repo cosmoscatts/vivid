@@ -7,6 +7,7 @@ import type { Menu } from '~/types'
  */
 export function getFlattenMenuTree(): Menu[] {
   const authStore = useAuthStore()
+  if (!authStore.menus.length) return []
   const fn: (item: Menu) => Menu[] = (item: Menu) => {
     if (!item.children?.length) return [item]
     return [

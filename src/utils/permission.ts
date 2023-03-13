@@ -1,23 +1,10 @@
 import type { RouteLocationNormalized } from 'vue-router'
-import type { Menu } from '~/types'
 
 /**
  * 找到所有权限的路由路径
  */
 export function getRoutesInPermission(): string[] {
-  const authStore = useAuthStore()
-  if (!authStore.menus.length) return []
-
-  const fn: (item: Menu) => Menu[] = (item: Menu) => {
-    if (!item.children?.length) return [item]
-    return [
-      item,
-      ...item.children.flatMap((i: Menu) => fn(i), Infinity),
-    ]
-  }
-
-  return authStore.menus
-    .flatMap(fn, Infinity)
+  return getFlattenMenuTree()
     .map(item => item.path)
     .filter(notNullish)
 }
