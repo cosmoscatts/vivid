@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS, MENU_ICON_MAP } from '~/constants'
-import type { Menu } from '~/types'
 
 const { mode, noCollapse = false } = defineProps<{ mode: 'vertical' | 'horizontal'; noCollapse?: boolean }>()
 
@@ -9,16 +8,7 @@ const uiStore = useUiStore()
 const authStore = useAuthStore()
 
 const selectedKeys = computed(() => {
-  const fn: (item: Menu) => Menu[] = (item: Menu) => {
-    if (!item.children?.length) return [item]
-    return [
-      item,
-      ...item.children.flatMap((i: Menu) => fn(i), Infinity),
-    ]
-  }
-
-  return authStore.menus
-    .flatMap(fn, Infinity)
+  return getFlattenMenuTree()
     .filter(item => item.path === route.path)
     .map(item => item.id)
     .filter(notNullish)
@@ -26,12 +16,12 @@ const selectedKeys = computed(() => {
 
 const collapse = computed(() => {
   if (noCollapse) return false
-  return uiStore.collaspeSide.state
+  return uiStore.collapseSide.state
 })
 
-function hasIcon(icon: string) {
+function hasIcon(icon?: string) {
   if (!icon) return false
-  return Object.keys(MENU_ICON_MAP).includes(item.icon)
+  return Object.keys(MENU_ICON_MAP).includes(icon)
 }
 
 function formatIcon(icon: string) {
@@ -51,26 +41,26 @@ function formatIcon(icon: string) {
       :collapsed="collapse"
       :collapsed-width="LAYOUT_PARAMS.sideMenuCollapsedWidth"
       :breakpoint="['', 'lg'][Number(mode === 'vertical')]"
-      @collapse="uiStore.collaspeSide.toggle"
+      @collapse="uiStore.collapseSide.toggle"
     >
       <template v-for="{ id, title, path, icon, children } of authStore.menus">
-        <a-sub-menu v-if="children?.length" :key="id" :title="title">
+        <a-sub-menu v-if="children?.length" :key="String(id)" :title="title">
           <template v-if="hasIcon(icon)" #icon>
-            <Component :is="formatIcon(icon)" />
+            <Component :is="formatIcon(icon!)" />
           </template>
-          <RouterLink v-for="child of children" :key="child.path" :to="child.path">
-            <a-menu-item :key="child.id">
+          <RouterLink v-for="child of children" :key="child.path" :to="child.path!">
+            <a-menu-item :key="String(child.id)">
               <template v-if="hasIcon(child.icon)" #icon>
-                <Component :is="formatIcon(child.icon)" />
+                <Component :is="formatIcon(child.icon!)" />
               </template>
               {{ child.title }}
             </a-menu-item>
           </RouterLink>
         </a-sub-menu>
-        <RouterLink v-else :key="path" :to="path">
-          <a-menu-item :key="id">
+        <RouterLink v-else :key="path" :to="path!">
+          <a-menu-item :key="String(id)">
             <template v-if="hasIcon(icon)" #icon>
-              <Component :is="formatIcon(icon)" />
+              <Component :is="formatIcon(icon!)" />
             </template>
             {{ title }}
           </a-menu-item>

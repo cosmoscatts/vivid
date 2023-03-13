@@ -13,7 +13,7 @@ export interface Result<T = any> {
 }
 
 export interface PageData<T = any> {
-  [key: string]: any
+  [key: string]: unknown
   records: T[]
   total: number
 }

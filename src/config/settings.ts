@@ -27,7 +27,7 @@ export const defaultSettings: Settings = {
   //  - | 'fade-scale' | 'zoom-fade' | 'zoom-out' |
   animationMode: 'fade-slide',
 
-  primaryColor: '#377BB5',
+  primaryColor: 'arcoblue',
 
   cacheTabs: true,
   tabShapeStyle: 'chrome',

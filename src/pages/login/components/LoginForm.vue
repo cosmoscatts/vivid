@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import { APP_META } from '~/constants'
+import { isDevelopment } from '~/config'
+import { getRoutesInPermission } from '~/utils'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -11,44 +13,45 @@ interface ModelType {
   password?: string
 }
 
-const baseFormModel = isDevelopment
-  ? {
-      username: 'admin',
-      password: '123456',
-    }
-  : {
-      username: '',
-      password: '',
-    }
-const formModel = reactive<ModelType>({
-  ...baseFormModel,
-})
+const baseFormModel = [
+  {
+    username: '',
+    password: '',
+  },
+  {
+    username: 'admin',
+    password: '123456',
+  },
+][Number(isDevelopment())]
 
-const validateTrigger = ref<('change' | 'input' | 'focus' | 'blur')[]>(['change', 'input'])
+const formModel = reactive<ModelType>({ ...baseFormModel })
 
 function submit({
   errors,
   values,
 }: {
   errors: Record<string, ValidatedError> | undefined
-  values: Record<string, any>
+  values: ModelType
 }) {
   if (errors) return
   startLoading()
   const data = {
     id: 1,
     username: 'admin',
-    name: 'admin',
+    name: getRandomName(),
     roleId: 1,
-    phone: '6666666666',
-    email: 'dasb@qq.com',
     createTime: new Date(),
   }
   authStore
     .login(data)
     .then(() => {
       useTimeoutFn(() => {
-        router.push(findFirstRouteInPermission())
+        const routes = getRoutesInPermission()
+        if (!routes.length) {
+          Message.error('请联系管理员配置菜单')
+        } else {
+          router.push(routes[0])
+        }
         ANotification.success({
           title: '登录成功',
           content: `你好，${values.username}。欢迎回来！`,
@@ -77,7 +80,7 @@ onMounted(() => useTimeoutFn(() => useLottie({
           { required: true, message: '账号是必须的' },
           { minLength: 5, message: '长度必须大于5' },
         ]"
-        :validate-trigger="validateTrigger"
+        :validate-trigger="defaultValidateTrigger"
       >
         <a-input v-model="formModel.username" placeholder="请输入你的账号..." allow-clear>
           <template #prefix>
@@ -91,7 +94,7 @@ onMounted(() => useTimeoutFn(() => useLottie({
           { required: true, message: '密码是必须的' },
           { minLength: 6, message: '长度必须大于6' },
         ]"
-        :validate-trigger="validateTrigger"
+        :validate-trigger="defaultValidateTrigger"
       >
         <a-input-password v-model="formModel.password" placeholder="请输入你的密码..." allow-clear>
           <template #prefix>

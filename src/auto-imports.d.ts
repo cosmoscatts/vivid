@@ -46,6 +46,7 @@ declare global {
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
   const deepClone: typeof import('./composables/g')['deepClone']
+  const defaultValidateTrigger: typeof import('./composables/form')['defaultValidateTrigger']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
@@ -57,6 +58,7 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getFlattenMenuTree: typeof import('./composables/menu')['getFlattenMenuTree']
   const getRandomDate: typeof import('./composables/common')['getRandomDate']
   const getRandomInteger: typeof import('./composables/common')['getRandomInteger']
   const getRandomName: typeof import('./composables/common')['getRandomName']
@@ -394,6 +396,7 @@ declare module 'vue' {
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly deepClone: UnwrapRef<typeof import('./composables/g')['deepClone']>
+    readonly defaultValidateTrigger: UnwrapRef<typeof import('./composables/form')['defaultValidateTrigger']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
@@ -405,6 +408,7 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
     readonly getRandomDate: UnwrapRef<typeof import('./composables/common')['getRandomDate']>
     readonly getRandomInteger: UnwrapRef<typeof import('./composables/common')['getRandomInteger']>
     readonly getRandomName: UnwrapRef<typeof import('./composables/common')['getRandomName']>

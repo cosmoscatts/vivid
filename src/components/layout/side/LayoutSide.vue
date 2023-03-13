@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { LAYOUT_PARAMS } from '~/constants'
+import { LAYOUT_PARAMS as params } from '~/constants'
+const uiStore = useUiStore()
 </script>
 
 <template>
-  <div flex="x-center col" of-hidden>
-    <LayoutLogo />
-    <LayoutMenu :style="{ height: `calc(100% - ${LAYOUT_PARAMS.navHeight}px)` }" />
-  </div>
+  <a-layout-sider
+    absolute top-0 left-0 bg-side
+    h-full of="x-hidden y-auto" border-r="1px solid [var(--color-border)]"
+    collapsible
+    hide-trigger
+    :width="params.sideWidth"
+    :collapsed-width="params.sideCollapsedWidth"
+    :collapsed="uiStore.collapseSide.state"
+  >
+    <div flex="x-center col" of-hidden>
+      <LayoutLogo />
+      <LayoutMenu mode="vertical" :style="{ height: `calc(100% - ${params.navHeight}px)` }" />
+    </div>
+  </a-layout-sider>
 </template>

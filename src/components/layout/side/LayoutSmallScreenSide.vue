@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { APP_META, LAYOUT_PARAMS as params } from '~/constants'
+import { LAYOUT_PARAMS as params } from '~/constants'
 const show = ref(false)
 </script>
 
@@ -18,22 +18,18 @@ const show = ref(false)
   >
     <div flex="~ col">
       <div flex-y-center h50px>
-        <Avatar />
+        <LayoutNavDropdown />
         <div flex-auto />
-        <a
-          icon-btn text-lg i-ri-github-line mx4
-          :href="APP_META.github"
-          target="_blank" title="GitHub"
-        />
-        <Bell mr4 />
-        <FullScreen mr4 />
-        <DarkToggle />
+        <LayoutNavGithub mr4 />
+        <LayoutNavBell mr4 />
+        <LayoutNavFullScreen mr4 />
+        <LayoutNavDarkToggle />
       </div>
     </div>
-    <Menu
+    <LayoutMenu
       mode="vertical"
-      :show-collapse-button="false"
-      wfull hfull of-y-auto
+      no-collapse
+      hw-full of-y-auto
       :style="{ height: 'calc(100vh - 80px)' }"
     />
   </a-drawer>

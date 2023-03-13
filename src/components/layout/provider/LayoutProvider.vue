@@ -16,12 +16,12 @@ const diffHeight = computed(() => {
 const fullWrapperWidth = computed(() => {
   return isMobile.value
     ? '100%'
-    : `calc(100% - ${uiStore.collaspeSide.state ? params.sideCollapsedWidth : params.sideWidth}px)`
+    : `calc(100% - ${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px)`
 })
 const fullWrapperLeft = computed(() => {
   return isMobile.value
     ? '0px'
-    : `${uiStore.collaspeSide.state ? params.sideCollapsedWidth : params.sideWidth}px`
+    : `${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px`
 })
 </script>
 
@@ -58,8 +58,8 @@ const fullWrapperLeft = computed(() => {
             !uiStore.settings.fixNav
               ? 0
               : uiStore.settings.showTabs
-                ? navHeight + tabHeight
-                : navHeight
+                ? params.navHeight + params.tabHeight
+                : params.navHeight
           }px`,
           minHeight: `calc(100% - ${diffHeight}px)`,
           overflow: uiStore.settings.fixNav
@@ -69,7 +69,7 @@ const fullWrapperLeft = computed(() => {
       >
         <a-layout-content>
           <slot name="main">
-            <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
+            <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + params.footHeight}px)` }" />
           </slot>
         </a-layout-content>
         <a-layout-footer
@@ -81,7 +81,7 @@ const fullWrapperLeft = computed(() => {
           </slot>
         </a-layout-footer>
       </a-layout>
-      <LayoutSettings v-if="uiStore.settings.showAppSettings" />
+      <!-- <LayoutSettings v-if="uiStore.settings.showAppSettings" /> -->
     </a-layout>
     <LayoutBackTop :target-container="backTopTarget" />
   </a-layout>

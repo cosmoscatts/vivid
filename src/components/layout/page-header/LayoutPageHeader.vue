@@ -8,15 +8,14 @@ const getBreadCrumbs = () => {
     .matched
     .filter((i: RouteLocationMatched) => !!i.meta?.title)
   if (!matched.length) return
-  data = matched.map(i => i.meta.title as string)
+  data = [...new Set(matched.map(i => i.meta.title as string)).values()]
 }
 getBreadCrumbs()
 watch(() => route.path, (path) => {
   if (!path.startsWith('/redirect/')) {
     getBreadCrumbs()
   }
-},
-)
+})
 </script>
 
 <template>
