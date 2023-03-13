@@ -2,6 +2,8 @@ import type { Menu } from '~/types'
 
 /**
  * 获取扁平化的菜单
+ *
+ * @dfs 深度递归
  */
 export function getFlattenMenuTree(): Menu[] {
   const authStore = useAuthStore()
