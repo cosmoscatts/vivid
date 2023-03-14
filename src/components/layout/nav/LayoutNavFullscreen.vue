@@ -6,8 +6,8 @@ const { isFullscreen, toggle } = useFullscreen()
   <button
     icon-btn text-lg
     :class="isFullscreen
-      ? 'i-bytesize-fullscreen-exit'
-      : 'i-bytesize-fullscreen'"
+      ? 'i-ri-fullscreen-exit-line'
+      : 'i-ri-fullscreen-line'"
     @click="toggle"
   />
 </template>

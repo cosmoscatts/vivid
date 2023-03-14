@@ -5,6 +5,7 @@ const props = defineProps<{
   index: number
   title: string
   path: string
+  icon?: string
   tabs: Tab[]
   chrome: boolean
   active: boolean
@@ -37,8 +38,8 @@ provide('handleCloseTab', handleCloseTab)
 <template>
   <a-dropdown trigger="contextMenu" position="br">
     <RouterLink :to="{ path }">
-      <LayoutTabButton v-if="!chrome" v-bind="{ title, active }" />
-      <LayoutTabChrome v-else v-bind="{ title, active, last: index === tabs.length - 1 }" />
+      <LayoutTabButton v-if="!chrome" v-bind="{ title, active, icon }" />
+      <LayoutTabChrome v-else v-bind="{ title, active, icon, last: index === tabs.length - 1 }" />
     </RouterLink>
 
     <template #content>

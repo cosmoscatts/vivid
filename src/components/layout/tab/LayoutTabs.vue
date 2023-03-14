@@ -85,7 +85,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
         ]"
       >
         <div
-          v-for="{ title, path }, index in tabs" :key="path"
+          v-for="{ title, path, icon }, index in tabs" :key="path"
           flex="inline y-center" wa h26px lh-26px cursor-pointer
           :class="{ 'ha max-h-full': chrome }"
         >
@@ -94,6 +94,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
               index,
               title,
               path,
+              icon,
               tabs,
               chrome,
               active: isActive(path),

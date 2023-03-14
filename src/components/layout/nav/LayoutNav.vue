@@ -16,11 +16,11 @@ const logoWidth = computed(() => isPC.value
     <LayoutPageHeader v-if="isVertical && isPC" mt3px />
     <div flex-auto />
     <div v-if="isPC" flex-y-center>
-      <LayoutGithub mr4 />
-      <LayoutBell mr4 />
-      <LayoutFullScreen mr4 />
-      <LayoutDarkToggle mr4 />
-      <LayoutDropdown />
+      <LayoutNavGithub mr4 />
+      <LayoutNavBell mr4 />
+      <LayoutNavFullscreen mr4 />
+      <LayoutNavDarkToggle mr4 />
+      <LayoutNavDropdown />
     </div>
     <div v-else flex-y-center>
       <LayoutSmallScreenSide />

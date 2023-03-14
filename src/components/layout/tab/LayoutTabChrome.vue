@@ -5,6 +5,7 @@ defineProps<{
   title: string
   active: boolean
   last: boolean
+  icon?: string
 }>()
 const refTab = ref()
 const hover = useElementHover(refTab)
@@ -23,8 +24,7 @@ const primaryColor = computed(() => {
       <LayoutTabChromeShape v-bind="{ hover, active, primaryColor }" />
     </div>
     <span relative z2 whitespace-nowrap flex="inline y-center">
-      <div v-if="active" i-ri-price-tag-2-fill mr2 z2 text-primary />
-      <div v-else i-ri-price-tag-2-line mr2 z2 />
+      <component :is="formatMenuIcon(icon!)" v-if="hasMenuIcon(icon)" mr2 z2 :class="{ 'text-primary': active }" />
       {{ title }}
     </span>
     <LayoutTabClose />

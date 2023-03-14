@@ -73,7 +73,7 @@ function formatIcon(key: BellDataType) {
                 />
               </div>
             </template>
-            <LayoutBellMessage :type="type" :data="getDataByKey(idx)" />
+            <LayoutNavBellMessage :type="type" :data="getDataByKey(idx)" />
           </a-tab-pane>
         </a-tabs>
         <div flex cursor-pointer>

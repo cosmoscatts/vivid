@@ -6,6 +6,7 @@ import { defaultThemeColors } from '~/config'
 const props = defineProps<{
   title: string
   active: boolean
+  icon?: string
 }>()
 const refTab = ref()
 const uiStore = useUiStore()
@@ -33,8 +34,7 @@ const tabStyle = computed(() => {
     :style="tabStyle"
     :class="{ 'text-primary': active }"
   >
-    <span v-if="active" i-ri-price-tag-2-fill mr1 />
-    <span v-else i-ri-price-tag-2-line mr1 />
+    <component :is="formatMenuIcon(icon!)" v-if="hasMenuIcon(icon)" mr1 />
     {{ title }}
     <LayoutTabClose />
   </span>
