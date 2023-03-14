@@ -33,4 +33,8 @@ watch(() => route.path, (path) => {
 :deep(.arco-page-header-header) {
   height: 0px;
 }
+:deep(.arco-page-header-wrapper) {
+  padding-right: 0px;
+  padding-left: 4px;
+}
 </style>

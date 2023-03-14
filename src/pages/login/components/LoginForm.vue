@@ -109,7 +109,7 @@ onMounted(() => useTimeoutFn(() => useLottie({
       </a-form-item>
     </a-form>
     <div flex-center>
-      <LayoutDarkToggle />
+      <LayoutNavDarkToggle />
       <span ml-5 op-50 text-xl> {{ APP_META.author }} </span>
     </div>
   </a-card>

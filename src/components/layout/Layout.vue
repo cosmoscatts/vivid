@@ -4,7 +4,7 @@ const uiStore = useUiStore()
 
 <template>
   <LayoutProvider>
-    <template v-if="uiStore.settings.layout === 'vertical'" #side>
+    <template v-if="uiStore.settings.layout === 'vertical' && isPC" #side>
       <LayoutSide />
     </template>
   </LayoutProvider>

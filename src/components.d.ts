@@ -53,6 +53,7 @@ declare module '@vue/runtime-core' {
     LayoutNav: typeof import('./components/layout/nav/LayoutNav.vue')['default']
     LayoutNavBell: typeof import('./components/layout/nav/LayoutNavBell.vue')['default']
     LayoutNavBellMessage: typeof import('./components/layout/nav/LayoutNavBellMessage.vue')['default']
+    LayoutNavCollapseToggle: typeof import('./components/layout/nav/LayoutNavCollapseToggle.vue')['default']
     LayoutNavDarkToggle: typeof import('./components/layout/nav/LayoutNavDarkToggle.vue')['default']
     LayoutNavDropdown: typeof import('./components/layout/nav/LayoutNavDropdown.vue')['default']
     LayoutNavFullscreen: typeof import('./components/layout/nav/LayoutNavFullscreen.vue')['default']

@@ -9,9 +9,8 @@ function logout() {
     content: '记得回来~',
     duration: 1000,
   })
-  authStore
-    .logout()
-    .then(() => router.push('/login'))
+  authStore.logout()
+  router.push('/login')
 }
 
 function onSelect<T extends string | number | Record<string, any> | undefined>(value: T) {
