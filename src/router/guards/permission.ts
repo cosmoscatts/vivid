@@ -18,11 +18,11 @@ export default function createPermissionGuard(
     // 已登录状态跳转登录页，跳转至第一项菜单
     [hasLogin && to.name === 'Login', () => {
       const routes = getRoutesInPermission()
-      if (!routes.length) {
+      if (routes.length) {
+        next(routes[0])
+      } else {
         Message.error('请联系管理员配置菜单')
         next(NOT_FOUND)
-      } else {
-        next(routes[0])
       }
     }],
     // 不需要登录权限的页面直接通行

@@ -55,15 +55,18 @@ declare global {
   const empty: typeof import('./composables/g')['empty']
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const formatDate: typeof import('./composables/common')['formatDate']
+  const formatMenuIcon: typeof import('./composables/menu')['formatMenuIcon']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getFlattenMenuTree: typeof import('./composables/menu')['getFlattenMenuTree']
+  const getMatchedMenuItemsIfParentExist: typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']
   const getRandomDate: typeof import('./composables/common')['getRandomDate']
   const getRandomInteger: typeof import('./composables/common')['getRandomInteger']
   const getRandomName: typeof import('./composables/common')['getRandomName']
   const getTypeName: typeof import('./composables/g')['getTypeName']
   const h: typeof import('vue')['h']
+  const hasMenuIcon: typeof import('./composables/menu')['hasMenuIcon']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
   const invoke: typeof import('./composables/g')['invoke']
@@ -405,15 +408,18 @@ declare module 'vue' {
     readonly empty: UnwrapRef<typeof import('./composables/g')['empty']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly formatDate: UnwrapRef<typeof import('./composables/common')['formatDate']>
+    readonly formatMenuIcon: UnwrapRef<typeof import('./composables/menu')['formatMenuIcon']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
+    readonly getMatchedMenuItemsIfParentExist: UnwrapRef<typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']>
     readonly getRandomDate: UnwrapRef<typeof import('./composables/common')['getRandomDate']>
     readonly getRandomInteger: UnwrapRef<typeof import('./composables/common')['getRandomInteger']>
     readonly getRandomName: UnwrapRef<typeof import('./composables/common')['getRandomName']>
     readonly getTypeName: UnwrapRef<typeof import('./composables/g')['getTypeName']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly hasMenuIcon: UnwrapRef<typeof import('./composables/menu')['hasMenuIcon']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly invoke: UnwrapRef<typeof import('./composables/g')['invoke']>

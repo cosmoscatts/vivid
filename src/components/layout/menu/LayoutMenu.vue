@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LAYOUT_PARAMS, MENU_ICON_MAP } from '~/constants'
+import { LAYOUT_PARAMS } from '~/constants'
 
 const { mode, noCollapse = false } = defineProps<{ mode: 'vertical' | 'horizontal'; noCollapse?: boolean }>()
 
@@ -18,15 +18,6 @@ const collapse = computed(() => {
   if (noCollapse) return false
   return uiStore.collapseSide.state
 })
-
-function hasIcon(icon?: string) {
-  if (!icon) return false
-  return Object.keys(MENU_ICON_MAP).includes(icon)
-}
-
-function formatIcon(icon: string) {
-  return MENU_ICON_MAP[icon]
-}
 </script>
 
 <template>
@@ -45,13 +36,13 @@ function formatIcon(icon: string) {
     >
       <template v-for="{ id, title, path, icon, children } of authStore.menus">
         <a-sub-menu v-if="children?.length" :key="String(id)" :title="title">
-          <template v-if="hasIcon(icon)" #icon>
-            <Component :is="formatIcon(icon!)" />
+          <template v-if="hasMenuIcon(icon)" #icon>
+            <Component :is="formatMenuIcon(icon!)" />
           </template>
           <RouterLink v-for="child of children" :key="child.path" :to="child.path!">
             <a-menu-item :key="String(child.id)">
-              <template v-if="hasIcon(child.icon)" #icon>
-                <Component :is="formatIcon(child.icon!)" />
+              <template v-if="hasMenuIcon(child.icon)" #icon>
+                <Component :is="formatMenuIcon(child.icon!)" />
               </template>
               {{ child.title }}
             </a-menu-item>
@@ -59,8 +50,8 @@ function formatIcon(icon: string) {
         </a-sub-menu>
         <RouterLink v-else :key="path" :to="path!">
           <a-menu-item :key="String(id)">
-            <template v-if="hasIcon(icon)" #icon>
-              <Component :is="formatIcon(icon!)" />
+            <template v-if="hasMenuIcon(icon)" #icon>
+              <Component :is="formatMenuIcon(icon!)" />
             </template>
             {{ title }}
           </a-menu-item>
