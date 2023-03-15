@@ -4,7 +4,7 @@ const tabStore = useTabStore()
 
 <template>
   <div>
-    <slot />
+    <slot name="header" />
     <RouterView v-slot="{ Component, route }">
       <CommonTransition>
         <KeepAlive :include="tabStore.cachedTabNames" :max="10">

@@ -69,7 +69,11 @@ const fullWrapperLeft = computed(() => {
       >
         <a-layout-content>
           <slot name="main">
-            <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + params.footHeight}px)` }" />
+            <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + params.footHeight}px)` }">
+              <template v-if="uiStore.settings.layout === 'horizontal'" #header>
+                <LayoutPageHeader mb10px />
+              </template>
+            </LayoutMain>
           </slot>
         </a-layout-content>
         <a-layout-footer
