@@ -1,3 +1,9 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
-  <div>Dashboard</div>
+  <div h1000px>
+    Dashboard
+  </div>
 </template>

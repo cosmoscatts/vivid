@@ -20,8 +20,8 @@ watch(() => route.path, (path) => {
   <a-page-header :show-back="false" :style="{ padding: '0px' }">
     <template #breadcrumb>
       <a-breadcrumb>
-        <a-breadcrumb-item v-for="item of data" :key="item.title">
-          <component :is="formatMenuIcon(item.icon!)" v-if="hasMenuIcon(item.icon)" mr1 />
+        <a-breadcrumb-item v-for="item of data" :key="item.title" flex-y-center>
+          <component :is="formatMenuIcon(item.icon!)" v-if="hasMenuIcon(item.icon)" mr2 />
           {{ item.title }}
         </a-breadcrumb-item>
       </a-breadcrumb>

@@ -68,7 +68,7 @@ onMounted(() => useTimeoutFn(() => useLottie({
 </script>
 
 <template>
-  <a-card direction="vertical">
+  <a-card direction="vertical" w450px h580px p20px rounded-8px>
     <div text="32px center" font-bold>
       {{ APP_META.name }}
     </div>

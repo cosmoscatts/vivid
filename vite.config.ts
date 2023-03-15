@@ -4,7 +4,6 @@ import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Layouts from 'vite-plugin-vue-layouts'
 import Unocss from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
@@ -25,10 +24,7 @@ export default defineConfig({
       },
     }),
     AutoImport({
-      resolvers: [
-        ArcoResolver(),
-        IconsResolver(),
-      ],
+      resolvers: [ArcoResolver()],
       imports: [
         'vue',
         'vue-router',
@@ -50,7 +46,8 @@ export default defineConfig({
     }),
     Icons({
       autoInstall: true,
-      scale: 1.2,
+      scale: 1,
+      defaultClass: 'inline-block',
     }),
     Layouts(),
     Unocss(),

@@ -19,7 +19,8 @@
       "vite/client",
       "vue/ref-macros",
       "vite-plugin-vue-layouts/client",
-      "unplugin-vue-macros/macros-global"
+      "unplugin-vue-macros/macros-global",
+      "unplugin-icons/types/vue"
     ],
     "paths": {
       "~/*": ["src/*"]
