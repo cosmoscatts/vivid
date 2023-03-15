@@ -108,3 +108,18 @@ export function getRandomDate() {
   const dateStr = `${year}-${y}-${r} ${s}:${f}:${m}`
   return formatDate(dateStr)
 }
+
+/**
+ * 获取随机字符串
+ *
+ * port from nanoid
+ * https://github.com/ai/nanoid
+ */
+const urlAlphabet = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
+export function getRandomStr(size = 16, dict = urlAlphabet) {
+  let id = ''
+  let i = size
+  const len = dict.length
+  while (i--) id += dict[(Math.random() * len) | 0]
+  return id
+}

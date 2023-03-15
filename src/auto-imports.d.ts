@@ -17,11 +17,14 @@ declare global {
   const Message: typeof import('./composables/arco')['Message']
   const Modal: typeof import('./composables/arco')['Modal']
   const R: typeof import('./composables/request')['R']
+  const SelectOptionsHandler: typeof import('./composables/select-options')['SelectOptionsHandler']
+  const UserApi: typeof import('./server/api/user')['UserApi']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const assert: typeof import('./composables/g')['assert']
   const assignObj: typeof import('./composables/g')['assignObj']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const basePagination: typeof import('./composables/table')['basePagination']
   const batchInvoke: typeof import('./composables/g')['batchInvoke']
   const breakpoints: typeof import('./composables/screen')['breakpoints']
   const clone: typeof import('./composables/g')['clone']
@@ -37,8 +40,11 @@ declare global {
   const createEventHook: typeof import('@vueuse/core')['createEventHook']
   const createGlobalState: typeof import('@vueuse/core')['createGlobalState']
   const createInjectionState: typeof import('@vueuse/core')['createInjectionState']
+  const createModalData: typeof import('./composables/modal')['createModalData']
+  const createPagination: typeof import('./composables/table')['createPagination']
   const createPinia: typeof import('pinia')['createPinia']
   const createReactiveFn: typeof import('@vueuse/core')['createReactiveFn']
+  const createSearchForm: typeof import('./composables/form')['createSearchForm']
   const createSharedComposable: typeof import('@vueuse/core')['createSharedComposable']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const customRef: typeof import('vue')['customRef']
@@ -59,14 +65,17 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getFetchParams: typeof import('./composables/table')['getFetchParams']
   const getFlattenMenuTree: typeof import('./composables/menu')['getFlattenMenuTree']
   const getMatchedMenuItemsIfParentExist: typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']
   const getRandomDate: typeof import('./composables/common')['getRandomDate']
   const getRandomInteger: typeof import('./composables/common')['getRandomInteger']
   const getRandomName: typeof import('./composables/common')['getRandomName']
+  const getRandomStr: typeof import('./composables/common')['getRandomStr']
   const getTypeName: typeof import('./composables/g')['getTypeName']
   const h: typeof import('vue')['h']
   const hasMenuIcon: typeof import('./composables/menu')['hasMenuIcon']
+  const hideFormLabel: typeof import('./composables/form')['hideFormLabel']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
   const invoke: typeof import('./composables/g')['invoke']
@@ -195,6 +204,7 @@ declare global {
   const useCloned: typeof import('@vueuse/core')['useCloned']
   const useColorMode: typeof import('@vueuse/core')['useColorMode']
   const useConfirmDialog: typeof import('@vueuse/core')['useConfirmDialog']
+  const useControlModal: typeof import('./composables/modal')['useControlModal']
   const useCounter: typeof import('@vueuse/core')['useCounter']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVar: typeof import('@vueuse/core')['useCssVar']
@@ -370,11 +380,14 @@ declare module 'vue' {
     readonly Message: UnwrapRef<typeof import('./composables/arco')['Message']>
     readonly Modal: UnwrapRef<typeof import('./composables/arco')['Modal']>
     readonly R: UnwrapRef<typeof import('./composables/request')['R']>
+    readonly SelectOptionsHandler: UnwrapRef<typeof import('./composables/select-options')['SelectOptionsHandler']>
+    readonly UserApi: UnwrapRef<typeof import('./server/api/user')['UserApi']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly assert: UnwrapRef<typeof import('./composables/g')['assert']>
     readonly assignObj: UnwrapRef<typeof import('./composables/g')['assignObj']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly basePagination: UnwrapRef<typeof import('./composables/table')['basePagination']>
     readonly batchInvoke: UnwrapRef<typeof import('./composables/g')['batchInvoke']>
     readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
     readonly clone: UnwrapRef<typeof import('./composables/g')['clone']>
@@ -390,8 +403,11 @@ declare module 'vue' {
     readonly createEventHook: UnwrapRef<typeof import('@vueuse/core')['createEventHook']>
     readonly createGlobalState: UnwrapRef<typeof import('@vueuse/core')['createGlobalState']>
     readonly createInjectionState: UnwrapRef<typeof import('@vueuse/core')['createInjectionState']>
+    readonly createModalData: UnwrapRef<typeof import('./composables/modal')['createModalData']>
+    readonly createPagination: UnwrapRef<typeof import('./composables/table')['createPagination']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly createReactiveFn: UnwrapRef<typeof import('@vueuse/core')['createReactiveFn']>
+    readonly createSearchForm: UnwrapRef<typeof import('./composables/form')['createSearchForm']>
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
@@ -412,14 +428,17 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
     readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
     readonly getMatchedMenuItemsIfParentExist: UnwrapRef<typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']>
     readonly getRandomDate: UnwrapRef<typeof import('./composables/common')['getRandomDate']>
     readonly getRandomInteger: UnwrapRef<typeof import('./composables/common')['getRandomInteger']>
     readonly getRandomName: UnwrapRef<typeof import('./composables/common')['getRandomName']>
+    readonly getRandomStr: UnwrapRef<typeof import('./composables/common')['getRandomStr']>
     readonly getTypeName: UnwrapRef<typeof import('./composables/g')['getTypeName']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly hasMenuIcon: UnwrapRef<typeof import('./composables/menu')['hasMenuIcon']>
+    readonly hideFormLabel: UnwrapRef<typeof import('./composables/form')['hideFormLabel']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly invoke: UnwrapRef<typeof import('./composables/g')['invoke']>
@@ -548,6 +567,7 @@ declare module 'vue' {
     readonly useCloned: UnwrapRef<typeof import('@vueuse/core')['useCloned']>
     readonly useColorMode: UnwrapRef<typeof import('@vueuse/core')['useColorMode']>
     readonly useConfirmDialog: UnwrapRef<typeof import('@vueuse/core')['useConfirmDialog']>
+    readonly useControlModal: UnwrapRef<typeof import('./composables/modal')['useControlModal']>
     readonly useCounter: UnwrapRef<typeof import('@vueuse/core')['useCounter']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVar: UnwrapRef<typeof import('@vueuse/core')['useCssVar']>

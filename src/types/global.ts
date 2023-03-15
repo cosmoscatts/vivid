@@ -24,6 +24,8 @@ export interface Pagination {
   total?: number
 }
 
+export type GeneratePageResult<T> = Result<PageData<T>>
+
 /**
  * HTTP
  */

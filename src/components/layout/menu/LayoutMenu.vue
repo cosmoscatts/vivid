@@ -10,7 +10,7 @@ const authStore = useAuthStore()
 const selectedKeys = computed(() => {
   return getFlattenMenuTree()
     .filter(item => item.path === route.path)
-    .map(item => item.id)
+    .map(item => String(item.id))
     .filter(notNullish)
 })
 

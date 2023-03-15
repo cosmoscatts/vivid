@@ -3,16 +3,14 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosReq
 import type {
   AnyObject,
   DeleteParams,
+  GeneratePageResult,
   GetParams,
-  PageData,
   PostParams,
   PutParams,
   Result,
 } from '~/types'
 import { AXIOS_TIMEOUT } from '~/constants'
 import { getCurrentApiUrl } from '~/config'
-
-type GeneratePageResult<T> = Result<PageData<T>>
 
 function createAxios(mergeConfig?: () => AxiosRequestConfig) {
   const _axios = axios.create({
