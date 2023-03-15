@@ -16,13 +16,12 @@ const show = ref(false)
     :footer="false"
     unmount-on-close
   >
-    <div flex="~ col">
-      <div flex-y-center h50px>
-        <LayoutNavDropdown />
-        <div flex-auto />
+    <div flex="center col">
+      <LayoutNavDropdown h50px />
+      <div flex-center h50px mt10px>
         <LayoutNavGithub mr4 />
         <LayoutNavBell mr4 />
-        <LayoutNavFullScreen mr4 />
+        <LayoutNavFullscreen mr4 />
         <LayoutNavDarkToggle />
       </div>
     </div>
@@ -30,7 +29,7 @@ const show = ref(false)
       mode="vertical"
       no-collapse
       hw-full of-y-auto
-      :style="{ height: 'calc(100vh - 80px)' }"
+      :style="{ height: 'calc(100vh - 130px)' }"
     />
   </a-drawer>
 </template>

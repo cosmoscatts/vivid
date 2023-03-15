@@ -26,7 +26,7 @@ const collapse = computed(() => {
     :class="['', 'items-center'][Number(mode === 'horizontal')]"
   >
     <a-menu
-      hw-full :mode="mode"
+      :mode="mode"
       auto-open accordion auto-open-selected
       :selected-keys="selectedKeys"
       :collapsed="collapse"

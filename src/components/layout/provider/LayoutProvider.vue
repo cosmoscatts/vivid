@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LAYOUT_PARAMS as params } from '~/constants'
+import { SHOW_SETTINGS_BUTTON, LAYOUT_PARAMS as params } from '~/constants'
 const uiStore = useUiStore()
 const refFullWrapper = ref()
 const refContentWrapper = ref()
@@ -14,12 +14,12 @@ const diffHeight = computed(() => {
   return height
 })
 const fullWrapperWidth = computed(() => {
-  return isMobile.value
+  return (isMobile.value || uiStore.settings.layout === 'horizontal')
     ? '100%'
     : `calc(100% - ${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px)`
 })
 const fullWrapperLeft = computed(() => {
-  return isMobile.value
+  return (isMobile.value || uiStore.settings.layout === 'horizontal')
     ? '0px'
     : `${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px`
 })
@@ -81,7 +81,7 @@ const fullWrapperLeft = computed(() => {
           </slot>
         </a-layout-footer>
       </a-layout>
-      <!-- <LayoutSettings v-if="uiStore.settings.showAppSettings" /> -->
+      <LayoutSettings v-if="SHOW_SETTINGS_BUTTON" />
     </a-layout>
     <LayoutBackTop :target-container="backTopTarget" />
   </a-layout>

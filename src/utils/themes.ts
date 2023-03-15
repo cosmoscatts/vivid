@@ -9,7 +9,7 @@ export function createPrimaryColor(colorProp: string) {
 }
 
 export function createThemeMode(mode: 'auto' | 'light' | 'dark') {
-  if (!localStorage.getItem(THEME_MODE_KEY)) {
+  if (!localStorage.getItem(THEME_MODE_KEY) || localStorage.getItem(THEME_MODE_KEY) !== mode) {
     if (mode === 'auto') {
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
       localStorage.setItem(THEME_MODE_KEY,

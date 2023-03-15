@@ -12,7 +12,7 @@ const logoWidth = computed(() => isPC.value
 <template>
   <div flex-center pr5 border-b="1px solid [var(--color-border)]">
     <LayoutLogo v-if="!isVertical || isMobile" :style="{ width: `${logoWidth}px` }" />
-    <LayoutMenu v-if="!isVertical && isPC" mode="horizontal" mx4 />
+    <LayoutMenu v-if="!isVertical && isPC" mode="horizontal" mr2 :style="{ width: `calc(100% - 500px)` }" />
     <LayoutNavCollapseToggle v-if="isVertical && isPC" mx4 />
     <LayoutPageHeader v-if="isVertical && isPC" mt4px />
     <div flex-auto />

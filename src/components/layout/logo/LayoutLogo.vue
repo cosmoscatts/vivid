@@ -3,7 +3,7 @@ import { LAYOUT_PARAMS, LOGO, SHORT_LOGO } from '~/constants'
 
 const uiStore = useUiStore()
 const currentLogo = computed(() => {
-  return [LOGO, SHORT_LOGO][Number(uiStore.collapseSide.state)]
+  return [LOGO, SHORT_LOGO][Number(uiStore.collapseSide.state || isMobile.value)]
 })
 </script>
 
