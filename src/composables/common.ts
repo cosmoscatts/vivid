@@ -28,7 +28,7 @@ export function useLoading(initValue = false) {
     endLoading: _.setFalse,
     toggleLoading: _.toggle,
     Loading: {
-      get() {
+      get state() {
         return _.bool.value
       },
       set(value: boolean) {

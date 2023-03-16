@@ -6,15 +6,25 @@ export const basePagination: Pagination = {
   pageSize: 10,
 }
 
-export function createPagination(opts = basePagination) {
+export function createPagination(fetch = () => {}, opts = basePagination) {
   const pagination = reactive({ ...opts })
   const formatRowIndex = (idx: number) => {
     const { current, pageSize } = pagination
     return (current - 1) * pageSize + idx + 1
   }
+  const onPageChange = (current: number) => {
+    pagination.current = current
+    fetch()
+  }
+  const onPageSizeChange = (pageSize: number) => {
+    pagination.pageSize = pageSize
+    fetch()
+  }
   return {
     pagination,
     formatRowIndex,
+    onPageChange,
+    onPageSizeChange,
   }
 }
 

@@ -8,7 +8,7 @@ import type { User } from '~/types'
 const refSearchForm = ref()
 const refModal = ref()
 
-const { pagination, formatRowIndex } = createPagination()
+const { pagination, formatRowIndex, onPageChange } = createPagination(fetchTableData)
 const {
   modalType,
   modalVisible,
@@ -16,23 +16,19 @@ const {
   showModal,
 } = useControlModal()
 
-const { loading, startLoading, endLoading } = useLoading()
+const { Loading } = useLoading()
 
 let tabledata = $ref<User[]>([])
 function fetchTableData() {
-  startLoading()
+  Loading.start()
   UserApi.fetchPageList()
     .then(({ data: { records = [], total = 0 } }) => {
       tabledata = records
       pagination.total = total
     })
-    .finally(() => useTimeoutFn(endLoading, 1000))
+    .finally(() => useTimeoutFn(Loading.end, 1000))
 }
-
-function onPageChange(current: number) {
-  pagination.current = current
-  fetchTableData()
-}
+fetchTableData()
 
 function saveData() {
 
@@ -54,10 +50,10 @@ function deleteData(data: User) {
           添加
         </a-button>
       </template>
-      <UserSearchForm ref="refSearchForm" />
+      <UserSearchForm ref="refSearchForm" @search="fetchTableData" />
       <a-table
         row-key="id"
-        :loading="loading"
+        :loading="Loading.state"
         :columns="columns"
         :pagination="pagination.total! > pagination.pageSize ? pagination : false"
         :data="tabledata"
@@ -79,7 +75,7 @@ function deleteData(data: User) {
           {{ formatDate(record.updateTime) }}
         </template>
         <template #action="{ record }">
-          <a-button type="text" font-bold size="small" @click="showModal({ type: modalType, data: selectedItem })">
+          <a-button type="text" font-bold size="small" @click="showModal({ type: 'edit', data: record })">
             编辑
           </a-button>
           <a-button type="text" font-bold size="small" @click="deleteData(record)">
