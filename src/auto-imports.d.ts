@@ -27,6 +27,7 @@ declare global {
   const basePagination: typeof import('./composables/table')['basePagination']
   const batchInvoke: typeof import('./composables/g')['batchInvoke']
   const breakpoints: typeof import('./composables/screen')['breakpoints']
+  const ceil: typeof import('./composables/common')['ceil']
   const clone: typeof import('./composables/g')['clone']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
@@ -60,6 +61,7 @@ declare global {
   const effectScope: typeof import('vue')['effectScope']
   const empty: typeof import('./composables/g')['empty']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const floor: typeof import('./composables/common')['floor']
   const formatDate: typeof import('./composables/common')['formatDate']
   const formatMenuIcon: typeof import('./composables/menu')['formatMenuIcon']
   const getActivePinia: typeof import('pinia')['getActivePinia']
@@ -390,6 +392,7 @@ declare module 'vue' {
     readonly basePagination: UnwrapRef<typeof import('./composables/table')['basePagination']>
     readonly batchInvoke: UnwrapRef<typeof import('./composables/g')['batchInvoke']>
     readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
+    readonly ceil: UnwrapRef<typeof import('./composables/common')['ceil']>
     readonly clone: UnwrapRef<typeof import('./composables/g')['clone']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
@@ -423,6 +426,7 @@ declare module 'vue' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly empty: UnwrapRef<typeof import('./composables/g')['empty']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly floor: UnwrapRef<typeof import('./composables/common')['floor']>
     readonly formatDate: UnwrapRef<typeof import('./composables/common')['formatDate']>
     readonly formatMenuIcon: UnwrapRef<typeof import('./composables/menu')['formatMenuIcon']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
