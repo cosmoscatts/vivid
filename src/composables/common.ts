@@ -57,7 +57,7 @@ export function useOpenWindow(
     target?: TargetContext
     [key: string]: any
   },
-) {
+): void {
   const { target = '_blank', ...others } = opts || {}
   window.open(
     url,
@@ -74,8 +74,31 @@ export function useOpenWindow(
 /**
  * 格式化时间
  */
-export function formatDate(date?: dayjs.ConfigType, format = 'YYYY-MM-DD HH:mm:ss') {
-  return dayjs(date).format(format)
+export function formatDate(date?: dayjs.ConfigType, opts: {
+  format?: string
+  defaultReturn?: string
+  enableDefaultDate?: boolean
+} = {
+  format: 'YYYY-MM-DD HH:mm:ss',
+  defaultReturn: '',
+  enableDefaultDate: false,
+}): string {
+  if (!opts.enableDefaultDate && !date) return opts.defaultReturn ?? ''
+  return dayjs(date).format(opts.format)
+}
+
+/**
+ * 向上取整
+ */
+export function ceil(val: number) {
+  return Math.ceil(val)
+}
+
+/**
+ * 向下取整
+ */
+export function floor(val: number) {
+  return ~~(val)
 }
 
 /**
@@ -83,14 +106,14 @@ export function formatDate(date?: dayjs.ConfigType, format = 'YYYY-MM-DD HH:mm:s
  *
  * @param max 最大值
  */
-export function getRandomInteger(max = 100) {
-  return ~~(Math.random() * max)
+export function getRandomInteger(max = 100): number {
+  return floor(Math.random() * max)
 }
 
 /**
  * 获取随机人名
  */
-export function getRandomName(length = getRandomInteger(2) + 1) {
+export function getRandomName(length = getRandomInteger(2) + 1): string {
   const [l1, l2] = [SURPER_NAMES.length, NAME_CHARACTERS.length]
   return [
     SURPER_NAMES[getRandomInteger(l1)],
@@ -101,7 +124,7 @@ export function getRandomName(length = getRandomInteger(2) + 1) {
 /**
  * 获取近两年随机日期时间
  */
-export function getRandomDate() {
+export function getRandomDate(): string {
   const now = dayjs()
   const year = now.subtract(getRandomInteger(3), 'year').format('YYYY')
   const [y, r, s, f, m] = [12, 30, 23, 59, 59].map(i => getRandomInteger(i))
@@ -116,7 +139,7 @@ export function getRandomDate() {
  * https://github.com/ai/nanoid
  */
 const urlAlphabet = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
-export function getRandomStr(size = 16, dict = urlAlphabet) {
+export function getRandomStr(size = 16, dict = urlAlphabet): string {
   let id = ''
   let i = size
   const len = dict.length

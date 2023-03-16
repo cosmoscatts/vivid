@@ -65,14 +65,14 @@ function deleteData(data: User) {
         </template>
         <template #roleId="{ record }">
           <a-tag color="#7bc616">
-            {{ record?.role?.name || '无' }}
+            {{ SelectOptionsHandler.roleOptions.find(i => i.value === record.roleId)?.label ?? '无' }}
           </a-tag>
         </template>
         <template #createTime="{ record }">
           {{ formatDate(record.createTime) }}
         </template>
         <template #updateTime="{ record }">
-          {{ formatDate(record.updateTime) }}
+          {{ formatDate(record.updateTime, { defaultReturn: '-' }) }}
         </template>
         <template #action="{ record }">
           <a-button type="text" font-bold size="small" @click="showModal({ type: 'edit', data: record })">
