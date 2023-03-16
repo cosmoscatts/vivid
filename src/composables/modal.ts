@@ -1,5 +1,4 @@
 import type { Ref, UnwrapRef } from 'vue'
-import type { EmitFn } from '@arco-design/web-vue/es/_utils/types'
 
 type ModalAction = 'add' | 'edit'
 
@@ -25,13 +24,9 @@ export function useControlModal<T = any>() {
 export function createModalData<T extends object, K extends object = any>({
   getBase,
   refForm,
-  emits = defineEmits(['saveData']),
-  preHandleOk,
 }: {
   getBase: () => K
   refForm: Ref<any>
-  emits?: EmitFn<string>
-  preHandleOk?: () => void
 }) {
   const formModel = reactive<K>(getBase())
   const { loading, startLoading, endLoading } = useLoading()
@@ -40,12 +35,11 @@ export function createModalData<T extends object, K extends object = any>({
     assignObj(data, formModel)
   }
 
-  const handleOk = () => {
+  const ok = (fn: () => void) => {
     refForm.value.validate((errors: any) => {
       if (errors) return
       startLoading()
-      preHandleOk?.()
-      emits('saveUser', formModel)
+      fn?.()
     })
   }
 
@@ -55,6 +49,6 @@ export function createModalData<T extends object, K extends object = any>({
     startLoading,
     endLoading,
     assign,
-    handleOk,
+    ok,
   }
 }

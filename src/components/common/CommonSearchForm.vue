@@ -4,7 +4,7 @@ const props = defineProps<{
   search?: () => void
   reset?: () => void
 }>()
-const rows = $computed(() => (Object.keys(props.formModel).length / 3 + 1))
+const rows = $computed(() => (~~(Object.keys(props.formModel).length / 3) + 1))
 const dividerHeight = computed(() => (`${34 + (rows - 1) * 50}px`))
 const buttonGroupFlex = computed(() => (['86px', '172px'][Number(rows === 1)]))
 </script>

@@ -4,6 +4,9 @@ const props = defineProps<{
   type: 'add' | 'edit'
   data?: User
 }>()
+const emit = defineEmits<{
+  (event: 'saveData', data: User): void
+}>()
 const { visible } = defineModel<{ visible: boolean }>()
 const refForm = ref()
 const getBase = () => ({
@@ -20,7 +23,7 @@ const {
   loading,
   endLoading,
   assign,
-  handleOk,
+  ok,
 } = createModalData<User>({
   getBase,
   refForm,
@@ -31,6 +34,10 @@ watch(visible, (val) => {
     endLoading()
     refForm.value?.clearValidate()
   }
+})
+const handleOk = () => ok(() => {
+  if (props.type === 'edit') formModel.password = undefined
+  emit('saveData', clone(formModel))
 })
 defineExpose({ endLoading })
 </script>
@@ -49,9 +56,9 @@ defineExpose({ endLoading })
       {{ ['添加用户', '编辑用户'][type === 'add' ? 0 : 1] }}
     </template>
     <a-form ref="refForm" :model="formModel" auto-label-width size="large">
-      <a-form-item field="avatar" label="头像" hide-asterisk feedback>
+      <!-- <a-form-item field="avatar" label="头像" hide-asterisk feedback>
         <AvatarUpload v-model:avatar="formModel.avatar" />
-      </a-form-item>
+      </a-form-item> -->
       <a-form-item
         field="username" label="账号" hide-asterisk feedback
         :rules="[

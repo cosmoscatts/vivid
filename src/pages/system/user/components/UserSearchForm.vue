@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const emit = defineEmits<{
+  (event: 'search'): void
+}>()
 const getBase = () => ({
   username: '',
   name: '',
@@ -8,10 +11,12 @@ const getBase = () => ({
 })
 const {
   formModel,
-  search,
   reset,
   getSearchFormParams,
-} = createSearchForm(getBase, [])
+} = createSearchForm(getBase)
+function search() {
+  emit('search')
+}
 defineExpose({ getSearchFormParams })
 </script>
 

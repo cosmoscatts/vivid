@@ -91,8 +91,7 @@ function deleteData(data: User) {
     <UserModal
       ref="refModal"
       v-model:visible="modalVisible"
-      :type="modalType"
-      :user="selectedItem"
+      v-bind="{ type: modalType, data: selectedItem }"
       @save-data="saveData"
     />
   </div>
