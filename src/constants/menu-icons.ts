@@ -13,4 +13,5 @@ export const MENU_ICON_MAP: { [key: string]: Component } = {
   user: IconUser,
   role: IconIdcard,
   file: IconFile,
+  profile: IconIdcard,
 }

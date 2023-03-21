@@ -15,6 +15,7 @@ const isActive = (path?: string) => { // 判断是否为当前页面
 }
 
 function findTabIcon(path: string) {
+  if (path === '/profile') return 'profile'
   const menus = getFlattenMenuTree().filter(item => !!item.path)
   if (!menus.length) return undefined
   return menus.find(i => i.path === path)?.icon

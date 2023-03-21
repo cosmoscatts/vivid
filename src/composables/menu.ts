@@ -36,8 +36,11 @@ export function formatMenuIcon(icon: string) {
 
 /**
  * 根据路由 path 找菜单项（包括其父级，如果存在）
+ *
+ * @special '/profile' 需要特判
  */
 export function getMatchedMenuItemsIfParentExist(path: string) {
+  if (path === '/profile') return [{ title: '个人资料', icon: 'profile' }]
   const authStore = useAuthStore()
   const menus = authStore.menus
   if (!menus.length) return []
