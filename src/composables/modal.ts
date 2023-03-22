@@ -36,11 +36,19 @@ export function createModalData<T extends object, K extends object = any>({
   }
 
   const ok = (fn: () => void) => {
+    const [last, now] = [useTimestamp().value, useTimestamp()]
     refForm.value.validate((errors: any) => {
       if (errors) return
       startLoading()
       fn?.()
     })
+    const needClose = computed(() => (now.value - last) > 5000)
+    watchOnce(needClose, endLoading)
+  }
+
+  const reset = () => {
+    assignObj(getBase(), formModel)
+    refForm.value?.clearValidate()
   }
 
   return {
@@ -50,5 +58,6 @@ export function createModalData<T extends object, K extends object = any>({
     endLoading,
     assign,
     ok,
+    reset,
   }
 }
