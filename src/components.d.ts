@@ -51,6 +51,8 @@ declare module '@vue/runtime-core' {
     ATabs: typeof import('@arco-design/web-vue')['Tabs']
     ATag: typeof import('@arco-design/web-vue')['Tag']
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
+    ATree: typeof import('@arco-design/web-vue')['Tree']
+    CommonFormItem: typeof import('./components/common/CommonFormItem.vue')['default']
     CommonScrollWrapper: typeof import('./components/common/CommonScrollWrapper.vue')['default']
     CommonSearchForm: typeof import('./components/common/CommonSearchForm.vue')['default']
     CommonTransition: typeof import('./components/common/CommonTransition.vue')['default']

@@ -8,7 +8,12 @@ import type { User } from '~/types'
 const refSearchForm = ref()
 const refModal = ref()
 
-const { pagination, formatRowIndex, onPageChange } = createPagination(fetchTableData)
+const {
+  pagination,
+  showPagination,
+  formatRowIndex,
+  onPageChange,
+} = createPagination(fetchTableData)
 const {
   modalType,
   modalVisible,
@@ -55,7 +60,7 @@ function deleteData(data: User) {
         row-key="id"
         :loading="Loading.state"
         :columns="columns"
-        :pagination="pagination.total! > pagination.pageSize ? pagination : false"
+        :pagination="showPagination"
         :data="tabledata"
         :bordered="false"
         @page-change="onPageChange"
@@ -69,7 +74,7 @@ function deleteData(data: User) {
           </a-tag>
         </template>
         <template #createTime="{ record }">
-          {{ formatDate(record.createTime) }}
+          {{ formatDate(record.createTime, { defaultReturn: '-' }) }}
         </template>
         <template #updateTime="{ record }">
           {{ formatDate(record.updateTime, { defaultReturn: '-' }) }}

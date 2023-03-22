@@ -1,3 +1,4 @@
+import type { TreeNodeData } from '@arco-design/web-vue'
 import type { Menu } from '~/types'
 import { MENU_ICON_MAP } from '~/constants'
 
@@ -9,7 +10,7 @@ import { MENU_ICON_MAP } from '~/constants'
 export function getFlattenMenuTree(): Menu[] {
   const authStore = useAuthStore()
   if (!authStore.menus.length) return []
-  const fn: (item: Menu) => Menu[] = (item: Menu) => {
+  const fn = (item: Menu): Menu[] => {
     if (!item.children?.length) return [item]
     return [
       item,
@@ -53,4 +54,21 @@ export function getMatchedMenuItemsIfParentExist(path: string) {
     }
   }
   return []
+}
+
+/**
+ * 将菜单数据转换成组件 <a-tree> 所需要的格式
+ */
+export function generateTreeMenuData(): TreeNodeData[] {
+  const authStore = useAuthStore()
+  if (!authStore.menus.length) return []
+  const fn = (item: Menu): TreeNodeData => {
+    return {
+      key: item.id,
+      title: item.title,
+      icon: hasMenuIcon(item.icon) ? () => h(formatMenuIcon(item.icon!)) : undefined,
+      children: item.children?.map(child => fn(child)),
+    } as unknown as TreeNodeData
+  }
+  return authStore.menus.map(item => fn(item))
 }

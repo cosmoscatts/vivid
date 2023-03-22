@@ -4,9 +4,12 @@ const props = defineProps<{
   search?: () => void
   reset?: () => void
 }>()
-const rows = $computed(() => (~~(Object.keys(props.formModel).length / 3) + 1))
+const rows = $computed(() => (Math.ceil(Object.keys(props.formModel).length / 3)))
 const dividerHeight = computed(() => (`${34 + (rows - 1) * 50}px`))
 const buttonGroupFlex = computed(() => (['86px', '172px'][Number(rows === 1)]))
+const direction = computed(() => {
+  return ['vertical', 'horizontal'][Number(rows === 1)] as 'vertical' | 'horizontal'
+})
 </script>
 
 <template>
@@ -25,7 +28,7 @@ const buttonGroupFlex = computed(() => (['86px', '172px'][Number(rows === 1)]))
     </a-col>
     <a-divider :style="{ height: dividerHeight }" direction="vertical" />
     <a-col :flex="buttonGroupFlex">
-      <a-space direction="vertical" :size="18">
+      <a-space :direction="direction" :size="18">
         <slot name="buttons">
           <a-button type="primary" font-bold @click="search">
             <template #icon>

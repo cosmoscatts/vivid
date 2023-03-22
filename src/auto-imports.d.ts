@@ -17,6 +17,7 @@ declare global {
   const Message: typeof import('./composables/arco')['Message']
   const Modal: typeof import('./composables/arco')['Modal']
   const R: typeof import('./composables/request')['R']
+  const RoleApi: typeof import('./server/api/role')['RoleApi']
   const SelectOptionsHandler: typeof import('./composables/select-options')['SelectOptionsHandler']
   const UserApi: typeof import('./server/api/user')['UserApi']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
@@ -64,6 +65,7 @@ declare global {
   const floor: typeof import('./composables/common')['floor']
   const formatDate: typeof import('./composables/common')['formatDate']
   const formatMenuIcon: typeof import('./composables/menu')['formatMenuIcon']
+  const generateTreeMenuData: typeof import('./composables/menu')['generateTreeMenuData']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -382,6 +384,7 @@ declare module 'vue' {
     readonly Message: UnwrapRef<typeof import('./composables/arco')['Message']>
     readonly Modal: UnwrapRef<typeof import('./composables/arco')['Modal']>
     readonly R: UnwrapRef<typeof import('./composables/request')['R']>
+    readonly RoleApi: UnwrapRef<typeof import('./server/api/role')['RoleApi']>
     readonly SelectOptionsHandler: UnwrapRef<typeof import('./composables/select-options')['SelectOptionsHandler']>
     readonly UserApi: UnwrapRef<typeof import('./server/api/user')['UserApi']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
@@ -429,6 +432,7 @@ declare module 'vue' {
     readonly floor: UnwrapRef<typeof import('./composables/common')['floor']>
     readonly formatDate: UnwrapRef<typeof import('./composables/common')['formatDate']>
     readonly formatMenuIcon: UnwrapRef<typeof import('./composables/menu')['formatMenuIcon']>
+    readonly generateTreeMenuData: UnwrapRef<typeof import('./composables/menu')['generateTreeMenuData']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>

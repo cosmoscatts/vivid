@@ -12,6 +12,10 @@ export function createPagination(fetch = () => {}, opts = basePagination) {
     const { current, pageSize } = pagination
     return (current - 1) * pageSize + idx + 1
   }
+  const showPagination = computed(() => {
+    const { total = 0, pageSize = 10 } = pagination
+    return [false, pagination][Number(total > pageSize)]
+  })
   const onPageChange = (current: number) => {
     pagination.current = current
     fetch()
@@ -22,6 +26,7 @@ export function createPagination(fetch = () => {}, opts = basePagination) {
   }
   return {
     pagination,
+    showPagination,
     formatRowIndex,
     onPageChange,
     onPageSizeChange,
