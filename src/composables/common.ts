@@ -98,7 +98,7 @@ export function ceil(val: number) {
  * 向下取整
  */
 export function floor(val: number) {
-  return ~~(val)
+  return Math.floor(val)
 }
 
 /**
