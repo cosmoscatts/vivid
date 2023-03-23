@@ -44,7 +44,7 @@ watch(() => props.tabIdx, reset)
 </script>
 
 <template>
-  <a-form ref="refForm" :model="formModel" size="large" lg:w-540px md:w-440px sm:w-350px xs:w-260px mxa>
+  <a-form ref="refForm" :model="formModel" size="large" class="lg:!w540px md:!w440px sm:!w350px xs:!w260px mxa">
     <CommonFormItem field="password" label="旧密码" :hide-label="hideFormLabel">
       <a-input-password
         v-model="formModel.password"

@@ -24,10 +24,10 @@ function onChange(_: FileItem[], currentFile: FileItem) {
     // const { code } = await UserApi.updateAvatar(formData) as any
     // if (code === 0) {
     Message.success('上传成功')
-    authStore.updateUser({
-      ...authStore.user,
-      avatar: imageAsDateURL as string,
-    })
+    // authStore.updateUser({
+    //   ...authStore.user,
+    //   avatar: imageAsDateURL as string,
+    // })
     // }
     // else {
     //   Message.error('上传失败')
