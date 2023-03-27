@@ -90,6 +90,7 @@ declare module '@vue/runtime-core' {
     LayoutTabClose: typeof import('./components/layout/tab/LayoutTabClose.vue')['default']
     LayoutTabContextMenu: typeof import('./components/layout/tab/LayoutTabContextMenu.vue')['default']
     LayoutTabItem: typeof import('./components/layout/tab/LayoutTabItem.vue')['default']
+    LayoutTabReloadButton: typeof import('./components/layout/tab/LayoutTabReloadButton.vue')['default']
     LayoutTabs: typeof import('./components/layout/tab/LayoutTabs.vue')['default']
     PreloadAnimationPage: typeof import('./components/PreloadAnimationPage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

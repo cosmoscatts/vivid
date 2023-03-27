@@ -12,8 +12,10 @@ export const useUiStore = defineStore('uiStore', () => {
   createPrimaryColor(settings.primaryColor)
 
   const collapse = useBool(false)
+  const reloadFlag = ref(false)
 
   return {
+    reloadFlag,
     settings,
     settingsCopy,
     collapseSide: {
@@ -45,6 +47,24 @@ export const useUiStore = defineStore('uiStore', () => {
     },
     resetCopySettings() { // 重置副本
       assignObj(settings, settingsCopy)
+    },
+    /**
+     * 重载页面
+     * @param duration - 重载的延迟时间(ms)
+     */
+    async reloadPage(duration = 0) {
+      reloadFlag.value = false
+      await nextTick()
+      if (duration) {
+        useTimeoutFn(() => {
+          reloadFlag.value = true
+        }, duration)
+      } else {
+        reloadFlag.value = true
+      }
+      useTimeoutFn(() => {
+        document.documentElement.scrollTo({ left: 0, top: 0 })
+      }, 100)
     },
   }
 }, { persist: { enabled: true } })

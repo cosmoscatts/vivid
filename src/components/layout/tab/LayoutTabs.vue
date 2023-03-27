@@ -75,8 +75,8 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
 </script>
 
 <template>
-  <div ref="refContainer" of-hidden w-full border-b="1px solid [var(--color-border)]">
-    <CommonScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }">
+  <div ref="refContainer" of-hidden w-full border-b="1px solid [var(--color-border)]" flex-y-center>
+    <CommonScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }" flex-1>
       <div
         ref="refTab"
         :class="[
@@ -104,5 +104,6 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
         </div>
       </div>
     </CommonScrollWrapper>
+    <LayoutTabReloadButton />
   </div>
 </template>
