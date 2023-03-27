@@ -3,14 +3,12 @@ import { CACHE_SETTINGS } from '~/constants'
 import { applyCachedSettings, cacheSettings, cacheTabs, clearCachedTabs, createPrimaryColor } from '~/utils'
 
 export const useUiStore = defineStore('uiStore', () => {
-  const init = () => {
-    const data = CACHE_SETTINGS
-      ? applyCachedSettings(defaultSettings)
-      : defaultSettings
-    return Array.from({ length: 2 })
-      .map(_ => reactive<Settings>({ ...clone(data) }))
-  }
-  const [settings, settingsCopy] = init()
+  const data = CACHE_SETTINGS
+    ? applyCachedSettings(defaultSettings)
+    : defaultSettings
+  const settings = reactive<Settings>(clone(data))
+  const settingsCopy = reactive<Settings>(clone(data))
+
   createPrimaryColor(settings.primaryColor)
 
   const collapse = useBool(false)

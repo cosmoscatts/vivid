@@ -11,8 +11,8 @@ export const colors: [string, string, string][] = [
   ['arcoblue', '极致蓝', '#165DFF'],
   ['purple', '暗夜紫', '#722ED1'],
   ['pinkpurple', '青春紫', '#D91AD9'],
-  ['gray', '中性灰', '#F5319D'],
-  ['magenta', '品红', '#86909C'],
+  ['gray', '中性灰', '#86909C'],
+  ['magenta', '品红', '#F5319D'],
 ]
 
 export interface ThemeColor {

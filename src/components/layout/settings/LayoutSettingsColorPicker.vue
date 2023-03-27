@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { defaultThemeColors } from '~/config'
 const { modelValue } = defineModel<{ modelValue: string }>()
+const isChecked = (prop: string) => modelValue.value === prop
+function change(value: string) {
+  modelValue.value = value
+}
 </script>
 
 <template>
-  <a-radio-group
-    :model-value="modelValue"
-    flex="~ wrap" mt2 p="l-5 y-2" rounded border="2 [var(--color-border)]"
-    @change="(value) => modelValue = String(value)"
-  >
-    <a-radio v-for="{ prop, name, hex } of defaultThemeColors" :key="prop" :value="prop" m="t-1 l-4">
-      <div w12px h12px rounded-sm flex-inline mr1 :style="{ background: hex }" />
-      <span text-sm>{{ name }}</span>
-    </a-radio>
-  </a-radio-group>
+  <div grid="~ cols-3 gap4" rounded border="2 [var(--color-border)]" p="x4 y3">
+    <div v-for="{ prop, name, hex } of defaultThemeColors" :key="prop" flex>
+      <div class="flex-center w-20px h-20px rounded-2px shadow cursor-pointer" :style="{ backgroundColor: hex }" @click="change(prop)">
+        <div v-if="isChecked(prop)" i-carbon-checkmark text="14px white" />
+      </div>
+      <span text-sm ml2>{{ name }}</span>
+    </div>
+  </div>
 </template>

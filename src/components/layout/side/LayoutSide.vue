@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS as params } from '~/constants'
+const { showLogo = true } = defineProps<{ showLogo?: boolean }>()
 const uiStore = useUiStore()
 </script>
 
@@ -14,7 +15,7 @@ const uiStore = useUiStore()
     :collapsed="uiStore.collapseSide.state"
   >
     <div flex="x-center col" of-hidden>
-      <LayoutLogo />
+      <LayoutLogo v-if="showLogo" />
       <LayoutMenu mode="vertical" :style="{ height: `calc(100% - ${params.navHeight}px)` }" />
     </div>
   </a-layout-sider>

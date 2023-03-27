@@ -14,20 +14,25 @@ const diffHeight = computed(() => {
   return height
 })
 const fullWrapperWidth = computed(() => {
-  return (isMobile.value || uiStore.settings.layout === 'horizontal')
+  return (isMobile.value || uiStore.settings.layout.includes('horizontal'))
     ? '100%'
     : `calc(100% - ${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px)`
 })
 const fullWrapperLeft = computed(() => {
-  return (isMobile.value || uiStore.settings.layout === 'horizontal')
+  return (isMobile.value || uiStore.settings.layout.includes('horizontal'))
     ? '0px'
     : `${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px`
+})
+const showPageHeader = computed(() => {
+  return uiStore.settings.layout === 'horizontal' && uiStore.settings.showPageHeader
 })
 </script>
 
 <template>
   <a-layout relative hw-screen bg-body of-hidden>
-    <slot name="side" />
+    <slot name="side">
+      <LayoutSide v-if="uiStore.settings.layout === 'vertical' && isPC" />
+    </slot>
 
     <a-layout
       id="full-wrapper"
@@ -68,9 +73,12 @@ const fullWrapperLeft = computed(() => {
         }"
       >
         <a-layout-content>
+          <slot name="main-side">
+            <LayoutSide v-if="uiStore.settings.layout === 'horizontal-mix' && isPC" v-bind="{ showLogo: false }" />
+          </slot>
           <slot name="main">
             <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + params.footHeight}px)` }">
-              <template v-if="uiStore.settings.layout === 'horizontal'" #header>
+              <template v-if="showPageHeader" #header>
                 <LayoutPageHeader mb10px />
               </template>
             </LayoutMain>

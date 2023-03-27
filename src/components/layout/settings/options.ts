@@ -22,8 +22,8 @@ export interface CollapseOption {
   disabledMsg?: string
 }
 
-// 设置项分类 (10)
-// 页面布局 - `layout` | `fixNav` | `showLogo` | `showTabs` | `showFoot` (5)
+// 设置项分类 (12)
+// 页面布局 - `layout` | `fixNav` | `showLogo` | `showTabs` | `showFoot` | `showPageHeader` | `showPageHeaderIcon` (7)
 // 主色调 - `themePrimaryColor` (1)
 // 页面功能 - `showTransitionAnimation` | `transitionAnimation` | `tabShapeStyle` |
 //           | `cacheTabs` (4)
@@ -40,6 +40,8 @@ export const layoutOptions: CollapseOption[] = [
         options: [
           { label: '垂直模式', value: 'vertical' },
           { label: '水平模式', value: 'horizontal' },
+          { label: '垂直混合模式', value: 'vertical-mix' },
+          { label: '水平混合模式', value: 'horizontal-mix' },
         ],
         dependOn: undefined,
       },
@@ -63,6 +65,20 @@ export const layoutOptions: CollapseOption[] = [
         type: 'switch',
         options: undefined,
         dependOn: undefined,
+      },
+      {
+        prop: 'showPageHeader',
+        name: '是否显示面包屑',
+        type: 'switch',
+        options: undefined,
+        dependOn: undefined,
+      },
+      {
+        prop: 'showPageHeaderIcon',
+        name: '是否显示面包屑图标',
+        type: 'switch',
+        options: undefined,
+        dependOn: 'showPageHeader',
       },
       {
         prop: 'showTabs',

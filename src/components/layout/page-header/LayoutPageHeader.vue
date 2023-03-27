@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const uiStore = useUiStore()
 let data = $ref<{ title: string; icon?: string }[]>([])
 const getBreadCrumbs = () => {
   data = getMatchedMenuItemsIfParentExist(route.path)
@@ -21,7 +22,7 @@ watch(() => route.path, (path) => {
     <template #breadcrumb>
       <a-breadcrumb>
         <a-breadcrumb-item v-for="item of data" :key="item.title" flex-y-center>
-          <component :is="formatMenuIcon(item.icon!)" v-if="hasMenuIcon(item.icon)" mr2 />
+          <component :is="formatMenuIcon(item.icon!)" v-if="uiStore.settings.showPageHeaderIcon && hasMenuIcon(item.icon)" mr2 />
           {{ item.title }}
         </a-breadcrumb-item>
       </a-breadcrumb>

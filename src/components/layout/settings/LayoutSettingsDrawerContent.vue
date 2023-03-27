@@ -42,8 +42,8 @@ const showDisabledMsg = (data: Option[], disabledMsg?: string) => {
       <div v-for="item, idx in data" :key="idx">
         <Component
           :is="renderComponent(item.type)"
-          v-bind="item"
           v-model:model-value="uiStore.settingsCopy[item.prop]"
+          v-bind="item"
         />
       </div>
     </div>
