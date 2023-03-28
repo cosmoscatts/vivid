@@ -12,7 +12,7 @@ export const useUiStore = defineStore('uiStore', () => {
   createPrimaryColor(settings.primaryColor)
 
   const collapse = useBool(false)
-  const reloadFlag = ref(false)
+  const reloadFlag = ref(true)
 
   return {
     reloadFlag,
@@ -62,9 +62,6 @@ export const useUiStore = defineStore('uiStore', () => {
       } else {
         reloadFlag.value = true
       }
-      useTimeoutFn(() => {
-        document.documentElement.scrollTo({ left: 0, top: 0 })
-      }, 100)
     },
   }
 }, { persist: { enabled: true } })

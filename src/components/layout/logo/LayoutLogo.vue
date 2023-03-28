@@ -2,7 +2,10 @@
 import { LAYOUT_PARAMS, LOGO, SHORT_LOGO } from '~/constants'
 
 const uiStore = useUiStore()
-const isShort = $computed(() => uiStore.collapseSide.state || isMobile.value)
+const isShort = $computed(() => {
+  if (uiStore.settings.layout === 'horizontal-mix' || isMobile.value) return false
+  return uiStore.collapseSide.state
+})
 const currentLogo = computed(() => [LOGO, SHORT_LOGO][Number(isShort)])
 </script>
 

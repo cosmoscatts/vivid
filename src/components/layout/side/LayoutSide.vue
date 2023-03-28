@@ -6,7 +6,7 @@ const uiStore = useUiStore()
 
 <template>
   <a-layout-sider
-    absolute top-0 left-0 bg-side
+    bg-side
     h-full of="x-hidden y-auto" border-r="1px solid [var(--color-border)]"
     collapsible
     hide-trigger

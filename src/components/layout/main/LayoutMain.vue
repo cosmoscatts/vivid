@@ -9,7 +9,7 @@ const tabStore = useTabStore()
     <RouterView v-slot="{ Component, route }">
       <CommonTransition>
         <KeepAlive :include="tabStore.cachedTabNames" :max="10">
-          <component v-if="uiStore.reloadFlag" :is="Component" :key="route.path" />
+          <component :is="Component" v-if="uiStore.reloadFlag" :key="route.path" />
         </KeepAlive>
       </CommonTransition>
     </RouterView>

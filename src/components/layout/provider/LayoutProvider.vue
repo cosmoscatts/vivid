@@ -31,7 +31,7 @@ const showPageHeader = computed(() => {
 <template>
   <a-layout relative hw-screen bg-body of-hidden>
     <slot name="side">
-      <LayoutSide v-if="uiStore.settings.layout === 'vertical' && isPC" />
+      <LayoutSide v-if="uiStore.settings.layout === 'vertical' && isPC" absolute left-0 top-0 />
     </slot>
 
     <a-layout
@@ -52,12 +52,12 @@ const showPageHeader = computed(() => {
       >
         <slot name="header">
           <LayoutNav w-full :style="{ height: `${params.navHeight}px` }" />
-          <LayoutTabs v-show="uiStore.settings.showTabs" wfull :style="{ height: `${params.tabHeight}px` }" />
+          <!-- <LayoutTabs v-show="uiStore.settings.showTabs" wfull :style="{ height: `${params.tabHeight}px` }" /> -->
         </slot>
       </a-layout-header>
       <a-layout
         id="content-wrapper"
-        ref="refContentWrapper"
+        ref="refContentWrapper" flex="~ col"
         :style="{
           marginTop: `${
             !uiStore.settings.fixNav
@@ -72,7 +72,7 @@ const showPageHeader = computed(() => {
             : undefined,
         }"
       >
-        <a-layout-content>
+        <a-layout-content flex>
           <slot name="main-side">
             <LayoutSide v-if="uiStore.settings.layout === 'horizontal-mix' && isPC" v-bind="{ showLogo: false }" />
           </slot>
