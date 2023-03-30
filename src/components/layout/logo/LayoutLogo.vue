@@ -3,7 +3,8 @@ import { LAYOUT_PARAMS, LOGO, SHORT_LOGO } from '~/constants'
 
 const uiStore = useUiStore()
 const isShort = $computed(() => {
-  if (uiStore.settings.layout === 'horizontal-mix' || isMobile.value) return false
+  if (isMobile.value || uiStore.settings.layout === 'vertical-mix') return true
+  if (uiStore.settings.layout === 'horizontal-mix') return false
   return uiStore.collapseSide.state
 })
 const currentLogo = computed(() => [LOGO, SHORT_LOGO][Number(isShort)])

@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS as params } from '~/constants'
 const uiStore = useUiStore()
+const getTabsWidth = computed(() => {
+  if (isMobile.value) return '100%'
+  return `calc(100% - ${[params.sideWidth, params.sideCollapsedWidth][Number(uiStore.collapseSide.state)]}px)`
+})
+const getTabsLeft = computed(() => {
+  if (isMobile.value) return 0
+  return [params.sideWidth, params.sideCollapsedWidth][Number(uiStore.collapseSide.state)]
+})
 </script>
 
 <template>
@@ -19,10 +27,10 @@ const uiStore = useUiStore()
       <LayoutTabs
         v-show="uiStore.settings.showTabs" bg-nav w-full absolute top-0 left-0
         :style="{
-          width: `calc(100% - ${[params.sideWidth, params.sideCollapsedWidth][Number(uiStore.collapseSide.state)]}px)`,
+          width: `${getTabsWidth}`,
           height: `${params.tabHeight}px`,
           top: `${params.navHeight}px`,
-          left: `${[params.sideWidth, params.sideCollapsedWidth][Number(uiStore.collapseSide.state)]}px`,
+          left: `${getTabsLeft}px`,
         }"
       />
     </template>

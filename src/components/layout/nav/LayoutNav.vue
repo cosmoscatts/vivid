@@ -2,10 +2,12 @@
 import { LAYOUT_PARAMS as params } from '~/constants'
 
 const uiStore = useUiStore()
-const isVertical = computed(() => uiStore.settings.layout === 'vertical')
 const isHorizontal = computed(() => uiStore.settings.layout === 'horizontal')
 const isHorizontalOrMix = computed(() => uiStore.settings.layout.includes('horizontal'))
-const showPageHeader = computed(() => uiStore.settings.showPageHeader && isVertical.value && isPC.value)
+const showPageHeader = computed(() => {
+  const t = uiStore.settings.layout.includes('vertical') || uiStore.settings.layout === 'horizontal-mix'
+  return uiStore.settings.showPageHeader && t && isPC.value
+})
 const logoWidth = computed(() => isPC.value
   ? params.sideWidth
   : params.sideCollapsedWidth,
