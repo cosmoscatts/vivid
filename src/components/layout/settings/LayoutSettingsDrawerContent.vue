@@ -24,6 +24,9 @@ const showDisabledMsg = (data: Option[], disabledMsg?: string) => {
   if (!disabledMsg) return false
   return data.some(i => isDisabled(i))
 }
+const isHorizontalMixFixNav = (prop: string) => {
+  return prop === 'fixNav' && uiStore.settingsCopy.layout === 'horizontal-mix'
+}
 </script>
 
 <template>
@@ -43,7 +46,7 @@ const showDisabledMsg = (data: Option[], disabledMsg?: string) => {
         <Component
           :is="renderComponent(item.type)"
           v-model:model-value="uiStore.settingsCopy[item.prop]"
-          v-bind="item"
+          v-bind="item" :disabled="isHorizontalMixFixNav(item.prop)"
         />
       </div>
     </div>

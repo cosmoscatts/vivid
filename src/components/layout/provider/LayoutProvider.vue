@@ -23,6 +23,10 @@ const fullWrapperLeft = computed(() => {
     ? '0px'
     : `${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px`
 })
+const contentWrapperMarginLeft = computed(() => {
+  if (isMobile.value || uiStore.settings.layout !== 'horizontal-mix') return '0px'
+  return [`${params.sideWidth}px`, `${params.sideCollapsedWidth}px`][Number(uiStore.collapseSide.state)]
+})
 const showPageHeader = computed(() => {
   return uiStore.settings.layout === 'horizontal' && uiStore.settings.showPageHeader
 })
@@ -30,9 +34,7 @@ const showPageHeader = computed(() => {
 
 <template>
   <a-layout relative hw-screen bg-body of-hidden>
-    <slot name="side">
-      <LayoutSide v-if="uiStore.settings.layout === 'vertical' && isPC" absolute left-0 top-0 />
-    </slot>
+    <slot name="side" />
 
     <a-layout
       id="full-wrapper"
@@ -50,14 +52,11 @@ const showPageHeader = computed(() => {
             ? 'absolute top-0 right-0 w-full'
             : ''"
       >
-        <slot name="header">
-          <LayoutNav w-full :style="{ height: `${params.navHeight}px` }" />
-          <!-- <LayoutTabs v-show="uiStore.settings.showTabs" wfull :style="{ height: `${params.tabHeight}px` }" /> -->
-        </slot>
+        <slot name="header" />
       </a-layout-header>
       <a-layout
         id="content-wrapper"
-        ref="refContentWrapper" flex="~ col"
+        ref="refContentWrapper"
         :style="{
           marginTop: `${
             !uiStore.settings.fixNav
@@ -66,16 +65,14 @@ const showPageHeader = computed(() => {
                 ? params.navHeight + params.tabHeight
                 : params.navHeight
           }px`,
+          marginLeft: `${contentWrapperMarginLeft}`,
           minHeight: `calc(100% - ${diffHeight}px)`,
           overflow: uiStore.settings.fixNav
             ? 'hidden auto'
             : undefined,
         }"
       >
-        <a-layout-content flex>
-          <slot name="main-side">
-            <LayoutSide v-if="uiStore.settings.layout === 'horizontal-mix' && isPC" v-bind="{ showLogo: false }" />
-          </slot>
+        <a-layout-content>
           <slot name="main">
             <LayoutMain ha :style="{ padding: `${params.contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + params.footHeight}px)` }">
               <template v-if="showPageHeader" #header>

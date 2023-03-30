@@ -32,6 +32,10 @@ export const useUiStore = defineStore('uiStore', () => {
       if (settings.primaryColor !== settingsCopy.primaryColor) {
         createPrimaryColor(settingsCopy.primaryColor)
       }
+      // 如果是 `horizontal-mix` 布局，则 fixNav 必须为 true
+      if (settingsCopy.layout === 'horizontal-mix') {
+        settingsCopy.fixNav = true
+      }
 
       assignObj(settingsCopy, settings)
 
