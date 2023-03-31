@@ -25,6 +25,14 @@ const firstDegreeMenus = computed(() =>
   }),
 )
 
+function getActiveParentMenuId() {
+  firstDegreeMenus.value.some((item) => {
+    const flag = item.matchPathList.includes(route.path)
+    if (flag) activeParentMenuId = item.id
+    return flag
+  })
+}
+
 function handleMixMenu(id: number, path: string | undefined, hasChildren: boolean) {
   activeParentMenuId = id
   if (hasChildren) {
@@ -34,13 +42,19 @@ function handleMixMenu(id: number, path: string | undefined, hasChildren: boolea
   }
 }
 
+function resetFirstDegreeMenus() {
+  batchInvoke([getActiveParentMenuId, hideDrawer])
+}
+
 const activeChildMenus = computed(() => {
   return authStore.menus.find(i => i.id === activeParentMenuId)?.children ?? []
 })
+
+watch(() => route.path, getActiveParentMenuId, { immediate: true })
 </script>
 
 <template>
-  <div flex h-full @mouseleave="hideDrawer">
+  <div flex h-full @mouseleave="resetFirstDegreeMenus">
     <div flex="~ col" bg-side :style="{ width: uiStore.collapseSide.state ? `${params.mixSideCollapsedWidth}px` : `${params.mixSideWidth}px` }">
       <LayoutLogo />
       <div flex-1 of="x-hidden y-auto">
@@ -52,6 +66,7 @@ const activeChildMenus = computed(() => {
           :active-path="route.path"
           :icon="item.icon"
           :is-mini="uiStore.collapseSide.state"
+          :is-selected="activeParentMenuId === item.id"
           @click="handleMixMenu(item.id, item.path, item.hasChildren)"
         />
       </div>

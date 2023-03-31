@@ -40,8 +40,8 @@ export function formatMenuIcon(icon: string) {
  *
  * @special '/profile' 需要特判
  */
-export function getMatchedMenuItemsIfParentExist(path: string) {
-  if (path === '/profile') return [{ title: '个人资料', icon: 'profile' }]
+export function getMatchedMenuItemsIfParentExist(path: string): Menu[] {
+  if (path === '/profile') return [{ title: '个人资料', icon: 'profile' } as Menu]
   const authStore = useAuthStore()
   const menus = authStore.menus
   if (!menus.length) return []

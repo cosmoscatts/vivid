@@ -5,6 +5,7 @@ const props = defineProps<{
   activePath: string
   icon?: string
   isMini?: boolean
+  isSelected?: boolean
 }>()
 
 const { bool: isHover, setTrue, setFalse } = useBool()
@@ -16,7 +17,7 @@ const isActive = computed(() => props.matchPathList.includes(props.activePath))
   <div mb-6px px-4px cursor-pointer @mouseenter="setTrue" @mouseleave="setFalse">
     <div
       flex-center flex-col py-12px rounded-2px bg-transparent transition-colors duration-300 ease-in-out
-      :class="{ 'text-primary !bg-primary_1': isActive, 'text-primary': isHover }"
+      :class="{ '!bg-primary_1': isActive, 'text-primary': isHover || isSelected || isActive }"
     >
       <component :is="formatMenuIcon(icon!)" v-if="hasMenuIcon(icon)" :class="[isMini ? 'text-16px' : 'text-20px']" />
       <p
