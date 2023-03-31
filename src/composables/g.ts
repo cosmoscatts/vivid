@@ -38,6 +38,13 @@ export function isNull(p: any): p is null {
   return p === null
 }
 
+/**
+ * 是否为整数
+ */
+export function isInteger(n = 0) {
+  return floor(n) === n
+}
+
 export function clone<T = any>(data: T): T {
   return JSON.parse(JSON.stringify(data)) as T
 }
