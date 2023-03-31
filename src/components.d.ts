@@ -44,6 +44,7 @@ declare module '@vue/runtime-core' {
     ARadioGroup: typeof import('@arco-design/web-vue')['RadioGroup']
     ARangePicker: typeof import('@arco-design/web-vue')['RangePicker']
     ARow: typeof import('@arco-design/web-vue')['Row']
+    AScrollbar: typeof import('@arco-design/web-vue')['Scrollbar']
     ASelect: typeof import('@arco-design/web-vue')['Select']
     ASpace: typeof import('@arco-design/web-vue')['Space']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']

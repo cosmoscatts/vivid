@@ -13,9 +13,13 @@ export const useUiStore = defineStore('uiStore', () => {
 
   const collapse = useBool(false)
   const reloadFlag = ref(true)
+  const mixSideFixed = ref(false)
+  const toggleMixSideFixed = () => mixSideFixed.value = !mixSideFixed.value
 
   return {
     reloadFlag,
+    mixSideFixed,
+    toggleMixSideFixed,
     settings,
     settingsCopy,
     collapseSide: {
@@ -35,6 +39,10 @@ export const useUiStore = defineStore('uiStore', () => {
       // 如果是 `horizontal-mix` 布局，则 fixNav 必须为 true
       if (settingsCopy.layout === 'horizontal-mix') {
         settingsCopy.fixNav = true
+      }
+      // 如果是 `vertical-mix` 布局，则默认不固定菜单抽屉
+      if (settings.layout === 'vertical-mix') {
+        mixSideFixed.value = false
       }
 
       assignObj(settingsCopy, settings)

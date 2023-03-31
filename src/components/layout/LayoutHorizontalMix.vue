@@ -15,7 +15,7 @@ const getTabsLeft = computed(() => {
   <LayoutProvider>
     <template #side>
       <LayoutSide
-        v-if="uiStore.settings.layout === 'horizontal-mix' && isPC"
+        v-if="isPC"
         v-bind="{ showLogo: false }" absolute left-0 z-10
         :style="{
           top: `${params.navHeight}px`,

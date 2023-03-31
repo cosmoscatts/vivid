@@ -1,7 +1,18 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS } from '~/constants'
+import type { Menu } from '~/types'
 
-const { mode, noCollapse = false } = defineProps<{ mode: 'vertical' | 'horizontal'; noCollapse?: boolean }>()
+const {
+  mode,
+  noCollapse = false,
+  menuChildren = [],
+  enablePropsMenu = false,
+} = defineProps<{
+  mode: 'vertical' | 'horizontal'
+  noCollapse?: boolean
+  menuChildren?: Menu[] // `vertical-mix` 菜单抽屉传递的子菜单组
+  enablePropsMenu?: boolean
+}>()
 
 const route = useRoute()
 const uiStore = useUiStore()
@@ -18,6 +29,11 @@ const collapse = computed(() => {
   if (noCollapse) return false
   return uiStore.collapseSide.state
 })
+
+const menus = computed(() => {
+  if (enablePropsMenu) return menuChildren
+  return authStore.menus
+})
 </script>
 
 <template>
@@ -31,10 +47,10 @@ const collapse = computed(() => {
       :selected-keys="selectedKeys"
       :collapsed="collapse"
       :collapsed-width="LAYOUT_PARAMS.sideMenuCollapsedWidth"
-      :breakpoint="['', 'lg'][Number(mode === 'vertical')]"
+      :breakpoint="['', 'lg'][Number(['vertical', 'horizontal-mix'].includes(mode))]"
       @collapse="uiStore.collapseSide.toggle"
     >
-      <template v-for="{ id, title, path, icon, children } of authStore.menus">
+      <template v-for="{ id, title, path, icon, children } of menus">
         <a-sub-menu v-if="children?.length" :key="String(id)" :title="title">
           <template v-if="hasMenuIcon(icon)" #icon>
             <Component :is="formatMenuIcon(icon!)" />

@@ -1,99 +1,62 @@
-<!-- <script setup lang="ts">
-defineOptions({ name: 'VerticalMixSider' })
+<script setup lang="ts">
+import type { Menu } from '~/types'
+import { LAYOUT_PARAMS as params } from '~/constants'
 
 const route = useRoute()
-const app = useAppStore()
-const theme = useThemeStore()
-const routeStore = useRouteStore()
-const { routerPush } = useRouterPush()
-const { bool: drawerVisible, setTrue: openDrawer, setFalse: hideDrawer } = useBoolean()
+const router = useRouter()
+const uiStore = useUiStore()
+const authStore = useAuthStore()
+const { bool: drawerVisible, setTrue: openDrawer, setFalse: hideDrawer } = useBool()
 
-const activeParentRouteName = ref('')
-function setActiveParentRouteName(routeName: string) {
-  activeParentRouteName.value = routeName
-}
+let activeParentMenuId = $ref<number>()
 
 const firstDegreeMenus = computed(() =>
-  routeStore.menus.map((item) => {
-    const { routeName, label } = item
-    const icon = item?.icon
-    const hasChildren = Boolean(item.children && item.children.length)
-
+  authStore.menus.map((item) => {
+    const has = (item: Menu) => Boolean(item.children && item.children.length)
+    const fn = (item: Menu): string[] => {
+      if (!has(item)) return item.path ? [item.path] : []
+      return item.children!.flatMap(i => fn(i), Infinity).filter(Boolean)
+    }
     return {
-      routeName,
-      label,
-      icon,
-      hasChildren,
+      ...item,
+      hasChildren: has(item),
+      matchPathList: fn(item),
     }
   }),
 )
 
-function getActiveParentRouteName() {
-  firstDegreeMenus.value.some((item) => {
-    const routeName = (route.meta?.activeMenu ? route.meta.activeMenu : route.name) as string
-    const flag = routeName?.includes(item.routeName)
-    if (flag) {
-      setActiveParentRouteName(item.routeName)
-    }
-    return flag
-  })
-}
-
-function handleMixMenu(routeName: string, hasChildren: boolean) {
-  setActiveParentRouteName(routeName)
+function handleMixMenu(id: number, path: string | undefined, hasChildren: boolean) {
+  activeParentMenuId = id
   if (hasChildren) {
     openDrawer()
   } else {
-    routerPush({ name: routeName })
+    if (path) router.push(path)
   }
 }
 
-function resetFirstDegreeMenus() {
-  getActiveParentRouteName()
-  hideDrawer()
-}
-
 const activeChildMenus = computed(() => {
-  const menus: App.GlobalMenuOption[] = []
-  routeStore.menus.some((item) => {
-    const flag = item.routeName === activeParentRouteName.value && Boolean(item.children?.length)
-    if (flag) {
-      menus.push(...(item.children || []))
-    }
-    return flag
-  })
-  return menus
+  return authStore.menus.find(i => i.id === activeParentMenuId)?.children ?? []
 })
-
-watch(
-  () => route.name,
-  () => {
-    getActiveParentRouteName()
-  },
-  { immediate: true },
-)
 </script>
 
 <template>
-  <dark-mode-container class="flex h-full" :inverted="theme.sider.inverted" @mouseleave="resetFirstDegreeMenus">
-    <div class="flex-1 flex-col-stretch h-full">
-      <GlobalLogo :show-title="false" :style="{ height: `${theme.header.height}px` }" />
-      <n-scrollbar class="flex-1-hidden">
-        <MixMenuDetail
+  <div flex h-full @mouseleave="hideDrawer">
+    <div flex="~ col" bg-side :style="{ width: uiStore.collapseSide.state ? `${params.mixSideCollapsedWidth}px` : `${params.mixSideWidth}px` }">
+      <LayoutLogo />
+      <div flex-1 of="x-hidden y-auto">
+        <LayoutMixSideDetail
           v-for="item in firstDegreeMenus"
-          :key="item.routeName"
-          :route-name="item.routeName"
-          :active-route-name="activeParentRouteName"
-          :label="item.label"
+          :key="item.path"
+          :title="item.title"
+          :match-path-list="item.matchPathList"
+          :active-path="route.path"
           :icon="item.icon"
-          :is-mini="app.siderCollapse"
-          @click="handleMixMenu(item.routeName, item.hasChildren)"
+          :is-mini="uiStore.collapseSide.state"
+          @click="handleMixMenu(item.id, item.path, item.hasChildren)"
         />
-      </n-scrollbar>
-      <MixMenuCollapse />
+      </div>
+      <LayoutMixSideCollapse h-36px w-full />
     </div>
-    <MixMenuDrawer :visible="drawerVisible" :menus="activeChildMenus" />
-  </dark-mode-container>
+    <LayoutMixSideDrawer :visible="drawerVisible" :menus="activeChildMenus" />
+  </div>
 </template>
-
-<style scoped></style> -->

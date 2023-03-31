@@ -1,67 +1,34 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
+import { APP_META as meta, LAYOUT_PARAMS as params } from '~/constants'
+import type { Menu } from '~/types'
 const props = defineProps<{
   visible: boolean
+  menus: Menu[]
 }>()
 
-const route = useRoute()
-const app = useAppStore()
-const theme = useThemeStore()
-const { routerPush } = useRouterPush()
-const { title } = useAppInfo()
-
-const showDrawer = computed(() => (props.visible && props.menus.length) || app.mixSiderFixed)
-
-const activeKey = computed(() => (route.meta?.activeMenu ? route.meta.activeMenu : route.name) as string)
-const expandedKeys = ref<string[]>([])
-
-function handleUpdateMenu(_key: string, item: MenuOption) {
-  const menuItem = item as App.GlobalMenuOption
-  routerPush(menuItem.routePath)
-}
-
-function handleUpdateExpandedKeys(keys: string[]) {
-  expandedKeys.value = keys
-}
-
-watch(
-  () => route.name,
-  () => {
-    expandedKeys.value = getActiveKeyPathsOfMenus(activeKey.value, props.menus)
-  },
-  { immediate: true },
-)
+const uiStore = useUiStore()
+const showDrawer = computed(() => (props.visible && props.menus.length) || uiStore.mixSideFixed)
 </script>
 
 <template>
   <div
-    class="relative h-full transition-width duration-300 ease-in-out"
-    :style="{ width: app.mixSiderFixed ? `${theme.sider.mixChildMenuWidth}px` : '0px' }"
+    relative h-full transition-width duration-300 ease-in-out border-l="1px solid [var(--color-border)]"
+    :style="{ width: uiStore.mixSideFixed ? `${params.mxiSideDrawerWidth}px` : '0px' }"
   >
     <div
-      class="drawer-shadow absolute left-0 top-0 flex-col items-stretch h-full whitespace-nowrap overflow-hidden"
-      :inverted="theme.sider.inverted"
-      :style="{ width: showDrawer ? `${theme.sider.mixChildMenuWidth}px` : '0px' }"
+      class="drawer-shadow absolute left-0 top-0 flex-col items-stretch h-full whitespace-nowrap overflow-hidden bg-side"
+      :style="{ width: showDrawer ? `${params.mxiSideDrawerWidth}px` : '0px' }"
     >
-      <header class="header-height flex-y-center justify-between" :style="{ height: `${theme.header.height}px` }">
-        <h2 class="text-primary pl-8px text-16px font-bold">
-          {{ title }}
+      <header flex-y-center justify-between px5px :style="{ height: `${params.navHeight}px` }">
+        <h2 text-primary pl-8px text-24px font-bold>
+          {{ meta.name }}
         </h2>
-        <div class="px-8px text-16px text-gray-600 cursor-pointer" @click="app.toggleMixSiderFixed">
-          <icon-mdi-pin-off v-if="app.mixSiderFixed" />
-          <icon-mdi-pin v-else />
+        <div px-8px text-14px text-gray-600 cursor-pointer @click="uiStore.toggleMixSideFixed">
+          <div v-if="uiStore.mixSideFixed" i-mdi-pin-off />
+          <div v-else i-mdi-pin />
         </div>
       </header>
-      <n-scrollbar class="flex-1-hidden">
-        <n-menu
-          :value="activeKey"
-          :options="menus"
-          :expanded-keys="expandedKeys"
-          :indent="18"
-          :inverted="!theme.darkMode && theme.sider.inverted"
-          @update:value="handleUpdateMenu"
-          @update:expanded-keys="handleUpdateExpandedKeys"
-        />
-      </n-scrollbar>
+      <LayoutMenu mode="vertical" no-collapse enable-props-menu :menu-children="menus" flex-1 />
     </div>
   </div>
 </template>
@@ -70,4 +37,4 @@ watch(
 .drawer-shadow {
   box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
 }
-</style> -->
+</style>
