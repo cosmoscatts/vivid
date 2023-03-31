@@ -2,12 +2,6 @@
 const router = useRouter()
 const authStore = useAuthStore()
 const avatar = computed(() => authStore.user?.avatar)
-const name = computed(() => {
-  const _name = authStore.user?.name
-  if (!_name) return ''
-  if (_name.length < 5) return _name
-  return `${_name.substring(0, 4)}...`
-})
 
 function logout() {
   ANotification.success({
@@ -34,9 +28,7 @@ function onSelect<T extends string | number | Record<string, any> | undefined>(v
       <a-avatar :size="32" shape="square">
         <img alt="头像" :src="avatar">
       </a-avatar>
-      <div v-if="name" ml2>
-        {{ name }}
-      </div>
+      <CommonEllipsis :content="authStore.user?.name ?? ''" :class="['max-w-130px', 'max-w-80px'][Number(isPC)]" ml3 />
     </div>
     <template #content>
       <a-doption value="0">
