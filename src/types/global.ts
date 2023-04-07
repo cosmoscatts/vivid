@@ -30,7 +30,7 @@ export type GeneratePageResult<T> = Result<PageData<T>>
  * HTTP
  */
 
-type T = AnyObject | AnyObject[]
+type T = AnyObject | AnyObject[] | any
 
 export interface HttpParams extends AnyObject {
   params?: T

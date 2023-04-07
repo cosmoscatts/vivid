@@ -9,54 +9,23 @@ const getFileUrl = () => authStore.user?.avatar
       url: authStore.user.avatar,
     } as FileItem
   : undefined
-const file = ref<FileItem | undefined>(getFileUrl())
-watch(avatar, () => file.value = getFileUrl())
+
+let file = $ref<FileItem | undefined>(getFileUrl())
+watch(avatar, () => file = getFileUrl())
 
 function onChange(_: FileItem[], currentFile: FileItem) {
-  file.value = {
+  file = {
     ...currentFile,
   }
-  getBase64(file.value!.file!).then(async (imageAsDateURL) => {
-    // const formData = {
-    //   id: unref(user)?.id,
-    //   avatar: imageAsDateURL,
-    // }
-    // const { code } = await UserApi.updateAvatar(formData) as any
-    // if (code === 0) {
+  getFileBase64(file.file!).then(async (_imageAsDateURL) => {
     Message.success('上传成功')
-    // authStore.updateUser({
-    //   ...authStore.user,
-    //   avatar: imageAsDateURL as string,
-    // })
-    // }
-    // else {
-    //   Message.error('上传失败')
-    // }
-  })
-}
-
-function getBase64(file: any) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    let imageAsDateURL = ''
-    reader.readAsDataURL(file)
-    reader.onload = (data) => {
-      const res: any = data.target || data.srcElement
-      imageAsDateURL = res.result
-    }
-    reader.onerror = (err) => {
-      reject(err)
-    }
-    reader.onloadend = () => {
-      resolve(imageAsDateURL)
-    }
   })
 }
 
 const { width } = useWindowSize()
 const imagePreviewVisible = ref(false)
 const data = computed(() => {
-  const _data = [
+  return [
     {
       label: '账号',
       value: authStore.user?.username || '',
@@ -70,20 +39,7 @@ const data = computed(() => {
       value: formatDate(authStore.user?.createTime),
     },
   ]
-  return unref(width) < 1000
-    ? _data.slice(0, 2)
-    : _data
 })
-
-function beforeUpload(file: any): Promise<boolean | File> {
-  return new Promise((resolve) => {
-    if (!file.type.startsWith('image')) {
-      Message.error('请上传图片')
-      return resolve(false)
-    }
-    resolve(true)
-  })
-}
 </script>
 
 <template>
@@ -96,7 +52,7 @@ function beforeUpload(file: any): Promise<boolean | File> {
         :show-file-list="false"
         :image-preview="true"
         @change="onChange"
-        @before-upload="beforeUpload"
+        @before-upload="checkImageBeforeUpload"
       >
         <template #upload-button>
           <a-avatar :size="100" class="info-avatar" trigger-type="mask">

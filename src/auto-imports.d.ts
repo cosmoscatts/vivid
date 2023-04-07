@@ -29,6 +29,7 @@ declare global {
   const batchInvoke: typeof import('./composables/g')['batchInvoke']
   const breakpoints: typeof import('./composables/screen')['breakpoints']
   const ceil: typeof import('./composables/common')['ceil']
+  const checkImageBeforeUpload: typeof import('./composables/file')['checkImageBeforeUpload']
   const clone: typeof import('./composables/g')['clone']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
@@ -70,6 +71,7 @@ declare global {
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getFetchParams: typeof import('./composables/table')['getFetchParams']
+  const getFileBase64: typeof import('./composables/file')['getFileBase64']
   const getFlattenMenuTree: typeof import('./composables/menu')['getFlattenMenuTree']
   const getMatchedMenuItemsIfParentExist: typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']
   const getRandomDate: typeof import('./composables/common')['getRandomDate']
@@ -88,6 +90,7 @@ declare global {
   const isDark: typeof import('./composables/dark')['isDark']
   const isDefined: typeof import('@vueuse/core')['isDefined']
   const isExtraLargeScreen: typeof import('./composables/screen')['isExtraLargeScreen']
+  const isInteger: typeof import('./composables/g')['isInteger']
   const isMediumScreen: typeof import('./composables/screen')['isMediumScreen']
   const isMobile: typeof import('./composables/screen')['isMobile']
   const isNull: typeof import('./composables/g')['isNull']
@@ -396,6 +399,7 @@ declare module 'vue' {
     readonly batchInvoke: UnwrapRef<typeof import('./composables/g')['batchInvoke']>
     readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
     readonly ceil: UnwrapRef<typeof import('./composables/common')['ceil']>
+    readonly checkImageBeforeUpload: UnwrapRef<typeof import('./composables/file')['checkImageBeforeUpload']>
     readonly clone: UnwrapRef<typeof import('./composables/g')['clone']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
@@ -437,6 +441,7 @@ declare module 'vue' {
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
+    readonly getFileBase64: UnwrapRef<typeof import('./composables/file')['getFileBase64']>
     readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
     readonly getMatchedMenuItemsIfParentExist: UnwrapRef<typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']>
     readonly getRandomDate: UnwrapRef<typeof import('./composables/common')['getRandomDate']>
@@ -455,6 +460,7 @@ declare module 'vue' {
     readonly isDark: UnwrapRef<typeof import('./composables/dark')['isDark']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
     readonly isExtraLargeScreen: UnwrapRef<typeof import('./composables/screen')['isExtraLargeScreen']>
+    readonly isInteger: UnwrapRef<typeof import('./composables/g')['isInteger']>
     readonly isMediumScreen: UnwrapRef<typeof import('./composables/screen')['isMediumScreen']>
     readonly isMobile: UnwrapRef<typeof import('./composables/screen')['isMobile']>
     readonly isNull: UnwrapRef<typeof import('./composables/g')['isNull']>
