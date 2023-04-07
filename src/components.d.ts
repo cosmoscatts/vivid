@@ -58,6 +58,7 @@ declare module '@vue/runtime-core' {
     AUpload: typeof import('@arco-design/web-vue')['Upload']
     CommonEllipsis: typeof import('./components/common/CommonEllipsis.vue')['default']
     CommonFormItem: typeof import('./components/common/CommonFormItem.vue')['default']
+    CommonMotion: typeof import('./components/common/CommonMotion.vue')['default']
     CommonScrollWrapper: typeof import('./components/common/CommonScrollWrapper.vue')['default']
     CommonSearchForm: typeof import('./components/common/CommonSearchForm.vue')['default']
     CommonTransition: typeof import('./components/common/CommonTransition.vue')['default']

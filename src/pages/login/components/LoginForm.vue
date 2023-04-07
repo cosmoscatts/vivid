@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
-import { APP_META } from '~/constants'
 import { isDevelopment } from '~/config'
-import { getRoutesInPermission } from '~/utils'
+import { Motion, getRoutesInPermission } from '~/utils'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -60,20 +59,11 @@ function submit({
     })
     .finally(() => useTimeoutFn(endLoading, 1000))
 }
-
-onMounted(() => useTimeoutFn(() => useLottie({
-  containerId: '#lottie',
-  path: 'https://assets2.lottiefiles.com/packages/lf20_iVPQC8jyX2.json',
-}), 50))
 </script>
 
 <template>
-  <a-card direction="vertical" w450px h580px p20px rounded-8px>
-    <div text="32px center" font-bold>
-      {{ APP_META.name }}
-    </div>
-    <div id="lottie" h150px />
-    <a-form :model="formModel" layout="vertical" size="large" @submit="submit">
+  <a-form :model="formModel" layout="vertical" size="large" @submit="submit">
+    <Motion :delay="100">
       <a-form-item
         field="username" label="账号" hide-asterisk feedback
         :rules="[
@@ -88,6 +78,8 @@ onMounted(() => useTimeoutFn(() => useLottie({
           </template>
         </a-input>
       </a-form-item>
+    </Motion>
+    <Motion :delay="150">
       <a-form-item
         field="password" label="密码" hide-asterisk feedback
         :rules="[
@@ -102,15 +94,13 @@ onMounted(() => useTimeoutFn(() => useLottie({
           </template>
         </a-input-password>
       </a-form-item>
+    </Motion>
+    <Motion :delay="200">
       <a-form-item>
         <a-button long type="primary" html-type="submit" :loading="loading" font-bold>
           登录
         </a-button>
       </a-form-item>
-    </a-form>
-    <div flex-center>
-      <LayoutNavDarkToggle />
-      <span ml-5 op-50 text-xl> {{ APP_META.author }} </span>
-    </div>
-  </a-card>
+    </Motion>
+  </a-form>
 </template>
