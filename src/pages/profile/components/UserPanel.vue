@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { FileItem } from '@arco-design/web-vue/es/upload/interfaces'
-import { IconCamera, IconEye } from '@arco-design/web-vue/es/icon'
 
 const authStore = useAuthStore()
 const avatar = computed(() => authStore.user?.avatar)
@@ -45,29 +44,26 @@ const data = computed(() => {
 <template>
   <a-card :bordered="false">
     <a-space :size="64" pl-25px>
-      <a-upload
-        :auto-upload="false"
-        list-type="picture-card"
-        :file-list="file ? [file] : []"
-        :show-file-list="false"
-        :image-preview="true"
-        @change="onChange"
-        @before-upload="checkImageBeforeUpload"
-      >
-        <template #upload-button>
-          <a-avatar :size="100" class="info-avatar" trigger-type="mask">
-            <template #trigger-icon>
-              <IconCamera text-24px />
+      <a-avatar :size="100" class="info-avatar" trigger-type="mask">
+        <template #trigger-icon>
+          <a-upload
+            :auto-upload="false"
+            list-type="picture-card"
+            :file-list="file ? [file] : []"
+            :show-file-list="false"
+            @change="onChange"
+            @before-upload="checkImageBeforeUpload"
+          >
+            <template #upload-button>
+              <IconCamera text-18px mr4 hover:text-primary />
             </template>
-            <img v-if="file" :src="file.url">
-          </a-avatar>
+          </a-upload>
+          <IconEye text-18px hover:text-primary @click="imagePreviewVisible = true" />
         </template>
-      </a-upload>
+        <img v-if="file" :src="file.url">
+      </a-avatar>
+
       <div v-if="file?.url">
-        <a-button type="text" @click="imagePreviewVisible = true">
-          <IconEye />
-          预览
-        </a-button>
         <a-image-preview
           v-model:visible="imagePreviewVisible"
           :src="file.url"
