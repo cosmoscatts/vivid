@@ -21,10 +21,9 @@ function onChange(_: FileItem[], currentFile: FileItem) {
   })
 }
 
-const { width } = useWindowSize()
 const imagePreviewVisible = ref(false)
 const data = computed(() => {
-  return [
+  let _data = [
     {
       label: '账号',
       value: authStore.user?.username || '',
@@ -38,6 +37,14 @@ const data = computed(() => {
       value: formatDate(authStore.user?.createTime),
     },
   ]
+  if (!isSmallScreen.value) _data = _data.slice(0, 3)
+  return _data
+})
+
+const descriptionsColumn = computed(() => {
+  if (isExtraLargeScreen.value) return 3
+  if (isMediumScreen.value) return 2
+  return 1
 })
 </script>
 
@@ -62,7 +69,6 @@ const data = computed(() => {
         </template>
         <img v-if="file" :src="file.url">
       </a-avatar>
-
       <div v-if="file?.url">
         <a-image-preview
           v-model:visible="imagePreviewVisible"
@@ -70,11 +76,9 @@ const data = computed(() => {
         />
       </div>
       <a-descriptions
-        lt-sm="hidden"
         :data="data"
-        :column="2"
+        :column="descriptionsColumn"
         align="right"
-        :layout="width < 1000 ? 'horizontal' : 'inline-horizontal'"
         :label-style="{
           width: '100px',
           fontWeight: 'bold',
