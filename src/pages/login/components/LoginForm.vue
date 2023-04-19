@@ -64,36 +64,32 @@ function submit({
 <template>
   <a-form :model="formModel" layout="vertical" size="large" @submit="submit">
     <Motion :delay="100">
-      <a-form-item
-        field="username" label="账号" hide-asterisk feedback
-        :rules="[
+      <CommonFormItem
+        field="username" label="账号" :rules="[
           { required: true, message: '账号是必须的' },
           { minLength: 5, message: '长度必须大于5' },
         ]"
-        :validate-trigger="defaultValidateTrigger"
       >
         <a-input v-model="formModel.username" placeholder="请输入你的账号..." allow-clear>
           <template #prefix>
             <IconUser />
           </template>
         </a-input>
-      </a-form-item>
+      </CommonFormItem>
     </Motion>
     <Motion :delay="150">
-      <a-form-item
-        field="password" label="密码" hide-asterisk feedback
-        :rules="[
+      <CommonFormItem
+        field="password" label="密码" :rules="[
           { required: true, message: '密码是必须的' },
           { minLength: 6, message: '长度必须大于6' },
         ]"
-        :validate-trigger="defaultValidateTrigger"
       >
         <a-input-password v-model="formModel.password" placeholder="请输入你的密码..." allow-clear>
           <template #prefix>
             <IconLock />
           </template>
         </a-input-password>
-      </a-form-item>
+      </CommonFormItem>
     </Motion>
     <Motion :delay="200">
       <a-form-item>
