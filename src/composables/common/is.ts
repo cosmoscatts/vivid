@@ -70,3 +70,11 @@ export function notUndefined<T>(v: T): v is Exclude<T, undefined> {
 export function isTruthy<T>(v: T): v is NonNullable<T> {
   return Boolean(v)
 }
+
+export function empty(data?: any) {
+  if (!data) return true
+  if (isString(data)) return makeNonNullStr(data).length === 0
+  if (isArray(data)) return data.length === 0
+  if (isObject(data)) return Object.keys(data).length === 0
+  return false
+}
