@@ -1,3 +1,4 @@
+import type { StoreDefinition } from 'pinia'
 import type { Tab } from '~/types'
 import { applyCachedTabs, cacheTabs, getRoutesInPermission } from '~/utils'
 
@@ -88,5 +89,5 @@ export const useTabStore = defineStore('tabStore', () => {
 }, { persist: { enabled: true } })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useTabStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useTabStore as unknown as StoreDefinition, import.meta.hot))
 }

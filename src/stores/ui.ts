@@ -1,3 +1,4 @@
+import type { StoreDefinition } from 'pinia'
 import { type Settings, defaultSettings } from '~/config'
 import { CACHE_SETTINGS } from '~/constants'
 import { applyCachedSettings, cacheSettings, cacheTabs, clearCachedTabs, createPrimaryColor } from '~/utils'
@@ -79,5 +80,5 @@ export const useUiStore = defineStore('uiStore', () => {
 }, { persist: { enabled: true } })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useUiStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useUiStore as unknown as StoreDefinition, import.meta.hot))
 }

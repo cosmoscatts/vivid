@@ -6,7 +6,7 @@ import type { SelectOptionData } from '@arco-design/web-vue'
  * @Role
  */
 let userOptions: SelectOptionData[] | null = null
-function fetchUserOptions() {
+async function fetchUserOptions() {
   userOptions = Array.from({ length: 5 }, (_, idx) => ({
     value: idx,
     label: getRandomName(),
@@ -19,7 +19,7 @@ function fetchUserOptions() {
  * @User
  */
 let roleOptions: SelectOptionData[] | null = null
-function fetchRoleOptions() {
+async function fetchRoleOptions() {
   roleOptions = Array.from({ length: 5 }, (_, idx) => ({
     value: idx,
     label: ['一', '二', '三', '四', '五'].map(i => (`角色${i}`))[idx],

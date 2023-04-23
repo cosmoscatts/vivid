@@ -1,3 +1,4 @@
+import type { StoreDefinition } from 'pinia'
 import type { Menu, Nullable, User } from '~/types'
 import { DEFAULT_AVATAR, IS_MOCK, MENUS } from '~/constants'
 
@@ -46,5 +47,5 @@ export const useAuthStore = defineStore('authStore', () => {
 }, { persist: { enabled: true } })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useAuthStore as unknown as StoreDefinition, import.meta.hot))
 }
