@@ -60,27 +60,28 @@ export class BaseRequest {
     return new BaseRequest(config)
   }
 
-  get<T>(url: string, { params }: GetParams = {}, searchPage = false) {
+  get<T>(url: string, { params }: GetParams = {}) {
     url += handleUrlParams(params)
-    if (searchPage) return this.axios.get<T, GeneratePageResult<T>>(url)
     return this.axios.get<T, Result<T>>(url)
   }
 
-  post<T>(url: string, { params, body = {} }: PostParams = {}, searchPage = false) {
+  getPageData<T>(url: string, { params }: GetParams = {}) {
     url += handleUrlParams(params)
-    if (searchPage) return this.axios.post<T, GeneratePageResult<T>>(url, body)
+    return this.axios.get<T, GeneratePageResult<T>>(url)
+  }
+
+  post<T>(url: string, { params, body = {} }: PostParams = {}) {
+    url += handleUrlParams(params)
     return this.axios.post<T, Result<T>>(url, body)
   }
 
-  put<T>(url: string, { params, body = {} }: PutParams = {}, searchPage = false) {
+  put<T>(url: string, { params, body = {} }: PutParams = {}) {
     url += handleUrlParams(params)
-    if (searchPage) return this.axios.put<T, GeneratePageResult<T>>(url, body)
     return this.axios.put<T, Result<T>>(url, body)
   }
 
-  delete<T>(url: string, { params }: DeleteParams = {}, searchPage = false) {
+  delete<T>(url: string, { params }: DeleteParams = {}) {
     url += handleUrlParams(params)
-    if (searchPage) return this.axios.delete<T, GeneratePageResult<T>>(url)
     return this.axios.delete<T, Result<T>>(url)
   }
 }
