@@ -7,11 +7,8 @@ export function formatDate(date?: dayjs.ConfigType, opts: {
   format?: string
   defaultReturn?: string
   enableDefaultDate?: boolean
-} = {
-  format: 'YYYY-MM-DD HH:mm:ss',
-  defaultReturn: '',
-  enableDefaultDate: false,
-}): string {
+} = {}): string {
+  if (!opts.format) opts.format = 'YYYY-MM-DD HH:mm:ss'
   if (!opts.enableDefaultDate && !date) return opts.defaultReturn ?? ''
   return dayjs(date).format(opts.format)
 }
