@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { options } = defineProps<{ options: { label: string; value: string }[] }>()
-const { modelValue } = defineModel<{ modelValue: string }>()
+const { modelValue } = defineModels<{ modelValue: string }>()
 const isChecked = (value: string) => (value === modelValue.value)
 const layoutCardShadow = computed(() => {
   return ['0 1px 2.5px rgba(0, 0, 0, 0.18)', '0 1px 2.5px rgba(255, 255, 255, 0.18)'][Number(isDark.value)]

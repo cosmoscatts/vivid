@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS as params } from '~/constants'
-const { visible } = defineModel<{ visible: boolean }>()
+const { visible } = defineModels<{ visible: boolean }>()
 const uiStore = useUiStore()
 function saveCurrentSettings() {
   const loading = Message.loading('正在更新配置')

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defaultThemeColors } from '~/config'
-const { modelValue } = defineModel<{ modelValue: string }>()
+const { modelValue } = defineModels<{ modelValue: string }>()
 const isChecked = (prop: string) => modelValue.value === prop
 function change(value: string) {
   modelValue.value = value

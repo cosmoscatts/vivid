@@ -5,7 +5,7 @@ defineProps<{
   options: SelectOptionData[]
   disabled?: boolean
 }>()
-const { modelValue } = defineModel<{ modelValue: string }>()
+const { modelValue } = defineModels<{ modelValue: string }>()
 </script>
 
 <template>
