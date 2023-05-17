@@ -13,18 +13,20 @@ import {
 
 const uiStore = useUiStore()
 
-const renderComponent = (key: OptionRenderType) => ({
-  layoutRadio: LayoutSettingsLayoutMode,
-  select: LayoutSettingsSelect,
-  switch: LayoutSettingsSwitch,
-  colorPicker: LayoutSettingsColorPicker,
-}[key])
+function renderComponent(key: OptionRenderType) {
+  return {
+    layoutRadio: LayoutSettingsLayoutMode,
+    select: LayoutSettingsSelect,
+    switch: LayoutSettingsSwitch,
+    colorPicker: LayoutSettingsColorPicker,
+  }[key]
+}
 const isDisabled = ({ dependOn }: Option) => dependOn && !uiStore.settingsCopy[dependOn]
-const showDisabledMsg = (data: Option[], disabledMsg?: string) => {
+function showDisabledMsg(data: Option[], disabledMsg?: string) {
   if (!disabledMsg) return false
   return data.some(i => isDisabled(i))
 }
-const isHorizontalMixFixNav = (prop: string) => {
+function isHorizontalMixFixNav(prop: string) {
   return prop === 'fixNav' && uiStore.settingsCopy.layout === 'horizontal-mix'
 }
 </script>

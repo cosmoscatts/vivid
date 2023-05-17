@@ -2,7 +2,7 @@
 const route = useRoute()
 const uiStore = useUiStore()
 let data = $ref<{ title: string; icon?: string }[]>([])
-const getBreadCrumbs = () => {
+function getBreadCrumbs() {
   data = getMatchedMenuItemsIfParentExist(route.path)
     .map(i => ({
       title: i.title,

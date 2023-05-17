@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FieldRule } from '@arco-design/web-vue'
+
 const {
   field,
   label,

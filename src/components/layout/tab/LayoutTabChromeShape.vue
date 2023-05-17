@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { bgColor, hoverBgColor, mixColor, mixRatio } from './constants'
 import { useMixinColor } from '~/utils'
+
 const props = defineProps<{
   hover: boolean
   active: boolean

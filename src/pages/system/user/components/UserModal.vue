@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { User } from '~/types'
+
 const props = defineProps<{
   type: 'add' | 'edit'
   data?: User
@@ -9,15 +10,17 @@ const emit = defineEmits<{
 }>()
 const { visible } = defineModels<{ visible: boolean }>()
 const refForm = ref()
-const getBase = () => ({
-  id: undefined,
-  username: '',
-  name: '',
-  password: '',
-  checkPass: '',
-  avatar: undefined,
-  roleId: undefined,
-})
+function getBase() {
+  return {
+    id: undefined,
+    username: '',
+    name: '',
+    password: '',
+    checkPass: '',
+    avatar: undefined,
+    roleId: undefined,
+  }
+}
 const {
   formModel,
   loading,
@@ -35,10 +38,12 @@ watch(visible, (val) => {
     refForm.value?.clearValidate()
   }
 })
-const handleOk = () => ok(() => {
-  if (props.type === 'edit') formModel.password = undefined
-  emit('saveData', clone(formModel))
-})
+function handleOk() {
+  return ok(() => {
+    if (props.type === 'edit') formModel.password = undefined
+    emit('saveData', clone(formModel))
+  })
+}
 defineExpose({ endLoading })
 </script>
 

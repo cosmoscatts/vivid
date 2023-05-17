@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS as params } from '~/constants'
+
 const refButton = ref()
 const hover = useElementHover(refButton)
 const showSettingsDrawer = ref(false)

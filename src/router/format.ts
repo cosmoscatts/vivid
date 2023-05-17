@@ -6,7 +6,7 @@ interface Module {
 
 const modules = import.meta.glob('./routes/*.ts', { eager: true }) as Record<string, Module>
 
-const formatModules = (_modules: Record<string, Module>, result: RouteRecordRaw[]) => {
+function formatModules(_modules: Record<string, Module>, result: RouteRecordRaw[]) {
   Object.keys(_modules).forEach((key) => {
     const defaultModule = _modules[key].default
     if (!defaultModule) return

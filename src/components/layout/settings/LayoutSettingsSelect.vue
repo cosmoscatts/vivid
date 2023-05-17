@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SelectOptionData } from '@arco-design/web-vue'
+
 defineProps<{
   name?: string
   options: SelectOptionData[]

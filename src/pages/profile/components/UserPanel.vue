@@ -3,11 +3,13 @@ import type { FileItem } from '@arco-design/web-vue/es/upload/interfaces'
 
 const authStore = useAuthStore()
 const avatar = computed(() => authStore.user?.avatar)
-const getFileUrl = () => authStore.user?.avatar
-  ? {
-      url: authStore.user.avatar,
-    } as FileItem
-  : undefined
+function getFileUrl() {
+  return authStore.user?.avatar
+    ? {
+        url: authStore.user.avatar,
+      } as FileItem
+    : undefined
+}
 
 let file = $ref<FileItem | undefined>(getFileUrl())
 watch(avatar, () => file = getFileUrl())

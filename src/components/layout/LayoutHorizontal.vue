@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS as params } from '~/constants'
+
 const uiStore = useUiStore()
 </script>
 

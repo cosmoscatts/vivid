@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LAYOUT_PARAMS as params } from '~/constants'
+
 const { showLogo = true } = defineProps<{ showLogo?: boolean }>()
 const uiStore = useUiStore()
 </script>

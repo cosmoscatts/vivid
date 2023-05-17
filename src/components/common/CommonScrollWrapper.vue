@@ -11,7 +11,7 @@ const refContent = ref<HTMLElement>()
 
 const isScrollY = computed(() => Boolean(options.scrollY))
 
-const create = () => {
+function create() {
   if (!refWrapper.value) return
   instance.value = new BScroll(refWrapper.value, options)
 }

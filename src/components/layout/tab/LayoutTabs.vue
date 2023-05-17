@@ -8,7 +8,7 @@ const tabStore = useTabStore()
 const tabs = $computed(() => tabStore.tabs)
 const chrome = $computed(() => uiStore.settings.tabShapeStyle === 'chrome')
 
-const isActive = (path?: string) => { // 判断是否为当前页面
+function isActive(path?: string) { // 判断是否为当前页面
   if (!path) return false
   if (route.path.startsWith('/redirect')) path = `/redirect${path}`
   return path === route.path

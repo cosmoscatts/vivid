@@ -2,13 +2,15 @@
 const emit = defineEmits<{
   (event: 'search'): void
 }>()
-const getBase = () => ({
-  username: '',
-  name: '',
-  roleId: undefined,
-  createTime: [],
-  updateTime: [],
-})
+function getBase() {
+  return {
+    username: '',
+    name: '',
+    roleId: undefined,
+    createTime: [],
+    updateTime: [],
+  }
+}
 const {
   formModel,
   reset,

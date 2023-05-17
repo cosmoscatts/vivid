@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BellData, BellDataType } from './interfaces'
+
 defineProps<{
   data: BellData[]
   type: BellDataType

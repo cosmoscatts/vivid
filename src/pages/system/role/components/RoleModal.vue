@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Role } from '~/types'
+
 const props = defineProps<{
   type: 'add' | 'edit'
   data?: Role
@@ -9,12 +10,14 @@ const emit = defineEmits<{
 }>()
 const { visible } = defineModels<{ visible: boolean }>()
 const refForm = ref()
-const getBase = () => ({
-  id: undefined,
-  name: '',
-  description: '',
-  menuIdList: [],
-})
+function getBase() {
+  return {
+    id: undefined,
+    name: '',
+    description: '',
+    menuIdList: [],
+  }
+}
 const {
   formModel,
   loading,
@@ -33,9 +36,11 @@ watch(visible, (val) => {
     refForm.value?.clearValidate()
   }
 })
-const handleOk = () => ok(() => {
-  emit('saveData', clone(formModel))
-})
+function handleOk() {
+  return ok(() => {
+    emit('saveData', clone(formModel))
+  })
+}
 const allCheckedKeys = $computed<number[]>(() => {
   return getFlattenMenuTree().map(item => item.id)
 })

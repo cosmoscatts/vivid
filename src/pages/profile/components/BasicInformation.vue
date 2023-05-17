@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { User } from '~/types'
+
 const props = defineProps<{ tabIdx?: number }>()
 const refForm = ref()
 const authStore = useAuthStore()
-const getBase = () => ({
-  id: authStore.user!.id,
-  name: authStore.user!.name,
-})
+function getBase() {
+  return {
+    id: authStore.user!.id,
+    name: authStore.user!.name,
+  }
+}
 const {
   formModel,
   ok,

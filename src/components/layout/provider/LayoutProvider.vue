@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { SHOW_SETTINGS_BUTTON, LAYOUT_PARAMS as params } from '~/constants'
+
 const uiStore = useUiStore()
 const refFullWrapper = ref()
 const refContentWrapper = ref()

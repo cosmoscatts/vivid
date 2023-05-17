@@ -2,7 +2,7 @@ import preload from './preload'
 import setupAssets from './setup-assets'
 import type { AppContext, UserModule } from '~/types'
 
-export const setupModules = async (app: AppContext) => {
+export async function setupModules(app: AppContext) {
   const { bool: wait, setFalse } = useBool(true)
   useTimeoutFn(setFalse, 500)
   batchInvoke([setupAssets, preload])

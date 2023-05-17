@@ -2,12 +2,14 @@
 const props = defineProps<{ tabIdx?: number }>()
 const refForm = ref()
 const authStore = useAuthStore()
-const getBase = () => ({
-  id: authStore.user!.id,
-  password: '',
-  newPass: '',
-  checkPass: '',
-})
+function getBase() {
+  return {
+    id: authStore.user!.id,
+    password: '',
+    newPass: '',
+    checkPass: '',
+  }
+}
 const {
   formModel,
   ok,
