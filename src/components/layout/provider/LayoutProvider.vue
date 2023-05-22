@@ -9,11 +9,7 @@ const backTopTarget = computed(() => {
     ? '#content-wrapper'
     : '#full-wrapper'
 })
-const diffHeight = computed(() => {
-  let height = params.navHeight
-  if (uiStore.settings.showTabs) height += params.tabHeight
-  return height
-})
+const diffHeight = getLayoutContentHeight()
 const fullWrapperWidth = computed(() => {
   if (isMobile.value || uiStore.settings.layout.includes('horizontal')) return '100%'
   if (uiStore.settings.layout === 'vertical-mix') {

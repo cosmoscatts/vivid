@@ -75,6 +75,8 @@ declare global {
   const getFetchParams: typeof import('./composables/table')['getFetchParams']
   const getFileBase64: typeof import('./composables/file')['getFileBase64']
   const getFlattenMenuTree: typeof import('./composables/menu')['getFlattenMenuTree']
+  const getLayoutContentHeight: typeof import('./composables/layout')['getLayoutContentHeight']
+  const getLayoutContentLeftDistance: typeof import('./composables/layout')['getLayoutContentLeftDistance']
   const getMatchedMenuItemsIfParentExist: typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']
   const getRandomDate: typeof import('./composables/common/date')['getRandomDate']
   const getRandomInteger: typeof import('./composables/common/number')['getRandomInteger']
@@ -455,6 +457,8 @@ declare module 'vue' {
     readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
     readonly getFileBase64: UnwrapRef<typeof import('./composables/file')['getFileBase64']>
     readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
+    readonly getLayoutContentHeight: UnwrapRef<typeof import('./composables/layout')['getLayoutContentHeight']>
+    readonly getLayoutContentLeftDistance: UnwrapRef<typeof import('./composables/layout')['getLayoutContentLeftDistance']>
     readonly getMatchedMenuItemsIfParentExist: UnwrapRef<typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']>
     readonly getRandomDate: UnwrapRef<typeof import('./composables/common/date')['getRandomDate']>
     readonly getRandomInteger: UnwrapRef<typeof import('./composables/common/number')['getRandomInteger']>
