@@ -20,3 +20,19 @@ export function checkRoutePermission(route: RouteLocationNormalized): boolean {
   const ownPaths = getRoutesInPermission()
   return ownPaths.includes(route.path)
 }
+
+/**
+ * 找到登录后跳转的路由
+ */
+export function getPathToGoWhenLogin() {
+  const uiStore = useUiStore()
+  const tabStore = useTabStore()
+  const ownPaths = getRoutesInPermission()
+  if (!tabStore.tabs.length) tabStore.createTabs()
+  const tabs = tabStore.tabs
+  if (uiStore.settings.showTabs && uiStore.settings.cacheTabs && tabs.length) {
+    return tabs[tabs.length - 1].path
+  }
+  if (!ownPaths.length) return null
+  return ownPaths[0]
+}

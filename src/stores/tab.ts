@@ -86,7 +86,7 @@ export const useTabStore = defineStore('tabStore', () => {
     removeListTabs,
     removeAllTabs,
   }
-}, { persist: { enabled: true } })
+})
 
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useTabStore as unknown as StoreDefinition, import.meta.hot))

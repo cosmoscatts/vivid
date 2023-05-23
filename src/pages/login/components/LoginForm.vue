@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import { isDevelopment } from '~/config'
-import { Motion, getRoutesInPermission } from '~/utils'
+import { Motion, getPathToGoWhenLogin } from '~/utils'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -45,11 +45,11 @@ function submit({
     .login(data)
     .then(() => {
       useTimeoutFn(() => {
-        const routes = getRoutesInPermission()
-        if (!routes.length) {
+        const path = getPathToGoWhenLogin()
+        if (!path) {
           Message.error('请联系管理员配置菜单')
         } else {
-          router.push(routes[0])
+          router.push(path)
         }
         ANotification.success({
           title: '登录成功',

@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { NOT_FOUND, NO_PERMISSION } from '../constants'
-import { Conditional, checkRoutePermission, getRoutesInPermission } from '~/utils'
+import { Conditional, checkRoutePermission, getPathToGoWhenLogin } from '~/utils'
 
 export default function createPermissionGuard(
   to: RouteLocationNormalized,
@@ -17,9 +17,9 @@ export default function createPermissionGuard(
   const actions: [boolean, Function][] = [
     // 已登录状态跳转登录页，跳转至第一项菜单
     [hasLogin && to.name === 'Login', () => {
-      const routes = getRoutesInPermission()
-      if (routes.length) {
-        next(routes[0])
+      const path = getPathToGoWhenLogin()
+      if (path) {
+        next(path)
       } else {
         Message.error('请联系管理员配置菜单')
         next(NOT_FOUND)

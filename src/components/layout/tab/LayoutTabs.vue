@@ -5,6 +5,8 @@ const route = useRoute()
 const uiStore = useUiStore()
 const tabStore = useTabStore()
 
+tabStore.createTabs()
+
 const tabs = $computed(() => tabStore.tabs)
 const chrome = $computed(() => uiStore.settings.tabShapeStyle === 'chrome')
 
