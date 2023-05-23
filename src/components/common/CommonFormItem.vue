@@ -10,8 +10,8 @@ const {
   feedback = true,
   hideLabel = false,
 } = defineProps<{
-  field: string
-  label: string
+  field?: string
+  label?: string
   rules?: FieldRule<any> | FieldRule<any>[]
   hasRules?: boolean
   hideAsterisk?: boolean

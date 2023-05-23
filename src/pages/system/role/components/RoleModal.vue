@@ -37,7 +37,7 @@ watch(visible, (val) => {
   }
 })
 function handleOk() {
-  return ok(() => {
+  ok(() => {
     emit('saveData', clone(formModel))
   })
 }

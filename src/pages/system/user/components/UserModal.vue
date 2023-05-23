@@ -39,7 +39,7 @@ watch(visible, (val) => {
   }
 })
 function handleOk() {
-  return ok(() => {
+  ok(() => {
     if (props.type === 'edit') formModel.password = undefined
     emit('saveData', clone(formModel))
   })
