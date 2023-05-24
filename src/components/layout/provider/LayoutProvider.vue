@@ -14,7 +14,7 @@ const fullWrapperWidth = computed(() => {
   if (isMobile.value || uiStore.settings.layout.includes('horizontal')) return '100%'
   if (uiStore.settings.layout === 'vertical-mix') {
     let width = uiStore.collapseSide.state ? params.mixSideCollapsedWidth : params.mixSideWidth
-    if (uiStore.mixSideFixed) width += params.mxiSideDrawerWidth
+    if (uiStore.mixSideFixed) width += params.mixSideDrawerWidth
     return `calc(100% - ${width}px)`
   }
   return `calc(100% - ${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px)`
@@ -23,7 +23,7 @@ const fullWrapperLeft = computed(() => {
   if (isMobile.value || uiStore.settings.layout.includes('horizontal')) return '0px'
   if (uiStore.settings.layout === 'vertical-mix') {
     let width = uiStore.collapseSide.state ? params.mixSideCollapsedWidth : params.mixSideWidth
-    if (uiStore.mixSideFixed) width += params.mxiSideDrawerWidth
+    if (uiStore.mixSideFixed) width += params.mixSideDrawerWidth
     return `${width}px`
   }
   return `${uiStore.collapseSide.state ? params.sideCollapsedWidth : params.sideWidth}px`

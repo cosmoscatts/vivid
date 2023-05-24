@@ -6,7 +6,7 @@ export const LAYOUT_PARAMS = {
   sideMenuCollapsedWidth: 48,
   mixSideWidth: 80,
   mixSideCollapsedWidth: 48,
-  mxiSideDrawerWidth: 200,
+  mixSideDrawerWidth: 200,
   contentPadding: 20,
   footHeight: 50,
   backTopRight: 50,

@@ -19,7 +19,7 @@ export function getLayoutContentLeftDistance() {
     if (layout === 'horizontal') return 0
     if (['vertical', 'horizontal-mix'].includes(layout)) return `${[params.sideWidth, params.sideCollapsedWidth][Number(uiStore.collapseSide.state)]}px`
     let width = [params.mixSideWidth, params.mixSideCollapsedWidth][Number(uiStore.collapseSide.state)]
-    if (uiStore.mixSideFixed) width += params.mxiSideDrawerWidth
+    if (uiStore.mixSideFixed) width += params.mixSideDrawerWidth
     return `${width}px`
   })
 }

@@ -14,11 +14,11 @@ const showDrawer = computed(() => (props.visible && props.menus.length) || uiSto
 <template>
   <div
     relative h-full transition-width duration-300 ease-in-out border-l="1px solid [var(--color-border)]"
-    :style="{ width: uiStore.mixSideFixed ? `${params.mxiSideDrawerWidth}px` : '0px' }"
+    :style="{ width: uiStore.mixSideFixed ? `${params.mixSideDrawerWidth}px` : '0px' }"
   >
     <div
       class="drawer-shadow absolute left-0 top-0 flex-col items-stretch h-full whitespace-nowrap overflow-hidden bg-side"
-      :style="{ width: showDrawer ? `${params.mxiSideDrawerWidth}px` : '0px' }"
+      :style="{ width: showDrawer ? `${params.mixSideDrawerWidth}px` : '0px' }"
     >
       <header flex-y-center justify-between px5px :style="{ height: `${params.navHeight}px` }">
         <h2 text-primary pl-8px text-24px font-bold>
