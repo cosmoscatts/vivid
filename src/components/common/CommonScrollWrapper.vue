@@ -32,7 +32,7 @@ defineExpose({ instance })
 </script>
 
 <template>
-  <div ref="refWrapper" h-full text-left>
+  <div ref="refWrapper" h-full text-left of-hidden>
     <div
       ref="refContent"
       inline-block
