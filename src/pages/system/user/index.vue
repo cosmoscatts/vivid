@@ -55,8 +55,18 @@ function deleteData(data: User) {
           添加
         </a-button>
       </template>
-      <UserSearchForm ref="refSearchForm" @search="fetchTableData" />
+      <UserSearchForm
+        ref="refSearchForm" class="slide-enter" :style="{
+          '--enter-stage': 0,
+          '--enter-step': '60ms',
+        }"
+        @search="fetchTableData"
+      />
       <a-table
+        class="slide-enter" :style="{
+          '--enter-stage': 2,
+          '--enter-step': '60ms',
+        }"
         row-key="id"
         :loading="Loading.state"
         :columns="columns"

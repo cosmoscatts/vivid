@@ -64,8 +64,17 @@ function deleteData(data: Role) {
           添加
         </a-button>
       </template>
-      <RoleSearchForm ref="refSearchForm" @search="fetchTableData" />
+      <RoleSearchForm
+        ref="refSearchForm" class="slide-enter" :style="{
+          '--enter-stage': 0,
+          '--enter-step': '60ms',
+        }" @search="fetchTableData"
+      />
       <a-table
+        class="slide-enter" :style="{
+          '--enter-stage': 2,
+          '--enter-step': '60ms',
+        }"
         row-key="id"
         :loading="Loading.state"
         :columns="columns"

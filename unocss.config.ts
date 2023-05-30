@@ -21,6 +21,11 @@ export default defineConfig({
     'bg-nav': 'bg-white dark:bg-[#232324]',
     'bg-side': 'bg-white dark:bg-[#232324]',
   },
+  rules: [
+    [/^slide-enter-(\d+)$/, ([_, n]) => ({
+      '--enter-stage': n,
+    })],
+  ],
   presets: [
     presetAttributify(),
     presetUno(),
