@@ -49,6 +49,7 @@ const showPageHeader = computed(() => {
         width: fullWrapperWidth,
         left: fullWrapperLeft,
       }"
+      :class="!uiStore.settings.fixNav && 'scrollable'"
     >
       <a-layout-header
         bg-nav
@@ -76,6 +77,7 @@ const showPageHeader = computed(() => {
             ? 'hidden auto'
             : undefined,
         }"
+        :class="uiStore.settings.fixNav && 'scrollable'"
       >
         <a-layout-content>
           <slot name="main">
