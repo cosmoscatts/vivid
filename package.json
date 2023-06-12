@@ -2,7 +2,7 @@
   "type": "module",
   "packageManager": "pnpm@7.28.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port=3333 --open",
     "build": "vue-tsc --noEmit && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
