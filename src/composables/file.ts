@@ -1,17 +1,17 @@
 export function getFileBase64(file: File) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
-    let imageAsDateURL = ''
+    let imageAsDataURL = ''
     reader.readAsDataURL(file)
     reader.onload = (data) => {
       const res: any = data.target || data.srcElement
-      imageAsDateURL = res.result
+      imageAsDataURL = res.result
     }
     reader.onerror = (err) => {
       reject(err)
     }
     reader.onloadend = () => {
-      resolve(imageAsDateURL)
+      resolve(imageAsDataURL)
     }
   })
 }
