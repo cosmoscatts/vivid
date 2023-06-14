@@ -28,6 +28,7 @@ declare global {
   const basePagination: typeof import('./composables/table')['basePagination']
   const batchInvoke: typeof import('./composables/common/function')['batchInvoke']
   const breakpoints: typeof import('./composables/screen')['breakpoints']
+  const capitalize: typeof import('./composables/common/string')['capitalize']
   const ceil: typeof import('./composables/common/number')['ceil']
   const checkImageBeforeUpload: typeof import('./composables/file')['checkImageBeforeUpload']
   const clone: typeof import('./composables/common/object')['clone']
@@ -64,6 +65,8 @@ declare global {
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
   const empty: typeof import('./composables/common/is')['empty']
+  const ensurePrefix: typeof import('./composables/common/string')['ensurePrefix']
+  const ensureSuffix: typeof import('./composables/common/string')['ensureSuffix']
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const flattenMenu: typeof import('./composables/menu')['flattenMenu']
   const floor: typeof import('./composables/common/number')['floor']
@@ -167,10 +170,12 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const slash: typeof import('./composables/common/string')['slash']
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const syncRef: typeof import('@vueuse/core')['syncRef']
   const syncRefs: typeof import('@vueuse/core')['syncRefs']
   const tap: typeof import('./composables/common/function')['tap']
+  const template: typeof import('./composables/common/string')['template']
   const templateRef: typeof import('@vueuse/core')['templateRef']
   const throttledRef: typeof import('@vueuse/core')['throttledRef']
   const throttledWatch: typeof import('@vueuse/core')['throttledWatch']
@@ -412,6 +417,7 @@ declare module 'vue' {
     readonly basePagination: UnwrapRef<typeof import('./composables/table')['basePagination']>
     readonly batchInvoke: UnwrapRef<typeof import('./composables/common/function')['batchInvoke']>
     readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
+    readonly capitalize: UnwrapRef<typeof import('./composables/common/string')['capitalize']>
     readonly ceil: UnwrapRef<typeof import('./composables/common/number')['ceil']>
     readonly checkImageBeforeUpload: UnwrapRef<typeof import('./composables/file')['checkImageBeforeUpload']>
     readonly clone: UnwrapRef<typeof import('./composables/common/object')['clone']>
@@ -448,6 +454,8 @@ declare module 'vue' {
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly empty: UnwrapRef<typeof import('./composables/common/is')['empty']>
+    readonly ensurePrefix: UnwrapRef<typeof import('./composables/common/string')['ensurePrefix']>
+    readonly ensureSuffix: UnwrapRef<typeof import('./composables/common/string')['ensureSuffix']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly flattenMenu: UnwrapRef<typeof import('./composables/menu')['flattenMenu']>
     readonly floor: UnwrapRef<typeof import('./composables/common/number')['floor']>
@@ -551,10 +559,12 @@ declare module 'vue' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly slash: UnwrapRef<typeof import('./composables/common/string')['slash']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
     readonly tap: UnwrapRef<typeof import('./composables/common/function')['tap']>
+    readonly template: UnwrapRef<typeof import('./composables/common/string')['template']>
     readonly templateRef: UnwrapRef<typeof import('@vueuse/core')['templateRef']>
     readonly throttledRef: UnwrapRef<typeof import('@vueuse/core')['throttledRef']>
     readonly throttledWatch: UnwrapRef<typeof import('@vueuse/core')['throttledWatch']>
@@ -790,6 +800,7 @@ declare module '@vue/runtime-core' {
     readonly basePagination: UnwrapRef<typeof import('./composables/table')['basePagination']>
     readonly batchInvoke: UnwrapRef<typeof import('./composables/common/function')['batchInvoke']>
     readonly breakpoints: UnwrapRef<typeof import('./composables/screen')['breakpoints']>
+    readonly capitalize: UnwrapRef<typeof import('./composables/common/string')['capitalize']>
     readonly ceil: UnwrapRef<typeof import('./composables/common/number')['ceil']>
     readonly checkImageBeforeUpload: UnwrapRef<typeof import('./composables/file')['checkImageBeforeUpload']>
     readonly clone: UnwrapRef<typeof import('./composables/common/object')['clone']>
@@ -826,6 +837,8 @@ declare module '@vue/runtime-core' {
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly empty: UnwrapRef<typeof import('./composables/common/is')['empty']>
+    readonly ensurePrefix: UnwrapRef<typeof import('./composables/common/string')['ensurePrefix']>
+    readonly ensureSuffix: UnwrapRef<typeof import('./composables/common/string')['ensureSuffix']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly flattenMenu: UnwrapRef<typeof import('./composables/menu')['flattenMenu']>
     readonly floor: UnwrapRef<typeof import('./composables/common/number')['floor']>
@@ -929,10 +942,12 @@ declare module '@vue/runtime-core' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly slash: UnwrapRef<typeof import('./composables/common/string')['slash']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
     readonly tap: UnwrapRef<typeof import('./composables/common/function')['tap']>
+    readonly template: UnwrapRef<typeof import('./composables/common/string')['template']>
     readonly templateRef: UnwrapRef<typeof import('@vueuse/core')['templateRef']>
     readonly throttledRef: UnwrapRef<typeof import('@vueuse/core')['throttledRef']>
     readonly throttledWatch: UnwrapRef<typeof import('@vueuse/core')['throttledWatch']>
