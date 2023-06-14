@@ -4,9 +4,9 @@ import type { RouteLocationNormalized } from 'vue-router'
  * 找到所有权限的路由路径
  */
 export function getRoutesInPermission(): string[] {
-  return getFlattenMenuTree()
+  return [...getFlattenMenuTree()
     .map(item => item.path)
-    .filter(notNullish)
+    .filter(notNullish), '/profile']
 }
 
 /**
