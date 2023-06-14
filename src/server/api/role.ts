@@ -2,7 +2,7 @@ import type { GeneratePageResult, Role } from '~/types'
 
 export const RoleApi = {
   fetchPageList(length = 15) {
-    const allMenuIds = getFlattenMenuTree().map(item => item.id)
+    const allMenuIds = getUserFlattenMenuTree().map(item => item.id)
     const createRoleName = (idx: number) => `角色${idx + 1}`
     return new Promise<GeneratePageResult<Role>>((resolve) => {
       resolve({

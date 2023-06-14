@@ -46,7 +46,7 @@ function deleteData(data: Role) {
  * 判断当前角色权限是否改变
  */
 // function checkCurrentRolePermissionChanged(currentMenuIdList: number[]) {
-//   const oldMenuIdList = getFlattenMenuTree().map(item => item.id)
+//   const oldMenuIdList = getUserFlattenMenuTree().map(item => item.id)
 //   if (currentMenuIdList.length !== oldMenuIdList.length) return true
 //   const [oldStr, currentStr] = [oldMenuIdList, currentMenuIdList].map(item => item.sort().join(''))
 //   return oldStr !== currentStr

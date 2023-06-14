@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Role } from '~/types'
+import { MENUS } from '~/constants'
 
 const props = defineProps<{
   type: 'add' | 'edit'
@@ -28,7 +29,7 @@ const {
   getBase,
   refForm,
 })
-const treeData = generateTreeMenuData()
+const treeData = generateTreeMenuData(MENUS)
 watch(visible, (val) => {
   if (val) {
     assign([getBase(), props.data][Number(props.type === 'edit')])
@@ -42,7 +43,7 @@ function handleOk() {
   })
 }
 const allCheckedKeys = $computed<number[]>(() => {
-  return getFlattenMenuTree().map(item => item.id)
+  return flattenMenu(MENUS).map(item => item.id)
 })
 const isAllChecked = $computed(() => {
   return [

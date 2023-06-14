@@ -65,6 +65,7 @@ declare global {
   const effectScope: typeof import('vue')['effectScope']
   const empty: typeof import('./composables/common/is')['empty']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const flattenMenu: typeof import('./composables/menu')['flattenMenu']
   const floor: typeof import('./composables/common/number')['floor']
   const formatDate: typeof import('./composables/common/date')['formatDate']
   const formatMenuIcon: typeof import('./composables/menu')['formatMenuIcon']
@@ -74,7 +75,6 @@ declare global {
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getFetchParams: typeof import('./composables/table')['getFetchParams']
   const getFileBase64: typeof import('./composables/file')['getFileBase64']
-  const getFlattenMenuTree: typeof import('./composables/menu')['getFlattenMenuTree']
   const getLayoutContentHeight: typeof import('./composables/layout')['getLayoutContentHeight']
   const getLayoutContentLeftDistance: typeof import('./composables/layout')['getLayoutContentLeftDistance']
   const getMatchedMenuItemsIfParentExist: typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']
@@ -83,6 +83,7 @@ declare global {
   const getRandomName: typeof import('./composables/common/string')['getRandomName']
   const getRandomStr: typeof import('./composables/common/string')['getRandomStr']
   const getTypeName: typeof import('./composables/common/function')['getTypeName']
+  const getUserFlattenMenuTree: typeof import('./composables/menu')['getUserFlattenMenuTree']
   const h: typeof import('vue')['h']
   const hasMenuIcon: typeof import('./composables/menu')['hasMenuIcon']
   const hideFormLabel: typeof import('./composables/form')['hideFormLabel']
@@ -448,6 +449,7 @@ declare module 'vue' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly empty: UnwrapRef<typeof import('./composables/common/is')['empty']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly flattenMenu: UnwrapRef<typeof import('./composables/menu')['flattenMenu']>
     readonly floor: UnwrapRef<typeof import('./composables/common/number')['floor']>
     readonly formatDate: UnwrapRef<typeof import('./composables/common/date')['formatDate']>
     readonly formatMenuIcon: UnwrapRef<typeof import('./composables/menu')['formatMenuIcon']>
@@ -457,7 +459,6 @@ declare module 'vue' {
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
     readonly getFileBase64: UnwrapRef<typeof import('./composables/file')['getFileBase64']>
-    readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
     readonly getLayoutContentHeight: UnwrapRef<typeof import('./composables/layout')['getLayoutContentHeight']>
     readonly getLayoutContentLeftDistance: UnwrapRef<typeof import('./composables/layout')['getLayoutContentLeftDistance']>
     readonly getMatchedMenuItemsIfParentExist: UnwrapRef<typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']>
@@ -466,6 +467,7 @@ declare module 'vue' {
     readonly getRandomName: UnwrapRef<typeof import('./composables/common/string')['getRandomName']>
     readonly getRandomStr: UnwrapRef<typeof import('./composables/common/string')['getRandomStr']>
     readonly getTypeName: UnwrapRef<typeof import('./composables/common/function')['getTypeName']>
+    readonly getUserFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getUserFlattenMenuTree']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly hasMenuIcon: UnwrapRef<typeof import('./composables/menu')['hasMenuIcon']>
     readonly hideFormLabel: UnwrapRef<typeof import('./composables/form')['hideFormLabel']>
@@ -825,6 +827,7 @@ declare module '@vue/runtime-core' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly empty: UnwrapRef<typeof import('./composables/common/is')['empty']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly flattenMenu: UnwrapRef<typeof import('./composables/menu')['flattenMenu']>
     readonly floor: UnwrapRef<typeof import('./composables/common/number')['floor']>
     readonly formatDate: UnwrapRef<typeof import('./composables/common/date')['formatDate']>
     readonly formatMenuIcon: UnwrapRef<typeof import('./composables/menu')['formatMenuIcon']>
@@ -834,7 +837,6 @@ declare module '@vue/runtime-core' {
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
     readonly getFileBase64: UnwrapRef<typeof import('./composables/file')['getFileBase64']>
-    readonly getFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getFlattenMenuTree']>
     readonly getLayoutContentHeight: UnwrapRef<typeof import('./composables/layout')['getLayoutContentHeight']>
     readonly getLayoutContentLeftDistance: UnwrapRef<typeof import('./composables/layout')['getLayoutContentLeftDistance']>
     readonly getMatchedMenuItemsIfParentExist: UnwrapRef<typeof import('./composables/menu')['getMatchedMenuItemsIfParentExist']>
@@ -843,6 +845,7 @@ declare module '@vue/runtime-core' {
     readonly getRandomName: UnwrapRef<typeof import('./composables/common/string')['getRandomName']>
     readonly getRandomStr: UnwrapRef<typeof import('./composables/common/string')['getRandomStr']>
     readonly getTypeName: UnwrapRef<typeof import('./composables/common/function')['getTypeName']>
+    readonly getUserFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getUserFlattenMenuTree']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly hasMenuIcon: UnwrapRef<typeof import('./composables/menu')['hasMenuIcon']>
     readonly hideFormLabel: UnwrapRef<typeof import('./composables/form')['hideFormLabel']>

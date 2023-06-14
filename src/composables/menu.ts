@@ -7,9 +7,8 @@ import { MENU_ICON_MAP } from '~/constants'
  *
  * @dfs 深度递归
  */
-export function getFlattenMenuTree(): Menu[] {
-  const authStore = useAuthStore()
-  if (!authStore.menus.length) return []
+export function flattenMenu(menus: Menu[]): Menu[] {
+  if (!menus.length) return []
   const fn = (item: Menu): Menu[] => {
     if (!item.children?.length) return [item]
     return [
@@ -17,7 +16,15 @@ export function getFlattenMenuTree(): Menu[] {
       ...item.children.flatMap((i: Menu) => fn(i), Infinity),
     ]
   }
-  return authStore.menus.flatMap(fn, Infinity)
+  return menus.flatMap(fn, Infinity)
+}
+
+/**
+ * 获取用户拥有的扁平化菜单
+ */
+export function getUserFlattenMenuTree(): Menu[] {
+  const authStore = useAuthStore()
+  return flattenMenu(authStore.menus)
 }
 
 /**
@@ -59,9 +66,8 @@ export function getMatchedMenuItemsIfParentExist(path: string): Menu[] {
 /**
  * 将菜单数据转换成组件 <a-tree> 所需要的格式
  */
-export function generateTreeMenuData(): TreeNodeData[] {
-  const authStore = useAuthStore()
-  if (!authStore.menus.length) return []
+export function generateTreeMenuData(menus: Menu[]): TreeNodeData[] {
+  if (!menus.length) return []
   const fn = (item: Menu): TreeNodeData => {
     return {
       key: item.id,
@@ -70,5 +76,5 @@ export function generateTreeMenuData(): TreeNodeData[] {
       children: item.children?.map(child => fn(child)),
     } as unknown as TreeNodeData
   }
-  return authStore.menus.map(item => fn(item))
+  return menus.map(item => fn(item))
 }
