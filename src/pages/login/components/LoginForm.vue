@@ -48,9 +48,9 @@ function submit({
         const path = getPathToGoWhenLogin()
         if (!path) {
           Message.error('请联系管理员配置菜单')
-        } else {
-          router.push(path)
+          return
         }
+        router.push(path)
         ANotification.success({
           title: '登录成功',
           content: `你好，${values.username}。欢迎回来！`,
