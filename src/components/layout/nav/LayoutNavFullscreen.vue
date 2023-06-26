@@ -4,7 +4,7 @@ const { isFullscreen, toggle } = useFullscreen()
 
 <template>
   <button
-    icon-btn text-lg
+    text-lg icon-btn
     :class="isFullscreen
       ? 'i-ri-fullscreen-exit-line'
       : 'i-ri-fullscreen-line'"

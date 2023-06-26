@@ -24,9 +24,9 @@ const getTabsLeft = computed(() => {
       />
     </template>
     <template #header>
-      <LayoutNav bg-nav w-full absolute top-0 left-0 :style="{ height: `${params.navHeight}px` }" />
+      <LayoutNav absolute left-0 top-0 w-full bg-nav :style="{ height: `${params.navHeight}px` }" />
       <LayoutTabs
-        v-show="uiStore.settings.showTabs" bg-nav w-full absolute top-0 left-0
+        v-show="uiStore.settings.showTabs" absolute left-0 top-0 w-full bg-nav
         :style="{
           width: `${getTabsWidth}`,
           height: `${params.tabHeight}px`,

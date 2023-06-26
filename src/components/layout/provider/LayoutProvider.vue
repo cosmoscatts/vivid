@@ -38,7 +38,7 @@ const showPageHeader = computed(() => {
 </script>
 
 <template>
-  <a-layout relative hw-screen bg-body of-hidden>
+  <a-layout relative hw-screen of-hidden bg-body>
     <slot name="side" />
 
     <a-layout

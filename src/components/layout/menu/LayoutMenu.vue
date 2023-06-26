@@ -38,7 +38,7 @@ const menus = computed(() => {
 
 <template>
   <div
-    hw-full flex-x-center bg-transparent of-hidden
+    hw-full flex-x-center of-hidden bg-transparent
     :class="['', 'items-center'][Number(mode === 'horizontal')]"
   >
     <a-menu

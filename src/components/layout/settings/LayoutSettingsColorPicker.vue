@@ -11,10 +11,10 @@ function change(value: string) {
 <template>
   <div grid="~ cols-3 gap4" rounded border="1px [var(--color-border)]" p="x4 y3">
     <div v-for="{ prop, name, hex } of defaultThemeColors" :key="prop" flex>
-      <div class="flex-center w-20px h-20px rounded-2px shadow cursor-pointer" :style="{ backgroundColor: hex }" @click="change(prop)">
+      <div class="h-20px w-20px flex-center cursor-pointer rounded-2px shadow" :style="{ backgroundColor: hex }" @click="change(prop)">
         <div v-if="isChecked(prop)" i-carbon-checkmark text="14px white" />
       </div>
-      <span text-sm ml2>{{ name }}</span>
+      <span ml2 text-sm>{{ name }}</span>
     </div>
   </div>
 </template>

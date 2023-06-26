@@ -86,9 +86,9 @@ defineExpose({ endLoading })
         />
       </CommonFormItem>
       <CommonFormItem field="menuIdList" label="角色权限">
-        <div flex="~ col" wfull max-h-350px of-y-auto>
+        <div flex="~ col" max-h-350px wfull of-y-auto>
           <a-button
-            type="text" font-bold w100px
+            type="text" w100px font-bold
             @click="toggleChecked"
           >
             {{ ['全选', '取消全选'][Number(isAllChecked)] }}

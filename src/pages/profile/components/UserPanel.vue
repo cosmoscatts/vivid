@@ -64,7 +64,7 @@ const descriptionsColumn = computed(() => {
             @before-upload="checkImageBeforeUpload"
           >
             <template #upload-button>
-              <IconCamera text-18px mr4 hover:text-primary />
+              <IconCamera mr4 text-18px hover:text-primary />
             </template>
           </a-upload>
           <IconEye text-18px hover:text-primary @click="imagePreviewVisible = true" />

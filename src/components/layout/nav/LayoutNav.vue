@@ -23,7 +23,7 @@ const logoWidth = computed(() => isPC.value
     <LayoutLogo v-if="isHorizontalOrMix || isMobile" :style="{ width: `${logoWidth}px` }" />
     <LayoutMenu v-if="isHorizontal && isPC" mode="horizontal" mr2 :style="{ width: `calc(100% - 500px)` }" />
     <LayoutNavCollapseToggle v-if="showCollapseToggle" mx4 />
-    <LayoutPageHeader v-if="showPageHeader" mt4px ml4 />
+    <LayoutPageHeader v-if="showPageHeader" ml4 mt4px />
     <div flex-auto />
     <div v-if="isPC" flex-y-center>
       <LayoutNavGithub mr4 />

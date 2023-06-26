@@ -77,7 +77,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
 </script>
 
 <template>
-  <div ref="refContainer" of-hidden w-full border-b="1px solid [var(--color-border)]" flex-y-center>
+  <div ref="refContainer" border-b="1px solid [var(--color-border)]" w-full flex-y-center of-hidden>
     <CommonScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }" flex-1>
       <div
         ref="refTab"
@@ -89,7 +89,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
       >
         <div
           v-for="{ title, path, icon }, index in tabs" :key="path"
-          flex="inline y-center" wa h26px lh-26px cursor-pointer
+          flex="inline y-center" h26px wa cursor-pointer lh-26px
           :class="{ 'ha max-h-full': chrome }"
         >
           <LayoutTabItem

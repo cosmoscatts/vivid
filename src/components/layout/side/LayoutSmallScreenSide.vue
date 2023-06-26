@@ -6,7 +6,7 @@ const show = ref(false)
 
 <template>
   <button
-    icon-btn text-lg i-carbon-menu
+    i-carbon-menu text-lg icon-btn
     @click="show = !show"
   />
 
@@ -19,7 +19,7 @@ const show = ref(false)
   >
     <div flex="center col">
       <LayoutNavDropdown h50px />
-      <div flex-center h50px mt10px>
+      <div mt10px h50px flex-center>
         <LayoutNavGithub mr4 />
         <LayoutNavBell mr4 />
         <LayoutNavFullscreen mr4 />

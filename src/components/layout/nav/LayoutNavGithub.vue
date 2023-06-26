@@ -4,7 +4,7 @@ import { APP_META } from '~/constants'
 
 <template>
   <a
-    icon-btn text-lg i-ri-github-line
+    i-ri-github-line text-lg icon-btn
     :href="APP_META.github" target="_blank" title="GitHub"
   />
 </template>

@@ -15,7 +15,7 @@ function formatIcon(key: BellDataType) {
 </script>
 
 <template>
-  <a-list :max-height="360" w-full h360px cursor-pointer>
+  <a-list :max-height="360" h360px w-full cursor-pointer>
     <a-list-item
       v-for="{ title, date } in data"
       :key="title"

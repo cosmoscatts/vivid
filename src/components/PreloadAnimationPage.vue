@@ -7,6 +7,6 @@ onMounted(() => useLottie({
 
 <template>
   <div hw-screen flex-center text-36px font-bold bg-body>
-    <div id="lottie-container" w300px h300px />
+    <div id="lottie-container" h300px w300px />
   </div>
 </template>

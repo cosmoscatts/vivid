@@ -9,7 +9,7 @@ import { Motion, TypeIt } from '~/utils'
 <template>
   <div select-none>
     <img :src="bg" class="wave">
-    <div flex-center absolute right-5 top-3>
+    <div absolute right-5 top-3 flex-center>
       <LayoutNavDarkToggle />
     </div>
 

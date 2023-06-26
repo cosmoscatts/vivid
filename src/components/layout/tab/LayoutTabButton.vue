@@ -28,7 +28,7 @@ const tabStyle = computed(() => {
   <span
     ref="refTab"
     flex="center nowrap"
-    lt-sm="!min-w-70px" px2 truncate
+    lt-sm="!min-w-70px" truncate px2
     text="13px hover:primary"
     border="1px #e5e7eb dark:#ffffff3d"
     :style="tabStyle"

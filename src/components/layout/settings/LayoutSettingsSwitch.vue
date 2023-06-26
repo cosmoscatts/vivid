@@ -11,7 +11,7 @@ const switchColors = {
 </script>
 
 <template>
-  <div flex-y-center justify-between my3>
+  <div my3 flex-y-center justify-between>
     <span>
       {{ name }}
     </span>

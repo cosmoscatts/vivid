@@ -52,16 +52,16 @@ function formatIcon(key: BellDataType) {
 </script>
 
 <template>
-  <div flex-y-center mt-2px>
+  <div mt-2px flex-y-center>
     <a-popover trigger="click" position="br" :content-style="{ paddingBottom: 0 }">
       <a-badge :count="totalCnt" dot>
-        <button i-carbon-notification icon-btn text-lg />
+        <button i-carbon-notification text-lg icon-btn />
       </a-badge>
       <template #content>
         <a-tabs v-model:active-key="activeKey" w-420px flex="~ col" items-center type="rounded">
           <a-tab-pane v-for="{ name, type, color }, idx in tabList" :key="idx">
             <template #title>
-              <div flex-center w100px>
+              <div w100px flex-center>
                 <Component :is="formatIcon(type)" :size="18" mr2 />
                 {{ name }}
                 <a-badge
@@ -77,10 +77,10 @@ function formatIcon(key: BellDataType) {
           </a-tab-pane>
         </a-tabs>
         <div flex cursor-pointer>
-          <div flex-1 text-center py10px>
+          <div flex-1 py10px text-center>
             <a-button>全部已读</a-button>
           </div>
-          <div flex-1 text-center py10px>
+          <div flex-1 py10px text-center>
             <a-button>查看更多</a-button>
           </div>
         </div>

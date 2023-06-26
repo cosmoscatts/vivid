@@ -32,7 +32,7 @@ watch(() => props.tabIdx, reset)
 </script>
 
 <template>
-  <a-form ref="refForm" :model="formModel" size="large" class="lg:!w540px md:!w440px sm:!w350px xs:!w260px mxa">
+  <a-form ref="refForm" :model="formModel" size="large" class="mxa lg:!w540px md:!w440px sm:!w350px xs:!w260px">
     <CommonFormItem field="name" label="名称">
       <a-input v-model="formModel.name" placeholder="请输入名称..." allow-clear />
     </CommonFormItem>

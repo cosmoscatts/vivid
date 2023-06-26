@@ -11,41 +11,41 @@ const layoutCardShadow = computed(() => {
   <div grid="~ cols-2" h180px>
     <div v-for="{ label, value }, idx in options" :key="idx" col-span-1 flex-center>
       <div
-        border-2px rd-6px cursor-pointer hover:border-primary
+        cursor-pointer border-2px rd-6px hover:border-primary
         :class="[isChecked(value) ? 'border-primary' : 'border-transparent']"
         @click="modelValue = value"
       >
         <a-tooltip :content="label" position="bottom">
           <div
-            class="layout-card__shadow gap6px w96px h64px p6px rd-4px"
+            class="layout-card__shadow h64px w96px gap6px rd-4px p6px"
             :class="[value.includes('vertical') ? 'flex' : 'flex flex-col']"
           >
             <template v-if="value === 'vertical'">
-              <div w18px h-full bg-primary:50 rd-4px />
+              <div h-full w18px rd-4px bg-primary:50 />
               <div flex="~ 1 col" gap6px>
-                <div h16px bg-primary rd-4px />
-                <div flex-1 bg-primary:25 rd-4px />
+                <div h16px rd-4px bg-primary />
+                <div flex-1 rd-4px bg-primary:25 />
               </div>
             </template>
             <template v-if="value === 'vertical-mix'">
-              <div w8px h-full bg-primary:50 rd-4px />
-              <div w16px h-full bg-primary:50 rd-4px />
+              <div h-full w8px rd-4px bg-primary:50 />
+              <div h-full w16px rd-4px bg-primary:50 />
               <div flex="~ 1 col" gap6px>
-                <div h16px bg-primary rd-4px />
-                <div flex-1 bg-primary:25 rd-4px />
+                <div h16px rd-4px bg-primary />
+                <div flex-1 rd-4px bg-primary:25 />
               </div>
             </template>
             <template v-if="value === 'horizontal'">
-              <div h16px bg-primary rd-4px />
+              <div h16px rd-4px bg-primary />
               <div flex="~ 1" gap6px>
-                <div flex-1 bg-primary:25 rd-4px />
+                <div flex-1 rd-4px bg-primary:25 />
               </div>
             </template>
             <template v-if="value === 'horizontal-mix'">
-              <div h16px bg-primary rd-4px />
+              <div h16px rd-4px bg-primary />
               <div flex="~ 1" gap6px>
-                <div w18px bg-primary:50 rd-4px />
-                <div flex-1 bg-primary:25 rd-4px />
+                <div w18px rd-4px bg-primary:50 />
+                <div flex-1 rd-4px bg-primary:25 />
               </div>
             </template>
           </div>

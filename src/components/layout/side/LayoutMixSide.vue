@@ -54,7 +54,7 @@ watch(() => route.path, getActiveParentMenuId, { immediate: true })
 </script>
 
 <template>
-  <div flex h-full @mouseleave="resetFirstDegreeMenus">
+  <div h-full flex @mouseleave="resetFirstDegreeMenus">
     <div flex="~ col" bg-side :style="{ width: uiStore.collapseSide.state ? `${params.mixSideCollapsedWidth}px` : `${params.mixSideWidth}px` }">
       <LayoutLogo />
       <div flex-1 of="x-hidden y-auto">

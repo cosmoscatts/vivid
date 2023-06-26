@@ -87,7 +87,7 @@ function deleteData(data: Role) {
           {{ formatRowIndex(rowIndex) }}
         </template>
         <template #name="{ record }">
-          <span text-primary font-bold>{{ record.name ?? '无' }}</span>
+          <span font-bold text-primary>{{ record.name ?? '无' }}</span>
         </template>
         <template #createTime="{ record }">
           {{ formatDate(record.createTime, { defaultReturn: '-' }) }}

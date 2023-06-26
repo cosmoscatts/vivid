@@ -17,14 +17,14 @@ const showDrawer = computed(() => (props.visible && props.menus.length) || uiSto
     :style="{ width: uiStore.mixSideFixed ? `${params.mixSideDrawerWidth}px` : '0px' }"
   >
     <div
-      class="drawer-shadow absolute left-0 top-0 flex-col items-stretch h-full whitespace-nowrap overflow-hidden bg-side"
+      class="drawer-shadow absolute left-0 top-0 h-full flex-col items-stretch overflow-hidden whitespace-nowrap bg-side"
       :style="{ width: showDrawer ? `${params.mixSideDrawerWidth}px` : '0px' }"
     >
       <header flex-y-center justify-between px5px :style="{ height: `${params.navHeight}px` }">
-        <h2 text-primary pl-8px text-24px font-bold>
+        <h2 pl-8px text-24px font-bold text-primary>
           {{ meta.name }}
         </h2>
-        <div px-8px text-14px text-gray-600 cursor-pointer @click="uiStore.toggleMixSideFixed">
+        <div cursor-pointer px-8px text-14px text-gray-600 @click="uiStore.toggleMixSideFixed">
           <div v-if="uiStore.mixSideFixed" i-mdi-pin-off />
           <div v-else i-mdi-pin />
         </div>

@@ -4,7 +4,7 @@ defineOptions({ inheritAttrs: true })
 </script>
 
 <template>
-  <span whitespace-nowrap of-hidden text-ellipsis>
+  <span of-hidden text-ellipsis whitespace-nowrap>
     <slot>
       {{ content }}
     </slot>

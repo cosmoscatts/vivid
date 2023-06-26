@@ -1,6 +1,6 @@
 <template>
   <button
-    icon-btn text-lg
+    text-lg icon-btn
     i="carbon-sun dark:carbon-asleep"
     @click="toggleDark"
   />

@@ -17,19 +17,19 @@ const primaryColor = computed(() => {
 
 <template>
   <div
-    ref="refTab" relative h34px px24px flex="inline y-center" m="r-[-18px]" cursor-pointer text="stone-600 dark:light-600/80"
+    ref="refTab" flex="inline y-center" m="r-[-18px]" relative h34px cursor-pointer px24px text="stone-600 dark:light-600/80"
     :class="{ 'z-10': active, 'z-9': hover, '!text-primary': active }"
   >
-    <div absolute left-0 bottom-0 hw-full of-hidden>
+    <div absolute bottom-0 left-0 hw-full of-hidden>
       <LayoutTabChromeShape v-bind="{ hover, active, primaryColor }" />
     </div>
     <span relative z2 whitespace-nowrap flex="inline y-center">
-      <component :is="formatMenuIcon(icon!)" v-if="hasMenuIcon(icon)" mr2 z2 :class="{ 'text-primary': active }" />
+      <component :is="formatMenuIcon(icon!)" v-if="hasMenuIcon(icon)" z2 mr2 :class="{ 'text-primary': active }" />
       {{ title }}
     </span>
     <LayoutTabClose />
     <div
-      absolute right="[-2px]" z2 w20px h16px scale-x-5 bg="[#1f2225]" op100 transition="opacity 0.3s ease-in-out"
+      right="[-2px]" bg="[#1f2225]" absolute z2 h16px w20px scale-x-5 op100 transition="opacity 0.3s ease-in-out"
       :class="{
         '!op-0': hover || active || last,
         '!bg-[#595959]': isDark,
