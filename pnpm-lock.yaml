@@ -40,7 +40,7 @@ specifiers:
   nprogress: ^0.2.0
   pinia: ^2.1.4
   pinia-plugin-persist-uni: ^1.2.0
-  pnpm: ^8.6.4
+  pnpm: ^8.5.1
   std-env: ^3.3.3
   taze: ^0.10.2
   typeit: ^8.7.1
