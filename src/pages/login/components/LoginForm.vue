@@ -41,8 +41,7 @@ function submit({
     roleId: 1,
     createTime: new Date(),
   }
-  authStore
-    .login(data)
+  authStore.login(data)
     .then(() => {
       useTimeoutFn(() => {
         const path = getPathToGoWhenLogin()
@@ -56,8 +55,7 @@ function submit({
           content: `你好，${values.username}。欢迎回来！`,
         })
       }, 1000)
-    })
-    .finally(() => useTimeoutFn(endLoading, 1000))
+    }).finally(() => useTimeoutFn(endLoading, 1000))
 }
 </script>
 
