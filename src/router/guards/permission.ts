@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { NOT_FOUND, NO_PERMISSION } from '../constants'
-import { Conditional, checkRoutePermission, getPathToGoWhenLogin } from '~/utils'
+import { checkRoutePermission, getPathToGoWhenLogin, strategy } from '~/utils'
 
 export default function createPermissionGuard(
   to: RouteLocationNormalized,
@@ -42,5 +42,5 @@ export default function createPermissionGuard(
       Message.error('没有权限哦，请联系管理员')
     }],
   ]
-  Conditional.some(actions)
+  strategy.some(actions)
 }
