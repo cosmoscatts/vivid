@@ -4,7 +4,7 @@ import { DEFAULT_AVATAR, IS_MOCK, MENUS } from '~/constants'
 
 export const useAuthStore = defineStore('authStore', () => {
   const user = ref<Nullable<User>>(null)
-  const menus = ref<Menu[]>(MENUS)
+  const menus = ref<Menu[]>([])
   const hasLogin = computed(() => !!user.value?.id)
 
   function updateUser(data: User) {
