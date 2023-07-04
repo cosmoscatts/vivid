@@ -1,5 +1,4 @@
-import { THEME_MODE_KEY } from '~/constants'
-import { defaultThemeColors } from '~/config'
+import { THEME_MODE_KEY, defaultThemeColors } from '~/constants'
 
 export function createPrimaryColor(colorProp: string) {
   if (!defaultThemeColors.map(i => i.prop).includes(colorProp)) return

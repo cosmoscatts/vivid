@@ -9,8 +9,9 @@ import type {
   PutParams,
   Result,
 } from '~/types'
-import { AXIOS_TIMEOUT } from '~/constants'
 import { getCurrentApiUrl } from '~/config'
+
+const AXIOS_TIMEOUT = 5000
 
 function createAxios(mergeConfig?: () => AxiosRequestConfig) {
   const _axios = axios.create({

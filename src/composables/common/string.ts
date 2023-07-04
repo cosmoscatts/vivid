@@ -58,5 +58,3 @@ export function capitalize(str: string): string {
 export function nonNullStr(str?: string | null) {
   return str ?? ''
 }
-
-

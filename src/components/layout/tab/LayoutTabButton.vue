@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { StyleValue } from 'vue'
 import { addColorAlpha } from '~/utils'
-import { defaultThemeColors } from '~/config'
+import { defaultThemeColors } from '~/constants'
 
 const props = defineProps<{
   title: string

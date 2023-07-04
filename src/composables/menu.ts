@@ -13,10 +13,10 @@ export function flattenMenu(menus: Menu[]): Menu[] {
     if (!item.children?.length) return [item]
     return [
       item,
-      ...item.children.flatMap((i: Menu) => fn(i), Infinity),
+      ...item.children.flatMap((i: Menu) => fn(i), Number.POSITIVE_INFINITY),
     ]
   }
-  return menus.flatMap(fn, Infinity)
+  return menus.flatMap(fn, Number.POSITIVE_INFINITY)
 }
 
 /**

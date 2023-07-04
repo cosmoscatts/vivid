@@ -11,5 +11,3 @@ export function ceil(val: number) {
 export function floor(val: number) {
   return Math.floor(val)
 }
-
-

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defaultThemeColors } from '~/config'
+import { defaultThemeColors } from '~/constants'
 
 defineProps<{
   title: string

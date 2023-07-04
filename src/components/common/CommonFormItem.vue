@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { FieldRule } from '@arco-design/web-vue'
 
+defineOptions({
+  inheritAttrs: true,
+})
 const {
   field,
   label,
@@ -21,9 +24,6 @@ const {
 const defaultRules = computed(() => {
   if (!hasRules) return []
   return [{ required: true, message: `${label}是必须的` }]
-})
-defineOptions({
-  inheritAttrs: true,
 })
 </script>
 

@@ -12,6 +12,8 @@ declare global {
   const $shallowRef: typeof import('vue/macros')['$shallowRef']
   const $toRef: typeof import('vue/macros')['$toRef']
   const ANotification: typeof import('./composables/arco')['ANotification']
+  const APP_META: typeof import('@arco-design/web-vue')['PP_META']
+  const AXIOS_TIMEOUT: typeof import('./composables/request')['AXIOS_TIMEOUT']
   const BaseRequest: typeof import('./composables/request')['BaseRequest']
   const EffectScope: typeof import('vue')['EffectScope']
   const Message: typeof import('./composables/arco')['Message']
@@ -411,6 +413,7 @@ declare module 'vue' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly ANotification: UnwrapRef<typeof import('./composables/arco')['ANotification']>
+    readonly APP_META: UnwrapRef<typeof import('@arco-design/web-vue')['PP_META']>
     readonly BaseRequest: UnwrapRef<typeof import('./composables/request')['BaseRequest']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Message: UnwrapRef<typeof import('./composables/arco')['Message']>
@@ -801,6 +804,7 @@ declare module '@vue/runtime-core' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly ANotification: UnwrapRef<typeof import('./composables/arco')['ANotification']>
+    readonly APP_META: UnwrapRef<typeof import('@arco-design/web-vue')['PP_META']>
     readonly BaseRequest: UnwrapRef<typeof import('./composables/request')['BaseRequest']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Message: UnwrapRef<typeof import('./composables/arco')['Message']>

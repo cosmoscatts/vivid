@@ -37,7 +37,6 @@ export function getRandomBool(p = 0.5) {
   return Math.random() < p
 }
 
-
 /**
  * 获取近两年随机日期时间
  */

@@ -15,7 +15,7 @@ const firstDegreeMenus = computed(() =>
     const has = (item: Menu) => Boolean(item.children && item.children.length)
     const fn = (item: Menu): string[] => {
       if (!has(item)) return item.path ? [item.path] : []
-      return item.children!.flatMap(i => fn(i), Infinity).filter(Boolean)
+      return item.children!.flatMap(i => fn(i), Number.POSITIVE_INFINITY).filter(Boolean)
     }
     return {
       ...item,
