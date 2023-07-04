@@ -12,6 +12,13 @@ export const useAuthStore = defineStore('authStore', () => {
     if (!data.avatar) data.avatar = DEFAULT_AVATAR
     user.value = data
   }
+  function updateAvatar(avatar = DEFAULT_AVATAR) {
+    if (!user.value) return
+    user.value = {
+      ...user.value,
+      avatar,
+    }
+  }
   function removeUser() {
     user.value = null
   }
@@ -44,6 +51,7 @@ export const useAuthStore = defineStore('authStore', () => {
     login,
     logout,
     updateUser,
+    updateAvatar,
   }
 }, { persist: { enabled: true } })
 

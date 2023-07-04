@@ -1,5 +1,5 @@
 export function getFileBase64(file: File) {
-  return new Promise((resolve, reject) => {
+  return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
     let imageAsDataURL = ''
     reader.readAsDataURL(file)

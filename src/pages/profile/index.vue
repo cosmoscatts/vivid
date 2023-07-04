@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import UserPanel from './components/UserPanel.vue'
-import BasicInformation from './components/BasicInformation.vue'
-import SecuritySettings from './components/SecuritySettings.vue'
+import ProfileUserPanel from './components/ProfileUserPanel.vue'
+import ProfileBasicInformation from './components/ProfileBasicInformation.vue'
+import ProfileSecuritySettings from './components/ProfileSecuritySettings.vue'
 
 let activeTabIdx = $ref(1)
 const changeTabIdx = (key: string | number) => activeTabIdx = Number(key)
@@ -11,7 +11,7 @@ const changeTabIdx = (key: string | number) => activeTabIdx = Number(key)
   <div>
     <a-row mb16px>
       <a-col :span="24">
-        <UserPanel />
+        <ProfileUserPanel />
       </a-col>
     </a-row>
 
@@ -22,13 +22,13 @@ const changeTabIdx = (key: string | number) => activeTabIdx = Number(key)
             <template #title>
               <IconInfoCircle /> 基础信息
             </template>
-            <BasicInformation :tab-idx="activeTabIdx" />
+            <ProfileBasicInformation :tab-idx="activeTabIdx" />
           </a-tab-pane>
           <a-tab-pane :key="2">
             <template #title>
               <IconLock /> 安全设置
             </template>
-            <SecuritySettings :tab-idx="activeTabIdx" />
+            <ProfileSecuritySettings :tab-idx="activeTabIdx" />
           </a-tab-pane>
         </a-tabs>
       </a-col>

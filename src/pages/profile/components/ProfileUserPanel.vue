@@ -15,10 +15,9 @@ let file = $ref<FileItem | undefined>(getFileUrl())
 watch(avatar, () => file = getFileUrl())
 
 function onChange(_: FileItem[], currentFile: FileItem) {
-  file = {
-    ...currentFile,
-  }
+  file = { ...currentFile }
   getFileBase64(file.file!).then(async (_imageAsDateURL) => {
+    authStore.updateAvatar(_imageAsDateURL)
     Message.success('上传成功')
   })
 }
