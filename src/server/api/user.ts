@@ -11,7 +11,7 @@ export const UserApi = {
             username: getRandomStr(10),
             name: getRandomName(),
             password: getRandomStr(6),
-            roleId: getRandomInteger(4),
+            roleId: getRandomInteger(4) + 1,
             createTime: new Date(getRandomDate()),
           } as User)),
           total: length,

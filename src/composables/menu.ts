@@ -50,17 +50,26 @@ export function formatMenuIcon(icon: string) {
 export function getMatchedMenuItemsIfParentExist(path: string): Menu[] {
   if (path === '/profile') return [{ title: '个人资料', icon: 'profile' } as Menu]
   const authStore = useAuthStore()
-  const menus = authStore.menus
-  if (!menus.length) return []
-  for (const item of menus) {
-    if (!item.children?.length && item.path === path) return [item]
-    if (item.children?.length) {
-      for (const child of item.children) {
-        if (child.path === path) return [item, child]
+  const result = [] as Menu[]
+  const dfs = (menus: Menu[], index: number): boolean => {
+    if (index >= menus.length) return false
+    const current = menus[index]
+    if (current.path === path) {
+      result.unshift(current)
+      return true
+    }
+    if (current.children?.length) {
+      const f = dfs(current.children, 0)
+      if (f) {
+        result.unshift(current)
+        return true
       }
     }
+    return dfs(menus, index + 1)
   }
-  return []
+
+  dfs(authStore.menus, 0)
+  return result
 }
 
 /**
