@@ -105,7 +105,7 @@ defineExpose({ endLoading })
       <CommonFormItem field="roleId" label="角色">
         <a-select
           v-model="formModel.roleId"
-          :options="SelectOptionsHandler.roleOptions"
+          :options="O.options('role')"
           placeholder="请选择角色..."
           allow-clear
         />

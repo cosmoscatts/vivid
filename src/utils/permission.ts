@@ -24,7 +24,7 @@ export function checkRoutePermission(route: RouteLocationNormalized): boolean {
 /**
  * 找到登录后跳转的路由
  */
-export function getPathToGoWhenLogin() {
+export function getToRouteAfterLogin() {
   const uiStore = useUiStore()
   const tabStore = useTabStore()
   const ownPaths = getRoutesInPermission()

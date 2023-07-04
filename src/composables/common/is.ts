@@ -71,10 +71,15 @@ export function isTruthy<T>(v: T): v is NonNullable<T> {
   return Boolean(v)
 }
 
-export function empty(data?: any) {
-  if (!data) return true
-  if (isString(data)) return makeNonNullStr(data).length === 0
-  if (isArray(data)) return data.length === 0
-  if (isObject(data)) return Object.keys(data).length === 0
-  return false
+type List<T> = ArrayLike<T>
+type EmptyObject<T> = { [K in keyof T]?: never }
+type EmptyObjectOf<T> = EmptyObject<T> extends T ? EmptyObject<T> : never
+
+export function isEmpty<T extends { __trapAny: any }>(value?: T): boolean
+export function isEmpty(value: string): value is ''
+export function isEmpty(value: Map<any, any> | Set<any> | List<any> | null | undefined): boolean
+export function isEmpty(value: object): boolean
+export function isEmpty<T extends object>(value: T | null | undefined): value is EmptyObjectOf<T> | null | undefined
+export function isEmpty(value?: any): boolean {
+  return lodash.isEmpty(value)
 }

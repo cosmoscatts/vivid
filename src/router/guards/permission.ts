@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { NOT_FOUND, NO_PERMISSION } from '../constants'
-import { checkRoutePermission, getPathToGoWhenLogin, strategy } from '~/utils'
+import { checkRoutePermission, getToRouteAfterLogin } from '~/utils'
 
 export default function createPermissionGuard(
   to: RouteLocationNormalized,
@@ -17,7 +17,7 @@ export default function createPermissionGuard(
   const actions: [boolean, Function][] = [
     // 已登录状态跳转登录页，跳转至第一项菜单
     [hasLogin && to.name === 'Login', () => {
-      const path = getPathToGoWhenLogin()
+      const path = getToRouteAfterLogin()
       if (path) {
         next(path)
       } else {

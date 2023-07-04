@@ -80,7 +80,7 @@ function deleteData(data: User) {
         </template>
         <template #roleId="{ record }">
           <a-tag color="#7bc616">
-            {{ SelectOptionsHandler.roleOptions.find(i => i.value === record.roleId)?.label ?? '无' }}
+            {{ O.label('role', record.roleId) }}
           </a-tag>
         </template>
         <template #createTime="{ record }">

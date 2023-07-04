@@ -11,6 +11,6 @@ export function isProduction() {
 }
 
 export function getCurrentApiUrl() {
-  if (isProduction() && !empty(window.g.url)) return window.g.url
+  if (isProduction() && !isEmpty(window.g.url)) return window.g.url
   return import.meta.env.VITE_BASE_API_URL as string
 }

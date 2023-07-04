@@ -42,7 +42,7 @@ function handleUrlParams(params?: AnyObject | AnyObject[]) {
   let paramStr = ''
   params
     .flatMap((i: AnyObject) => Object.entries(i))
-    .filter(([_, value]) => (isArray(value) && !empty(value)) || isBoolean(value) || !!value)
+    .filter(([_, value]) => (isArray(value) && !isEmpty(value)) || isBoolean(value) || !!value)
     .forEach(([key, value]) => {
       const values = isArray(value) ? [...value] : [value]
       values.forEach(i => paramStr += `&${encodeURIComponent(key)}=${encodeURIComponent(i as string)}`)
