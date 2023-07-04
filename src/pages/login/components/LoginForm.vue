@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
-import { isDevelopment } from '~/config'
 import { Motion, getToRouteAfterLogin } from '~/utils'
 
 const router = useRouter()

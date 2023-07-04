@@ -27,7 +27,7 @@ const {
   endLoading,
   assign,
   ok,
-} = createModalData<User>({
+} = useFormModel<User>({
   getBase,
   refForm,
 })

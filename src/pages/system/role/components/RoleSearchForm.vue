@@ -13,7 +13,7 @@ const {
   formModel,
   reset,
   getSearchFormParams,
-} = createSearchForm(getBase)
+} = useSearchForm(getBase)
 function search() {
   emit('search')
 }

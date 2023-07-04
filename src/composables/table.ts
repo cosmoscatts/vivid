@@ -6,7 +6,7 @@ export const basePagination: Pagination = {
   pageSize: 10,
 }
 
-export function createPagination(fetch = () => {}, opts = basePagination) {
+export function usePagination(fetch = () => {}, opts = basePagination) {
   const pagination = reactive({ ...opts })
   const formatRowIndex = (idx: number) => {
     const { current, pageSize } = pagination
@@ -31,6 +31,27 @@ export function createPagination(fetch = () => {}, opts = basePagination) {
     onPageChange,
     onPageSizeChange,
   }
+}
+
+export function handleParamsWithSameDate(params: Record<string, any>) {
+  const keys = Object.keys(params)
+  if (!keys.includes('createTime') && !keys.includes('updateTime')) return params
+
+  const handle = ([start, end]: [string, string]) => {
+    start = `${start} 00:00:00`
+    end = `${end} 23:59:59`
+    return [start, end]
+  }
+
+  if (keys.includes('createTime') && params.createTime?.length === 2) {
+    params.createTime = handle(params.createTime)
+  }
+
+  if (keys.includes('updateTime') && params.updateTime?.length === 2) {
+    params.updateTime = handle(params.updateTime)
+  }
+
+  return params
 }
 
 export function getFetchParams(opts?: {

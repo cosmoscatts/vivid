@@ -1,4 +1,4 @@
-import type { Ref, UnwrapRef } from 'vue'
+import type { UnwrapRef } from 'vue'
 
 type ModalAction = 'add' | 'edit'
 
@@ -18,46 +18,5 @@ export function useControlModal<T = any>() {
     modalVisible,
     selectedItem,
     showModal,
-  }
-}
-
-export function createModalData<T extends object, K extends object = any>({
-  getBase,
-  refForm,
-}: {
-  getBase: () => K
-  refForm: Ref<any>
-}) {
-  const formModel = reactive<K>(getBase())
-  const { loading, startLoading, endLoading } = useLoading()
-
-  const assign = (data: T | K) => {
-    assignObj(data, formModel)
-  }
-
-  const ok = (fn: () => void) => {
-    const [last, now] = [useTimestamp().value, useTimestamp()]
-    refForm.value.validate((errors: any) => {
-      if (errors) return
-      startLoading()
-      fn?.()
-    })
-    const needClose = computed(() => (now.value - last) > 5000)
-    watchOnce(needClose, endLoading)
-  }
-
-  const reset = () => {
-    assignObj(getBase(), formModel)
-    refForm.value?.clearValidate()
-  }
-
-  return {
-    formModel,
-    loading,
-    startLoading,
-    endLoading,
-    assign,
-    ok,
-    reset,
   }
 }

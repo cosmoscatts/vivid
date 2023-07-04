@@ -47,12 +47,11 @@ declare global {
   const createEventHook: typeof import('@vueuse/core')['createEventHook']
   const createGlobalState: typeof import('@vueuse/core')['createGlobalState']
   const createInjectionState: typeof import('@vueuse/core')['createInjectionState']
-  const createModalData: typeof import('./composables/modal')['createModalData']
+  const createModalData: typeof import('./composables/form')['createModalData']
   const createPagination: typeof import('./composables/table')['createPagination']
   const createPinia: typeof import('pinia')['createPinia']
   const createReactiveFn: typeof import('@vueuse/core')['createReactiveFn']
   const createReusableTemplate: typeof import('@vueuse/core')['createReusableTemplate']
-  const createSearchForm: typeof import('./composables/form')['createSearchForm']
   const createSharedComposable: typeof import('@vueuse/core')['createSharedComposable']
   const createTemplatePromise: typeof import('@vueuse/core')['createTemplatePromise']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
@@ -79,6 +78,8 @@ declare global {
   const formatNow: typeof import('./composables/common/date')['formatNow']
   const generateTreeMenuData: typeof import('./composables/menu')['generateTreeMenuData']
   const getActivePinia: typeof import('pinia')['getActivePinia']
+  const getCurrentApiUrl: typeof import('./composables/env')['getCurrentApiUrl']
+  const getCurrentEnvMode: typeof import('./composables/env')['getCurrentEnvMode']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getFetchParams: typeof import('./composables/table')['getFetchParams']
@@ -94,6 +95,7 @@ declare global {
   const getTypeName: typeof import('./composables/common/function')['getTypeName']
   const getUserFlattenMenuTree: typeof import('./composables/menu')['getUserFlattenMenuTree']
   const h: typeof import('vue')['h']
+  const handleParamsWithSameDate: typeof import('./composables/table')['handleParamsWithSameDate']
   const hasMenuIcon: typeof import('./composables/menu')['hasMenuIcon']
   const hideFormLabel: typeof import('./composables/form')['hideFormLabel']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
@@ -103,6 +105,7 @@ declare global {
   const isBoolean: typeof import('./composables/common/is')['isBoolean']
   const isDark: typeof import('./composables/dark')['isDark']
   const isDefined: typeof import('@vueuse/core')['isDefined']
+  const isDevelopment: typeof import('./composables/env')['isDevelopment']
   const isEmpty: typeof import('./composables/common/is')['isEmpty']
   const isExtraLargeScreen: typeof import('./composables/screen')['isExtraLargeScreen']
   const isInteger: typeof import('./composables/common/is')['isInteger']
@@ -112,6 +115,7 @@ declare global {
   const isNumber: typeof import('./composables/common/is')['isNumber']
   const isObject: typeof import('./composables/common/is')['isObject']
   const isPC: typeof import('./composables/screen')['isPC']
+  const isProduction: typeof import('./composables/env')['isProduction']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
@@ -273,6 +277,7 @@ declare global {
   const useFileSystemAccess: typeof import('@vueuse/core')['useFileSystemAccess']
   const useFocus: typeof import('@vueuse/core')['useFocus']
   const useFocusWithin: typeof import('@vueuse/core')['useFocusWithin']
+  const useFormModel: typeof import('./composables/form')['useFormModel']
   const useFps: typeof import('@vueuse/core')['useFps']
   const useFullscreen: typeof import('@vueuse/core')['useFullscreen']
   const useGamepad: typeof import('@vueuse/core')['useGamepad']
@@ -310,6 +315,7 @@ declare global {
   const useOnline: typeof import('@vueuse/core')['useOnline']
   const useOpenWindow: typeof import('./composables/common/open-window')['useOpenWindow']
   const usePageLeave: typeof import('@vueuse/core')['usePageLeave']
+  const usePagination: typeof import('./composables/table')['usePagination']
   const useParallax: typeof import('@vueuse/core')['useParallax']
   const useParentElement: typeof import('@vueuse/core')['useParentElement']
   const usePerformanceObserver: typeof import('@vueuse/core')['usePerformanceObserver']
@@ -333,6 +339,7 @@ declare global {
   const useScriptTag: typeof import('@vueuse/core')['useScriptTag']
   const useScroll: typeof import('@vueuse/core')['useScroll']
   const useScrollLock: typeof import('@vueuse/core')['useScrollLock']
+  const useSearchForm: typeof import('./composables/form')['useSearchForm']
   const useSeoMeta: typeof import('@vueuse/head')['useSeoMeta']
   const useSessionStorage: typeof import('@vueuse/core')['useSessionStorage']
   const useShare: typeof import('@vueuse/core')['useShare']
@@ -413,7 +420,6 @@ declare module 'vue' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly ANotification: UnwrapRef<typeof import('./composables/arco')['ANotification']>
-    readonly APP_META: UnwrapRef<typeof import('@arco-design/web-vue')['PP_META']>
     readonly BaseRequest: UnwrapRef<typeof import('./composables/request')['BaseRequest']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Message: UnwrapRef<typeof import('./composables/arco')['Message']>
@@ -446,12 +452,9 @@ declare module 'vue' {
     readonly createEventHook: UnwrapRef<typeof import('@vueuse/core')['createEventHook']>
     readonly createGlobalState: UnwrapRef<typeof import('@vueuse/core')['createGlobalState']>
     readonly createInjectionState: UnwrapRef<typeof import('@vueuse/core')['createInjectionState']>
-    readonly createModalData: UnwrapRef<typeof import('./composables/modal')['createModalData']>
-    readonly createPagination: UnwrapRef<typeof import('./composables/table')['createPagination']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly createReactiveFn: UnwrapRef<typeof import('@vueuse/core')['createReactiveFn']>
     readonly createReusableTemplate: UnwrapRef<typeof import('@vueuse/core')['createReusableTemplate']>
-    readonly createSearchForm: UnwrapRef<typeof import('./composables/form')['createSearchForm']>
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createTemplatePromise: UnwrapRef<typeof import('@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
@@ -477,6 +480,8 @@ declare module 'vue' {
     readonly formatNow: UnwrapRef<typeof import('./composables/common/date')['formatNow']>
     readonly generateTreeMenuData: UnwrapRef<typeof import('./composables/menu')['generateTreeMenuData']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
+    readonly getCurrentApiUrl: UnwrapRef<typeof import('./composables/env')['getCurrentApiUrl']>
+    readonly getCurrentEnvMode: UnwrapRef<typeof import('./composables/env')['getCurrentEnvMode']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
@@ -492,6 +497,7 @@ declare module 'vue' {
     readonly getTypeName: UnwrapRef<typeof import('./composables/common/function')['getTypeName']>
     readonly getUserFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getUserFlattenMenuTree']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly handleParamsWithSameDate: UnwrapRef<typeof import('./composables/table')['handleParamsWithSameDate']>
     readonly hasMenuIcon: UnwrapRef<typeof import('./composables/menu')['hasMenuIcon']>
     readonly hideFormLabel: UnwrapRef<typeof import('./composables/form')['hideFormLabel']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
@@ -501,6 +507,7 @@ declare module 'vue' {
     readonly isBoolean: UnwrapRef<typeof import('./composables/common/is')['isBoolean']>
     readonly isDark: UnwrapRef<typeof import('./composables/dark')['isDark']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
+    readonly isDevelopment: UnwrapRef<typeof import('./composables/env')['isDevelopment']>
     readonly isEmpty: UnwrapRef<typeof import('./composables/common/is')['isEmpty']>
     readonly isExtraLargeScreen: UnwrapRef<typeof import('./composables/screen')['isExtraLargeScreen']>
     readonly isInteger: UnwrapRef<typeof import('./composables/common/is')['isInteger']>
@@ -510,6 +517,7 @@ declare module 'vue' {
     readonly isNumber: UnwrapRef<typeof import('./composables/common/is')['isNumber']>
     readonly isObject: UnwrapRef<typeof import('./composables/common/is')['isObject']>
     readonly isPC: UnwrapRef<typeof import('./composables/screen')['isPC']>
+    readonly isProduction: UnwrapRef<typeof import('./composables/env')['isProduction']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
@@ -670,6 +678,7 @@ declare module 'vue' {
     readonly useFileSystemAccess: UnwrapRef<typeof import('@vueuse/core')['useFileSystemAccess']>
     readonly useFocus: UnwrapRef<typeof import('@vueuse/core')['useFocus']>
     readonly useFocusWithin: UnwrapRef<typeof import('@vueuse/core')['useFocusWithin']>
+    readonly useFormModel: UnwrapRef<typeof import('./composables/form')['useFormModel']>
     readonly useFps: UnwrapRef<typeof import('@vueuse/core')['useFps']>
     readonly useFullscreen: UnwrapRef<typeof import('@vueuse/core')['useFullscreen']>
     readonly useGamepad: UnwrapRef<typeof import('@vueuse/core')['useGamepad']>
@@ -707,6 +716,7 @@ declare module 'vue' {
     readonly useOnline: UnwrapRef<typeof import('@vueuse/core')['useOnline']>
     readonly useOpenWindow: UnwrapRef<typeof import('./composables/common/open-window')['useOpenWindow']>
     readonly usePageLeave: UnwrapRef<typeof import('@vueuse/core')['usePageLeave']>
+    readonly usePagination: UnwrapRef<typeof import('./composables/table')['usePagination']>
     readonly useParallax: UnwrapRef<typeof import('@vueuse/core')['useParallax']>
     readonly useParentElement: UnwrapRef<typeof import('@vueuse/core')['useParentElement']>
     readonly usePerformanceObserver: UnwrapRef<typeof import('@vueuse/core')['usePerformanceObserver']>
@@ -730,6 +740,7 @@ declare module 'vue' {
     readonly useScriptTag: UnwrapRef<typeof import('@vueuse/core')['useScriptTag']>
     readonly useScroll: UnwrapRef<typeof import('@vueuse/core')['useScroll']>
     readonly useScrollLock: UnwrapRef<typeof import('@vueuse/core')['useScrollLock']>
+    readonly useSearchForm: UnwrapRef<typeof import('./composables/form')['useSearchForm']>
     readonly useSeoMeta: UnwrapRef<typeof import('@vueuse/head')['useSeoMeta']>
     readonly useSessionStorage: UnwrapRef<typeof import('@vueuse/core')['useSessionStorage']>
     readonly useShare: UnwrapRef<typeof import('@vueuse/core')['useShare']>
@@ -804,7 +815,6 @@ declare module '@vue/runtime-core' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly ANotification: UnwrapRef<typeof import('./composables/arco')['ANotification']>
-    readonly APP_META: UnwrapRef<typeof import('@arco-design/web-vue')['PP_META']>
     readonly BaseRequest: UnwrapRef<typeof import('./composables/request')['BaseRequest']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Message: UnwrapRef<typeof import('./composables/arco')['Message']>
@@ -837,12 +847,9 @@ declare module '@vue/runtime-core' {
     readonly createEventHook: UnwrapRef<typeof import('@vueuse/core')['createEventHook']>
     readonly createGlobalState: UnwrapRef<typeof import('@vueuse/core')['createGlobalState']>
     readonly createInjectionState: UnwrapRef<typeof import('@vueuse/core')['createInjectionState']>
-    readonly createModalData: UnwrapRef<typeof import('./composables/modal')['createModalData']>
-    readonly createPagination: UnwrapRef<typeof import('./composables/table')['createPagination']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly createReactiveFn: UnwrapRef<typeof import('@vueuse/core')['createReactiveFn']>
     readonly createReusableTemplate: UnwrapRef<typeof import('@vueuse/core')['createReusableTemplate']>
-    readonly createSearchForm: UnwrapRef<typeof import('./composables/form')['createSearchForm']>
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createTemplatePromise: UnwrapRef<typeof import('@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
@@ -868,6 +875,8 @@ declare module '@vue/runtime-core' {
     readonly formatNow: UnwrapRef<typeof import('./composables/common/date')['formatNow']>
     readonly generateTreeMenuData: UnwrapRef<typeof import('./composables/menu')['generateTreeMenuData']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
+    readonly getCurrentApiUrl: UnwrapRef<typeof import('./composables/env')['getCurrentApiUrl']>
+    readonly getCurrentEnvMode: UnwrapRef<typeof import('./composables/env')['getCurrentEnvMode']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFetchParams: UnwrapRef<typeof import('./composables/table')['getFetchParams']>
@@ -883,6 +892,7 @@ declare module '@vue/runtime-core' {
     readonly getTypeName: UnwrapRef<typeof import('./composables/common/function')['getTypeName']>
     readonly getUserFlattenMenuTree: UnwrapRef<typeof import('./composables/menu')['getUserFlattenMenuTree']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly handleParamsWithSameDate: UnwrapRef<typeof import('./composables/table')['handleParamsWithSameDate']>
     readonly hasMenuIcon: UnwrapRef<typeof import('./composables/menu')['hasMenuIcon']>
     readonly hideFormLabel: UnwrapRef<typeof import('./composables/form')['hideFormLabel']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
@@ -892,6 +902,7 @@ declare module '@vue/runtime-core' {
     readonly isBoolean: UnwrapRef<typeof import('./composables/common/is')['isBoolean']>
     readonly isDark: UnwrapRef<typeof import('./composables/dark')['isDark']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
+    readonly isDevelopment: UnwrapRef<typeof import('./composables/env')['isDevelopment']>
     readonly isEmpty: UnwrapRef<typeof import('./composables/common/is')['isEmpty']>
     readonly isExtraLargeScreen: UnwrapRef<typeof import('./composables/screen')['isExtraLargeScreen']>
     readonly isInteger: UnwrapRef<typeof import('./composables/common/is')['isInteger']>
@@ -901,6 +912,7 @@ declare module '@vue/runtime-core' {
     readonly isNumber: UnwrapRef<typeof import('./composables/common/is')['isNumber']>
     readonly isObject: UnwrapRef<typeof import('./composables/common/is')['isObject']>
     readonly isPC: UnwrapRef<typeof import('./composables/screen')['isPC']>
+    readonly isProduction: UnwrapRef<typeof import('./composables/env')['isProduction']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
@@ -1061,6 +1073,7 @@ declare module '@vue/runtime-core' {
     readonly useFileSystemAccess: UnwrapRef<typeof import('@vueuse/core')['useFileSystemAccess']>
     readonly useFocus: UnwrapRef<typeof import('@vueuse/core')['useFocus']>
     readonly useFocusWithin: UnwrapRef<typeof import('@vueuse/core')['useFocusWithin']>
+    readonly useFormModel: UnwrapRef<typeof import('./composables/form')['useFormModel']>
     readonly useFps: UnwrapRef<typeof import('@vueuse/core')['useFps']>
     readonly useFullscreen: UnwrapRef<typeof import('@vueuse/core')['useFullscreen']>
     readonly useGamepad: UnwrapRef<typeof import('@vueuse/core')['useGamepad']>
@@ -1098,6 +1111,7 @@ declare module '@vue/runtime-core' {
     readonly useOnline: UnwrapRef<typeof import('@vueuse/core')['useOnline']>
     readonly useOpenWindow: UnwrapRef<typeof import('./composables/common/open-window')['useOpenWindow']>
     readonly usePageLeave: UnwrapRef<typeof import('@vueuse/core')['usePageLeave']>
+    readonly usePagination: UnwrapRef<typeof import('./composables/table')['usePagination']>
     readonly useParallax: UnwrapRef<typeof import('@vueuse/core')['useParallax']>
     readonly useParentElement: UnwrapRef<typeof import('@vueuse/core')['useParentElement']>
     readonly usePerformanceObserver: UnwrapRef<typeof import('@vueuse/core')['usePerformanceObserver']>
@@ -1121,6 +1135,7 @@ declare module '@vue/runtime-core' {
     readonly useScriptTag: UnwrapRef<typeof import('@vueuse/core')['useScriptTag']>
     readonly useScroll: UnwrapRef<typeof import('@vueuse/core')['useScroll']>
     readonly useScrollLock: UnwrapRef<typeof import('@vueuse/core')['useScrollLock']>
+    readonly useSearchForm: UnwrapRef<typeof import('./composables/form')['useSearchForm']>
     readonly useSeoMeta: UnwrapRef<typeof import('@vueuse/head')['useSeoMeta']>
     readonly useSessionStorage: UnwrapRef<typeof import('@vueuse/core')['useSessionStorage']>
     readonly useShare: UnwrapRef<typeof import('@vueuse/core')['useShare']>

@@ -9,7 +9,6 @@ import type {
   PutParams,
   Result,
 } from '~/types'
-import { getCurrentApiUrl } from '~/config'
 
 const AXIOS_TIMEOUT = 5000
 

@@ -13,7 +13,7 @@ const {
   showPagination,
   formatRowIndex,
   onPageChange,
-} = createPagination(fetchTableData)
+} = usePagination(fetchTableData)
 const {
   modalType,
   modalVisible,
