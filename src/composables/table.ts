@@ -1,6 +1,3 @@
-import type { Ref } from 'vue'
-import type { Pagination } from '~/types'
-
 export const basePagination: Pagination = {
   current: 1,
   pageSize: 10,

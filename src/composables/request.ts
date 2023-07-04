@@ -1,14 +1,5 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
-import type {
-  AnyObject,
-  DeleteParams,
-  GeneratePageResult,
-  GetParams,
-  PostParams,
-  PutParams,
-  Result,
-} from '~/types'
 
 const AXIOS_TIMEOUT = 5000
 

@@ -1,5 +1,3 @@
-import type { Fn, Nullable } from '~/types'
-
 /**
  * Call every function in an array
  */

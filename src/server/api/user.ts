@@ -1,4 +1,4 @@
-import type { GeneratePageResult, User } from '~/types'
+import type { User } from '~/types'
 
 export const UserApi = {
   fetchPageList(length = 15) {

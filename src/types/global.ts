@@ -1,50 +1,54 @@
 import type { App } from 'vue'
 
-export type UserModule = (app: App) => void
-export type { App as AppContext }
+export {}
+declare global {
+  type UserModule = (app: App) => void
 
-export interface AnyObject {
-  [key: string]: unknown
+  type AppContext = App
+
+  interface AnyObject {
+    [key: string]: unknown
+  }
+  
+  interface Result<T = any> {
+    code: number
+    data: T
+    message?: string
+  }
+  
+  interface PageData<T = any> {
+    [key: string]: unknown
+    records: T[]
+    total: number
+  }
+  
+  interface Pagination {
+    current: number
+    pageSize: number
+    total?: number
+  }
+  
+  type GeneratePageResult<T> = Result<PageData<T>>
+  
+  /**
+   * HTTP
+   */
+  
+  type T = AnyObject | AnyObject[] | any
+  
+  interface HttpParams extends AnyObject {
+    params?: T
+  }
+  
+  interface GetParams extends HttpParams {}
+  
+  interface PostParams extends HttpParams {
+    body?: T
+  }
+  
+  interface PutParams extends HttpParams {
+    body?: T
+  }
+  
+  interface DeleteParams extends HttpParams {}
 }
-
-export interface Result<T = any> {
-  code: number
-  data: T
-  message?: string
-}
-
-export interface PageData<T = any> {
-  [key: string]: unknown
-  records: T[]
-  total: number
-}
-
-export interface Pagination {
-  current: number
-  pageSize: number
-  total?: number
-}
-
-export type GeneratePageResult<T> = Result<PageData<T>>
-
-/**
- * HTTP
- */
-
-type T = AnyObject | AnyObject[] | any
-
-export interface HttpParams extends AnyObject {
-  params?: T
-}
-
-export interface GetParams extends HttpParams {}
-
-export interface PostParams extends HttpParams {
-  body?: T
-}
-
-export interface PutParams extends HttpParams {
-  body?: T
-}
-
-export interface DeleteParams extends HttpParams {}

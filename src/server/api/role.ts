@@ -1,4 +1,4 @@
-import type { GeneratePageResult, Role } from '~/types'
+import type { Role } from '~/types'
 
 export const RoleApi = {
   fetchPageList(length = 15) {

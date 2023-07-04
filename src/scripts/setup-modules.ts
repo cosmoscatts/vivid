@@ -1,6 +1,5 @@
 import preload from './preload'
 import setupAssets from './setup-assets'
-import type { AppContext, UserModule } from '~/types'
 
 export async function setupModules(app: AppContext) {
   const { bool: wait, setFalse } = useBool(true)
