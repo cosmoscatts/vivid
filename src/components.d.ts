@@ -49,6 +49,7 @@ declare module 'vue' {
     ATabs: typeof import('@arco-design/web-vue')['Tabs']
     ATag: typeof import('@arco-design/web-vue')['Tag']
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
+    ATree: typeof import('@arco-design/web-vue')['Tree']
     AUpload: typeof import('@arco-design/web-vue')['Upload']
     CommonEllipsis: typeof import('./components/common/CommonEllipsis.vue')['default']
     CommonFormItem: typeof import('./components/common/CommonFormItem.vue')['default']
