@@ -15,7 +15,7 @@ const uiStore = useUiStore()
   >
     <div flex="x-center col" of-hidden>
       <LayoutLogo v-if="showLogo" />
-      <LayoutMenu mode="vertical" :style="{ height: `calc(100% - ${params.navHeight}px)` }" />
+      <LayoutMenu mode="vertical" />
     </div>
   </a-layout-sider>
 </template>

@@ -20,6 +20,7 @@ const getTabsLeft = computed(() => {
         v-bind="{ showLogo: false }" absolute left-0 z-10
         :style="{
           top: `${params.navHeight}px`,
+          height: `calc(100% - ${params.navHeight}px)`,
         }"
       />
     </template>
