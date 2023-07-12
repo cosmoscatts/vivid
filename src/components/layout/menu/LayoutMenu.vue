@@ -2,6 +2,10 @@
 import { LAYOUT_PARAMS } from '~/constants'
 import type { Menu } from '~/types'
 
+defineOptions({
+  inheritAttrs: true,
+})
+
 const {
   mode,
   noCollapse = false,
