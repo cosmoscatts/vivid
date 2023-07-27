@@ -56,7 +56,6 @@
     "eslint-plugin-cypress": "^2.13.3",
     "https-localhost": "^4.7.1",
     "lodash": "^4.17.21",
-    "pnpm": "^8.6.10",
     "taze": "^0.11.2",
     "typescript": "^5.1.6",
     "unocss": "^0.53.6",
