@@ -6,14 +6,12 @@ const refEl = ref()
 const { isOutside } = useMouseInElement(refEl)
 
 const isEllipsis = $computed(() => {
-  if (!refEl.value)
-    return false
+  if (!refEl.value) return false
   return refEl.value.scrollWidth > refEl.value.offsetWidth
 })
 
 const visible = computed(() => {
-  if (!isEllipsis)
-    return false
+  if (!isEllipsis) return false
   return !isOutside.value
 })
 </script>
