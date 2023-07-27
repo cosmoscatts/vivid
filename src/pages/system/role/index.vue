@@ -38,7 +38,7 @@ function saveData() {
 
 }
 
-function deleteData(data: Role) {
+function deleteData(_data: Role) {
 
 }
 

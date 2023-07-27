@@ -39,7 +39,7 @@ function saveData() {
 
 }
 
-function deleteData(data: User) {
+function deleteData(_data: User) {
 
 }
 </script>

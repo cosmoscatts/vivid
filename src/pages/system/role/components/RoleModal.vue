@@ -65,7 +65,7 @@ defineExpose({ endLoading })
     :ok-loading="loading"
     :ok-text="['添加', '更新'][Number(type === 'edit')]"
     @ok="handleOk"
-    @cancel="$emit('update:visible', false)"
+    @cancel="visible = false"
   >
     <template #title>
       {{ ['添加角色', '编辑角色'][Number(type === 'edit')] }}

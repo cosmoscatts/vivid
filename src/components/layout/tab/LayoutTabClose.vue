@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const handleCloseTab = inject('handleCloseTab') as Function
+const handleCloseTab = inject('handleCloseTab') as () => void
 </script>
 
 <template>
