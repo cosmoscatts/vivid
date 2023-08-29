@@ -41,6 +41,7 @@ specifiers:
   nprogress: ^0.2.0
   pinia: ^2.1.6
   pinia-plugin-persist-uni: ^1.2.0
+  pnpm: ^8.6.7
   std-env: ^3.4.3
   taze: ^0.11.2
   typeit: ^8.7.1
@@ -106,6 +107,7 @@ devDependencies:
   eslint-plugin-cypress: registry.npmmirror.com/eslint-plugin-cypress/2.14.0_eslint@8.48.0
   https-localhost: registry.npmmirror.com/https-localhost/4.7.1
   lodash: registry.npmmirror.com/lodash/4.17.21
+  pnpm: registry.npmmirror.com/pnpm/8.7.0
   taze: registry.npmmirror.com/taze/0.11.2
   typescript: registry.npmmirror.com/typescript/5.2.2
   unocss: registry.npmmirror.com/unocss/0.55.3_vite@4.4.9
@@ -7809,6 +7811,14 @@ packages:
     name: pluralize
     version: 8.0.0
     engines: {node: '>=4'}
+    dev: true
+
+  registry.npmmirror.com/pnpm/8.7.0:
+    resolution: {integrity: sha512-HWH4wQ6KWl2/vd6g8fXvt9vVF3IjBzrslTzyMKpGQWiEuUJ6ZCHbp48orQ+T++3ji6VwgyN7NQJD3mseOoznHQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pnpm/-/pnpm-8.7.0.tgz}
+    name: pnpm
+    version: 8.7.0
+    engines: {node: '>=16.14'}
+    hasBin: true
     dev: true
 
   registry.npmmirror.com/popmotion/11.0.5:

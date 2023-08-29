@@ -1,5 +1,6 @@
 {
   "type": "module",
+  "packageManager": "pnpm@8.6.7",
   "scripts": {
     "dev": "vite --port=3333 --open",
     "build": "vite build",
@@ -56,6 +57,7 @@
     "eslint-plugin-cypress": "^2.14.0",
     "https-localhost": "^4.7.1",
     "lodash": "^4.17.21",
+    "pnpm": "^8.6.7",
     "taze": "^0.11.2",
     "typescript": "^5.2.2",
     "unocss": "^0.55.3",
