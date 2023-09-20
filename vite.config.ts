@@ -10,6 +10,7 @@ import VueMacros from 'unplugin-vue-macros/vite'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
+  base: './',
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
