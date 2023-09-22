@@ -24,7 +24,7 @@ function onSelect<T extends string | number | Record<string, any> | undefined>(v
 
 <template>
   <a-dropdown trigger="hover" position="bottom" @select="onSelect">
-    <div flex-y-center cursor-pointer>
+    <div flex-y-center cursor-pointer gap-3>
       <a-avatar :size="32" shape="square">
         <img alt="头像" :src="avatar">
       </a-avatar>

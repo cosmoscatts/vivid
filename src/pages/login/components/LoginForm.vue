@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
+import LoginTips from './LoginTips.vue'
 import { Motion, getToRouteAfterLogin } from '~/utils'
 
 const router = useRouter()
@@ -96,4 +97,5 @@ function submit({
       </a-form-item>
     </Motion>
   </a-form>
+  <LoginTips />
 </template>
