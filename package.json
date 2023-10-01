@@ -64,10 +64,10 @@
     "unplugin-auto-import": "^0.16.6",
     "unplugin-icons": "^0.17.0",
     "unplugin-vue-components": "^0.25.2",
-    "unplugin-vue-macros": "^2.6.0",
+    "unplugin-vue-macros": "^2.6.1",
     "vite": "^4.4.9",
     "vite-plugin-vue-layouts": "^0.8.0",
-    "vitest": "^0.34.5",
+    "vitest": "^0.34.6",
     "vue-tsc": "^1.8.15"
   }
 }
