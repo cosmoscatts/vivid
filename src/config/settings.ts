@@ -27,7 +27,7 @@ export const defaultSettings: Settings = {
    *  'vertical-mix' - 左侧菜单混合模式
    *  'horizontal-mix' - 顶部菜单混合模式
    */
-  layout: 'vertical',
+  layout: 'vertical-mix',
   showLogo: true,
   showTabs: true,
   showFoot: true,
@@ -44,8 +44,8 @@ export const defaultSettings: Settings = {
    */
   animationMode: 'fade-slide',
 
-  primaryColor: 'arcoblue',
+  primaryColor: 'blue',
 
-  cacheTabs: true,
+  cacheTabs: false,
   tabShapeStyle: 'chrome',
 }

@@ -77,7 +77,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
 </script>
 
 <template>
-  <div ref="refContainer" border-b="1px solid [var(--color-border)]" w-full flex-y-center of-hidden>
+  <div ref="refContainer" w-full flex-y-center of-hidden border-b border-base>
     <CommonScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }" flex-1>
       <div
         ref="refTab"

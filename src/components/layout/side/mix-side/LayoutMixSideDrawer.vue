@@ -13,19 +13,20 @@ const showDrawer = computed(() => (props.visible && props.menus.length) || uiSto
 
 <template>
   <div
-    relative h-full transition-width duration-300 ease-in-out border-l="1px solid [var(--color-border)]"
+    relative h-full border-l transition-width duration-300 ease-in-out border-base
     :style="{ width: uiStore.mixSideFixed ? `${params.mixSideDrawerWidth}px` : '0px' }"
   >
     <div
       class="drawer-shadow absolute left-0 top-0 h-full flex-col items-stretch overflow-hidden whitespace-nowrap bg-side"
+      :class="showDrawer ? 'border-r border-base' : ''"
       :style="{ width: showDrawer ? `${params.mixSideDrawerWidth}px` : '0px' }"
     >
       <header flex-y-center justify-between px5px :style="{ height: `${params.navHeight}px` }">
         <h2 pl-8px text-24px font-bold text-primary>
-          {{ meta.name }}
+          <CommonEllipsis :content="meta.name" />
         </h2>
         <div cursor-pointer px-8px text-14px text-gray-600 @click="uiStore.toggleMixSideFixed">
-          <div v-if="uiStore.mixSideFixed" i-mdi-pin-off />
+          <div v-if="uiStore.mixSideFixed" i-mdi-pin-off bg-red />
           <div v-else i-mdi-pin />
         </div>
       </header>

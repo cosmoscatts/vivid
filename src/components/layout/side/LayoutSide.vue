@@ -21,8 +21,8 @@ const menuStyle = computed(() => {
 
 <template>
   <a-layout-sider
-    border-r="1px solid [var(--color-border)]"
-    collapsible hide-trigger h-full of-hidden bg-side
+
+    collapsible hide-trigger h-full of-hidden border-r border-base bg-side
     :width="params.sideWidth"
     :collapsed-width="params.sideCollapsedWidth"
     :collapsed="uiStore.collapseSide.state"

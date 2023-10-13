@@ -15,7 +15,7 @@ export default defineConfig({
     'flex-x-center': 'flex justify-center',
     'flex-y-center': 'flex items-center',
     'flex-col-center': 'flex-col flex-center',
-    'border-base': 'border-gray/20 dark:border-gray/15',
+    'border-base': 'border-[rgb(var(--gray-3))]',
     'icon-btn': 'op30 hover:op100 hover:bg-primary_hover',
     'bg-body': 'bg-gray:15 dark:bg-[#17171A]',
     'bg-nav': 'bg-white dark:bg-[#232324]',
