@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { IconPlus } from '@arco-design/web-vue/es/icon'
 import UserModal from './components/UserModal.vue'
 import UserSearchForm from './components/UserSearchForm.vue'
 import { columns } from './columns'
@@ -48,12 +47,13 @@ function deleteData(_data: User) {
   <div>
     <a-card title="查询用户">
       <template #extra>
-        <a-button type="text" size="small" font-bold @click="showModal({})">
-          <template #icon>
-            <IconPlus />
-          </template>
+        <a class="group flex-center btn-primary" @click="showModal({})">
+          <div
+            group-hover="i-carbon-add-filled?mask text-primary"
+            i-carbon-add-alt mr2 transition-all duration-200 ease-out
+          />
           添加
-        </a-button>
+        </a>
       </template>
       <UserSearchForm
         ref="refSearchForm" class="slide-enter" :style="{
@@ -79,9 +79,9 @@ function deleteData(_data: User) {
           {{ formatRowIndex(rowIndex) }}
         </template>
         <template #roleId="{ record }">
-          <a-tag color="#7bc616">
+          <span tag-primary>
             {{ O.label('role', record.roleId) }}
-          </a-tag>
+          </span>
         </template>
         <template #createTime="{ record }">
           {{ formatDate(record.createTime, { defaultReturn: '-' }) }}
@@ -90,12 +90,22 @@ function deleteData(_data: User) {
           {{ formatDate(record.updateTime, { defaultReturn: '-' }) }}
         </template>
         <template #action="{ record }">
-          <a-button type="text" font-bold size="small" @click="showModal({ type: 'edit', data: record })">
-            编辑
-          </a-button>
-          <a-button type="text" font-bold size="small" @click="deleteData(record)">
-            删除
-          </a-button>
+          <div flex-center gap-2>
+            <a class="group flex-center select-none btn-yellow" @click="showModal({ type: 'edit', data: record })">
+              <div
+                group-hover="i-ri-edit-box-fill?mask text-yellow"
+                i-ri-edit-box-line mr2 transition-all duration-200 ease-out
+              />
+              编辑
+            </a>
+            <a class="group flex-center select-none btn-red" @click="deleteData(record)">
+              <div
+                group-hover="i-ri-delete-bin-6-fill?mask text-red"
+                i-ri-delete-bin-6-line mr2 transition-all duration-200 ease-out
+              />
+              删除
+            </a>
+          </div>
         </template>
       </a-table>
     </a-card>

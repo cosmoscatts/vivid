@@ -57,12 +57,13 @@ function deleteData(_data: Role) {
   <div>
     <a-card title="查询角色">
       <template #extra>
-        <a-button type="text" size="small" font-bold @click="showModal({})">
-          <template #icon>
-            <IconPlus />
-          </template>
+        <a class="group flex-center btn-primary" @click="showModal({})">
+          <div
+            group-hover="i-carbon-add-filled?mask text-primary"
+            i-carbon-add-alt mr2 transition-all duration-200 ease-out
+          />
           添加
-        </a-button>
+        </a>
       </template>
       <RoleSearchForm
         ref="refSearchForm" class="slide-enter" :style="{
@@ -87,7 +88,9 @@ function deleteData(_data: Role) {
           {{ formatRowIndex(rowIndex) }}
         </template>
         <template #name="{ record }">
-          <span font-bold text-primary>{{ record.name ?? '无' }}</span>
+          <span tag-primary>
+            {{ record.name ?? '无' }}
+          </span>
         </template>
         <template #createTime="{ record }">
           {{ formatDate(record.createTime, { defaultReturn: '-' }) }}
@@ -96,12 +99,22 @@ function deleteData(_data: Role) {
           {{ formatDate(record.updateTime, { defaultReturn: '-' }) }}
         </template>
         <template #action="{ record }">
-          <a-button type="text" size="small" font-bold @click="showModal({ type: 'edit', data: record })">
-            编辑
-          </a-button>
-          <a-button type="text" size="small" font-bold @click="deleteData(record)">
-            删除
-          </a-button>
+          <div flex-center gap-2>
+            <a class="group flex-center select-none btn-yellow" @click="showModal({ type: 'edit', data: record })">
+              <div
+                group-hover="i-ri-edit-box-fill?mask text-yellow"
+                i-ri-edit-box-line mr2 transition-all duration-200 ease-out
+              />
+              编辑
+            </a>
+            <a class="group flex-center select-none btn-red" @click="deleteData(record)">
+              <div
+                group-hover="i-ri-delete-bin-6-fill?mask text-red"
+                i-ri-delete-bin-6-line mr2 transition-all duration-200 ease-out
+              />
+              删除
+            </a>
+          </div>
         </template>
       </a-table>
     </a-card>
