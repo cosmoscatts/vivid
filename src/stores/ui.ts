@@ -41,8 +41,8 @@ export const useUiStore = defineStore('uiStore', () => {
       if (settingsCopy.layout === 'horizontal-mix') {
         settingsCopy.fixNav = true
       }
-      // 如果是 `vertical-mix` 布局，则默认不固定菜单抽屉
-      if (settings.layout === 'vertical-mix') {
+      // 不是 `vertical-mix` 布局，则默认不固定菜单抽屉
+      if (settings.layout !== 'vertical-mix' || settingsCopy.layout !== 'vertical-mix') {
         mixSideFixed.value = false
       }
 
@@ -52,7 +52,8 @@ export const useUiStore = defineStore('uiStore', () => {
       // 需要更新多页签的缓存
       if (settings.showTabs && settings.cacheTabs) {
         cacheTabs([...useTabStore().tabs])
-      } else {
+      }
+      else {
         clearCachedTabs()
       }
 
@@ -72,7 +73,8 @@ export const useUiStore = defineStore('uiStore', () => {
         useTimeoutFn(() => {
           reloadFlag.value = true
         }, duration)
-      } else {
+      }
+      else {
         reloadFlag.value = true
       }
     },
