@@ -56,22 +56,22 @@ export class BaseRequest {
     return this.axios.get<T, Result<T>>(url, config)
   }
 
-  getPageData<T>(url: string, { params }: GetParams = {},config?: AxiosRequestConfig) {
+  getPageData<T>(url: string, { params }: GetParams = {}, config?: AxiosRequestConfig) {
     url += handleUrlParams(params)
     return this.axios.get<T, GeneratePageResult<T>>(url, config)
   }
 
-  post<T>(url: string, { params, body = {} }: PostParams = {},config?: AxiosRequestConfig) {
+  post<T>(url: string, { params, body = {} }: PostParams = {}, config?: AxiosRequestConfig) {
     url += handleUrlParams(params)
     return this.axios.post<T, Result<T>>(url, body, config)
   }
 
-  put<T>(url: string, { params, body = {} }: PutParams = {},config?: AxiosRequestConfig) {
+  put<T>(url: string, { params, body = {} }: PutParams = {}, config?: AxiosRequestConfig) {
     url += handleUrlParams(params)
     return this.axios.put<T, Result<T>>(url, body, config)
   }
 
-  delete<T>(url: string, { params }: DeleteParams = {},config?: AxiosRequestConfig) {
+  delete<T>(url: string, { params }: DeleteParams = {}, config?: AxiosRequestConfig) {
     url += handleUrlParams(params)
     return this.axios.delete<T, Result<T>>(url, config)
   }
