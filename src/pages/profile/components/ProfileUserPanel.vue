@@ -50,7 +50,7 @@ const descriptionsColumn = computed(() => {
 </script>
 
 <template>
-  <a-card :bordered="false">
+  <a-card :bordered="true">
     <a-space :size="64" pl-25px>
       <a-avatar :size="100" class="info-avatar" trigger-type="mask">
         <template #trigger-icon>

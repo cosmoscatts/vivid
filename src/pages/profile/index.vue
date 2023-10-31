@@ -15,7 +15,7 @@ const changeTabIdx = (key: string | number) => activeTabIdx = Number(key)
       </a-col>
     </a-row>
 
-    <a-row min-h-350px bg="[var(--color-bg-2)]" rounded-sm p="t20px r0 b0 l20px">
+    <a-row bg="[var(--color-bg-2)]" p="t20px r0 b0 l20px" min-h-350px border border-base rounded-sm>
       <a-col :span="24">
         <a-tabs :active-key="activeTabIdx" type="rounded" @change="changeTabIdx">
           <a-tab-pane :key="1">
