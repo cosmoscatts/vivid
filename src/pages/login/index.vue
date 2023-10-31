@@ -72,7 +72,7 @@ import { Motion, TypeIt } from '~/utils'
   text-transform: uppercase;
   margin: 15px 0;
   color: #999;
-  font: bold 300% Consolas, Monaco, monospace;
+  font: bold 220% Consolas, Monaco, monospace;
 }
 
 @media screen and (max-width: 1180px) {

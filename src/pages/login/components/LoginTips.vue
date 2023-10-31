@@ -7,7 +7,7 @@ const defaultData = {
 
 <template>
   <div fixed bottom-5 left-0 w-full flex-center lt-lg:hidden>
-    <div grid="~ cols-2 gap-2" text="dark dark:white" base-border border-1 rounded-3px p-15px op-80>
+    <div grid="~ cols-2 gap-2" text="dark dark:white" border-1 border-base rounded-3px p-15px op-80>
       <div col-span-1 font-bold>
         账号：
       </div>
