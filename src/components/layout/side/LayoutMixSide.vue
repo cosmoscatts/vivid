@@ -37,7 +37,8 @@ function handleMixMenu(id: number, path: string | undefined, hasChildren: boolea
   activeParentMenuId = id
   if (hasChildren) {
     openDrawer()
-  } else {
+  }
+  else {
     if (path) router.push(path)
   }
 }

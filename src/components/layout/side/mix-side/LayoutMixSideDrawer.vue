@@ -13,7 +13,7 @@ const showDrawer = computed(() => (props.visible && props.menus.length) || uiSto
 
 <template>
   <div
-    relative h-full border-l transition-width duration-300 ease-in-out border-base
+    relative h-full border-l border-base transition-width duration-300 ease-in-out
     :style="{ width: uiStore.mixSideFixed ? `${params.mixSideDrawerWidth}px` : '0px' }"
   >
     <div
@@ -22,7 +22,7 @@ const showDrawer = computed(() => (props.visible && props.menus.length) || uiSto
       :style="{ width: showDrawer ? `${params.mixSideDrawerWidth}px` : '0px' }"
     >
       <header flex-y-center justify-between px5px :style="{ height: `${params.navHeight}px` }">
-        <h2 pl-8px text-24px font-bold text-primary>
+        <h2 pl-8px text-sm font-bold text-primary>
           <CommonEllipsis :content="meta.name" />
         </h2>
         <div cursor-pointer px-8px text-14px text-gray-600 @click="uiStore.toggleMixSideFixed">
