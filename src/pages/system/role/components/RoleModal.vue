@@ -87,12 +87,24 @@ defineExpose({ endLoading })
       </CommonFormItem>
       <CommonFormItem field="menuIdList" label="角色权限">
         <div flex="~ col" max-h-350px wfull of-y-auto>
-          <a-button
-            type="text" w100px font-bold
-            @click="toggleChecked"
-          >
-            {{ ['全选', '取消全选'][Number(isAllChecked)] }}
-          </a-button>
+          <div mb-10px flex>
+            <CommonBtn
+              v-if="!isAllChecked"
+              color="primary" text-sm
+              icon="i-carbon-checkbox-checked" hover-icon="i-carbon-checkbox-checked-filled"
+              @click="toggleChecked"
+            >
+              全选
+            </CommonBtn>
+            <CommonBtn
+              v-else
+              color="red" text-sm
+              icon="i-carbon-checkbox-indeterminate" hover-icon="i-carbon-checkbox-indeterminate-filled"
+              @click="toggleChecked"
+            >
+              取消全选
+            </CommonBtn>
+          </div>
           <a-tree
             v-if="treeData?.length > 0"
             v-model:checked-keys="formModel.menuIdList"

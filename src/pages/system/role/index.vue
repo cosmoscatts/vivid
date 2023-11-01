@@ -57,13 +57,7 @@ function deleteData(_data: Role) {
   <div>
     <a-card title="查询角色">
       <template #extra>
-        <a class="group flex-center btn-primary" @click="showModal({})">
-          <div
-            group-hover="i-carbon-add-filled?mask text-primary"
-            i-carbon-add-alt mr2 transition-all duration-200 ease-out
-          />
-          添加
-        </a>
+        <CommonBtnAdd @click="showModal({})" />
       </template>
       <RoleSearchForm
         ref="refSearchForm" class="slide-enter" :style="{
@@ -94,20 +88,10 @@ function deleteData(_data: Role) {
         </template>
         <template #action="{ record }">
           <div flex-center gap-2>
-            <a class="group flex-center select-none btn-yellow" @click="showModal({ type: 'edit', data: record })">
-              <div
-                group-hover="i-ri-edit-box-fill?mask text-yellow"
-                i-ri-edit-box-line mr2 transition-all duration-200 ease-out
-              />
-              编辑
-            </a>
-            <a class="group flex-center select-none btn-red" @click="deleteData(record)">
-              <div
-                group-hover="i-ri-delete-bin-6-fill?mask text-red"
-                i-ri-delete-bin-6-line mr2 transition-all duration-200 ease-out
-              />
-              删除
-            </a>
+            <div flex-center gap-2>
+              <CommonBtnEdit @click="showModal({ type: 'edit', data: record })" />
+              <CommonBtnDel @click="deleteData(record)" />
+            </div>
           </div>
         </template>
       </a-table>
