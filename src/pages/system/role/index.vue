@@ -92,12 +92,6 @@ function deleteData(_data: Role) {
             {{ record.name ?? '无' }}
           </span>
         </template>
-        <template #createTime="{ record }">
-          {{ formatDate(record.createTime, { defaultReturn: '-' }) }}
-        </template>
-        <template #updateTime="{ record }">
-          {{ formatDate(record.updateTime, { defaultReturn: '-' }) }}
-        </template>
         <template #action="{ record }">
           <div flex-center gap-2>
             <a class="group flex-center select-none btn-yellow" @click="showModal({ type: 'edit', data: record })">

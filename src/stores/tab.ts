@@ -1,5 +1,4 @@
 import type { StoreDefinition } from 'pinia'
-import type { Tab } from '~/types'
 import { applyCachedTabs, cacheTabs, getRoutesInPermission } from '~/utils'
 
 export const useTabStore = defineStore('tabStore', () => {
@@ -16,7 +15,8 @@ export const useTabStore = defineStore('tabStore', () => {
     if (uiStore.settings.cacheTabs) {
       const pathInPermission = getRoutesInPermission()
       tabs.value = applyCachedTabs().filter(i => pathInPermission.includes(i.path))
-    } else {
+    }
+    else {
       tabs.value = []
     }
   }

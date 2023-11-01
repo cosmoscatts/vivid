@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Tab } from '~/types'
-
 const props = defineProps<{
   index: number
   tabs: Tab[]

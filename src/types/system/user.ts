@@ -7,6 +7,7 @@ export interface User {
   password?: string
   avatar?: string
   roleId: number
-  createTime?: Date
+  createTime?: string
+  updateTime?: string
   role?: Role
 }

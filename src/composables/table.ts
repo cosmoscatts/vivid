@@ -57,7 +57,11 @@ export function getFetchParams(opts?: {
 }) {
   let params = {}
   if (opts?.pagination) {
-    params = Object.assign(params, opts.pagination)
+    const { current, pageSize } = opts.pagination
+    params = Object.assign(params, {
+      current,
+      pageSize,
+    })
   }
   if (opts?.refSearchForm?.value) {
     params = Object.assign(params, opts.refSearchForm.value.getSearchFormParams())

@@ -1,7 +1,6 @@
 import type { RemovableRef } from '@vueuse/core'
 import { SETTINGS_STORAGE_KEY, TABS_STORAGE_KEY } from '~/constants'
 import type { Settings } from '~/config'
-import type { Tab } from '~/types'
 
 const tabStorage: RemovableRef<{ [key: string]: Tab[] }> = useStorage(TABS_STORAGE_KEY, {}, localStorage)
 const settingsStorage: RemovableRef<Settings | object> = useStorage(SETTINGS_STORAGE_KEY, {}, localStorage)

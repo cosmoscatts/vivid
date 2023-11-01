@@ -51,4 +51,16 @@ declare global {
   }
 
   interface DeleteParams extends HttpParams {}
+
+  /**
+   * Tab
+   */
+  interface Tab {
+    id: number
+    title: string
+    name: string
+    icon?: string
+    path: string
+    cached?: boolean
+  }
 }

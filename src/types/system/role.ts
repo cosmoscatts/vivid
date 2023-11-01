@@ -3,5 +3,6 @@ export interface Role {
   name: string
   menuIdList?: number[]
   description?: string
-  createTime?: Date
+  createTime?: string
+  updateTime?: string
 }

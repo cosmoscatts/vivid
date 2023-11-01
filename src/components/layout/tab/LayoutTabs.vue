@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Tab } from '~/types'
-
 const route = useRoute()
 const uiStore = useUiStore()
 const tabStore = useTabStore()
