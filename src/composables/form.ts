@@ -4,9 +4,9 @@ export const defaultValidateTrigger = ref<('change' | 'input' | 'focus' | 'blur'
 
 export const hideFormLabel = breakpoints.smaller('md')
 
-export function useSearchForm<T = any>(getBase: () => T) {
+export function useSearchForm<T = any>(getBase: () => T, resetData = getBase) {
   const formModel = ref<T>(getBase())
-  const reset = () => formModel.value = getBase() as UnwrapRef<T>
+  const reset = () => formModel.value = resetData() as UnwrapRef<T>
   const getSearchFormParams = () => {
     return clone(formModel.value)
   }
