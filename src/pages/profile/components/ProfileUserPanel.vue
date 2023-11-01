@@ -3,20 +3,9 @@ import type { FileItem } from '@arco-design/web-vue/es/upload/interfaces'
 
 const authStore = useAuthStore()
 const avatar = computed(() => authStore.user?.avatar)
-function getFileUrl() {
-  return authStore.user?.avatar
-    ? {
-        url: authStore.user.avatar,
-      } as FileItem
-    : undefined
-}
-
-let file = $ref<FileItem | undefined>(getFileUrl())
-watch(avatar, () => file = getFileUrl())
 
 function onChange(_: FileItem[], currentFile: FileItem) {
-  file = { ...currentFile }
-  getFileBase64(file.file!).then(async (_imageAsDateURL) => {
+  getFileBase64(currentFile.file!).then(async (_imageAsDateURL) => {
     authStore.updateAvatar(_imageAsDateURL)
     Message.success('上传成功')
   })
@@ -57,7 +46,6 @@ const descriptionsColumn = computed(() => {
           <a-upload
             :auto-upload="false"
             list-type="picture-card"
-            :file-list="file ? [file] : []"
             :show-file-list="false"
             @change="onChange"
             @before-upload="checkImageBeforeUpload"
@@ -68,12 +56,12 @@ const descriptionsColumn = computed(() => {
           </a-upload>
           <IconEye text-18px hover:text-primary @click="imagePreviewVisible = true" />
         </template>
-        <img v-if="file" :src="file.url">
+        <img v-if="avatar" :src="avatar">
       </a-avatar>
-      <div v-if="file?.url">
+      <div v-if="avatar">
         <a-image-preview
           v-model:visible="imagePreviewVisible"
-          :src="file.url"
+          :src="avatar"
         />
       </div>
       <a-descriptions

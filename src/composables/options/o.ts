@@ -58,10 +58,21 @@ export class O {
       if (url.startsWith(val) || url.includes(val)) {
         const key = Object.entries(keyUrlPrefixMap).find(([_key, value]) => value === val)?.[0] as Key | undefined
         if (key) {
-          optionsMap.delete(key)
-          O.options(key)
+          O.resetValue(key)
         }
       }
     })
+  }
+
+  static resetValue(key: Key) {
+    optionsMap.delete(key)
+    O.promiseMap.delete(key)
+    O.promiseMap.set(key, computedAsync(async () => {
+      const options = await (keyPropertyMap[key] as () => Promise<SelectOptionData[]>)()
+      if (options.length)
+        optionsMap.set(key, options)
+      return options
+    }, [], { lazy: true }))
+    O.options(key)
   }
 }
