@@ -11,11 +11,9 @@ export function createThemeMode(mode: 'auto' | 'light' | 'dark') {
   if (!localStorage.getItem(THEME_MODE_KEY) || localStorage.getItem(THEME_MODE_KEY) !== mode) {
     if (mode === 'auto') {
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      localStorage.setItem(THEME_MODE_KEY,
-        prefersDark
-          ? 'dark'
-          : 'light',
-      )
+      localStorage.setItem(THEME_MODE_KEY, prefersDark
+        ? 'dark'
+        : 'light')
     } else {
       localStorage.setItem(THEME_MODE_KEY, mode)
     }
