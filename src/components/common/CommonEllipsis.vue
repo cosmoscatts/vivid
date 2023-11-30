@@ -37,7 +37,7 @@ const visible = computed(() => {
 
 <template>
   <a-tooltip :content="content" :popup-visible="visible" :position="tooltipPosition">
-    <div ref="refEl" of-hidden text-ellipsis whitespace-nowrap :style="Object.assign(style, { maxWidth: `${width}px` })">
+    <div ref="refEl" of-hidden text-ellipsis whitespace-nowrap :style="Object.assign(style as {}, { maxWidth: `${width}px` })">
       {{ content }}
     </div>
   </a-tooltip>
