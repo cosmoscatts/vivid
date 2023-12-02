@@ -2,6 +2,7 @@
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import LoginTips from './LoginTips.vue'
 import { Motion, getToRouteAfterLogin } from '~/utils'
+import type { User } from '~/types'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -40,7 +41,7 @@ function submit({
     name: getRandomName(),
     roleId: 1,
     createTime: new Date(),
-  }
+  } as unknown as User
   authStore.login(data)
     .then(() => {
       useTimeoutFn(() => {
