@@ -15,7 +15,7 @@ const modelValue = defineModel<string>()
       {{ name }}
     </span>
     <a-select
-      w-120px
+      :style="{ width: '120px' }"
       :placeholder="name"
       :model-value="modelValue"
       :options="options"

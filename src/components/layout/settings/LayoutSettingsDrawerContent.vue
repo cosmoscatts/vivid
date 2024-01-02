@@ -19,7 +19,7 @@ function renderComponent(key: OptionRenderType) {
     select: LayoutSettingsSelect,
     switch: LayoutSettingsSwitch,
     colorPicker: LayoutSettingsColorPicker,
-  }[key]
+  }[key] as Component
 }
 const isDisabled = ({ dependOn }: Option) => dependOn && !uiStore.settingsCopy[dependOn]
 function showDisabledMsg(data: Option[], disabledMsg?: string) {
@@ -40,7 +40,7 @@ function isHorizontalMixFixNav(prop: string) {
       v-for="{ name, title, data } in layoutOptions"
       :key="name" :header="title" mt3
     >
-      <div flex-y-center font-bold text-primary>
+      <div flex-y-center text-primary font-bold>
         <div i-ri-code-s-slash-line mr2 />
         <span>{{ title }}</span>
       </div>
@@ -69,12 +69,12 @@ function isHorizontalMixFixNav(prop: string) {
       v-for="{ name, title, data, disabledMsg } in funcOptions"
       :key="name" :header="title" mt3
     >
-      <div flex-y-center justify-between font-bold text-primary>
+      <div flex-y-center justify-between text-primary font-bold>
         <div flex-y-center>
           <div i-ri-code-s-slash-line mr2 />
           <span>{{ title }}</span>
         </div>
-        <span v-if="showDisabledMsg(data, disabledMsg)" font-bold text-danger>
+        <span v-if="showDisabledMsg(data, disabledMsg)" text-danger font-bold>
           {{ disabledMsg }}
         </span>
       </div>

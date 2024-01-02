@@ -22,7 +22,7 @@ const showDrawer = computed(() => (props.visible && props.menus.length) || uiSto
       :style="{ width: showDrawer ? `${params.mixSideDrawerWidth}px` : '0px' }"
     >
       <header flex-y-center justify-between px5px :style="{ height: `${params.navHeight}px` }">
-        <h2 pl-8px text-sm font-bold text-primary>
+        <h2 pl-8px text-sm text-primary font-bold>
           <CommonEllipsis :content="meta.name" />
         </h2>
         <div cursor-pointer px-8px text-14px text-gray-600 @click="uiStore.toggleMixSideFixed">

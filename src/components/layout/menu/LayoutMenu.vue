@@ -6,12 +6,7 @@ defineOptions({
   inheritAttrs: true,
 })
 
-const {
-  mode,
-  noCollapse = false,
-  menuChildren = [],
-  enablePropsMenu = false,
-} = defineProps<{
+const props = defineProps<{
   mode: 'vertical' | 'horizontal'
   noCollapse?: boolean
   menuChildren?: Menu[] // `vertical-mix` 菜单抽屉传递的子菜单组
@@ -30,12 +25,12 @@ const selectedKeys = computed(() => {
 })
 
 const collapse = computed(() => {
-  if (noCollapse) return false
+  if (props.noCollapse) return false
   return uiStore.collapseSide.state
 })
 
 const menus = computed(() => {
-  if (enablePropsMenu) return menuChildren
+  if (props.enablePropsMenu) return props.menuChildren
   return authStore.menus
 })
 </script>

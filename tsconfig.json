@@ -13,8 +13,7 @@
     "types": [
       "vitest",
       "vite/client",
-      "vite-plugin-vue-layouts/client",
-      "unplugin-icons/types/vue"
+      "vite-plugin-vue-layouts/client"
     ],
     "allowJs": true,
     "strict": true,
