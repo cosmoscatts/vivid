@@ -6,7 +6,6 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import Unocss from 'unocss/vite'
-import VueMacros from 'unplugin-vue-macros/vite'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
@@ -17,17 +16,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    VueMacros({
-      defineOptions: true,
-      defineSlots: true,
-      defineModels: true,
-      defineProps: true,
-      plugins: {
-        vue: Vue({
-          reactivityTransform: true,
-        }),
-      },
-    }),
+    Vue(),
     AutoImport({
       resolvers: [ArcoResolver()],
       imports: [

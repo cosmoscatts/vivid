@@ -13,9 +13,7 @@
     "types": [
       "vitest",
       "vite/client",
-      "vue/ref-macros",
       "vite-plugin-vue-layouts/client",
-      "unplugin-vue-macros/macros-global",
       "unplugin-icons/types/vue"
     ],
     "allowJs": true,
@@ -25,14 +23,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
-  },
-  "vueCompilerOptions": {
-    "plugins": [
-      "@vue-macros/volar/define-models",
-      "@vue-macros/volar/define-props",
-      "@vue-macros/volar/define-slots",
-      "@vue-macros/volar/define-options"
-    ]
   },
   "exclude": ["dist", "node_modules", "cypress"]
 }

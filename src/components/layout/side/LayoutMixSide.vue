@@ -8,7 +8,7 @@ const uiStore = useUiStore()
 const authStore = useAuthStore()
 const { bool: drawerVisible, setTrue: openDrawer, setFalse: hideDrawer } = useBool()
 
-let activeParentMenuId = $ref<number>()
+const activeParentMenuId = ref<number>()
 
 const firstDegreeMenus = computed(() =>
   authStore.menus.map((item) => {
@@ -28,13 +28,13 @@ const firstDegreeMenus = computed(() =>
 function getActiveParentMenuId() {
   firstDegreeMenus.value.some((item) => {
     const flag = item.matchPathList.includes(route.path)
-    if (flag) activeParentMenuId = item.id
+    if (flag) activeParentMenuId.value = item.id
     return flag
   })
 }
 
 function handleMixMenu(id: number, path: string | undefined, hasChildren: boolean) {
-  activeParentMenuId = id
+  activeParentMenuId.value = id
   if (hasChildren) {
     openDrawer()
   }
@@ -48,7 +48,7 @@ function resetFirstDegreeMenus() {
 }
 
 const activeChildMenus = computed(() => {
-  return authStore.menus.find(i => i.id === activeParentMenuId)?.children ?? []
+  return authStore.menus.find(i => i.id === activeParentMenuId.value)?.children ?? []
 })
 
 watch(() => route.path, getActiveParentMenuId, { immediate: true })

@@ -8,7 +8,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   (event: 'saveData', data: User): void
 }>()
-const { visible } = defineModels<{ visible: boolean }>()
+const visible = defineModel<boolean>()
 const refForm = ref()
 function getBase() {
   return {

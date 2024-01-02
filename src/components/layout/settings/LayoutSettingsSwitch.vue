@@ -3,7 +3,7 @@ defineProps<{
   name?: string
   disabled?: boolean
 }>()
-const { modelValue } = defineModels<{ modelValue: boolean }>()
+const modelValue = defineModel<boolean>()
 const switchColors = {
   checked: 'rgb(var(--primary-6))',
   unchecked: 'rgb(var(--gray-6))',

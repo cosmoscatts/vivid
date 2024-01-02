@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const route = useRoute()
 const uiStore = useUiStore()
-let data = $ref<{ title: string; icon?: string }[]>([])
+const data = ref<{ title: string, icon?: string }[]>([])
 function getBreadCrumbs() {
-  data = getMatchedMenuItemsIfParentExist(route.path)
+  data.value = getMatchedMenuItemsIfParentExist(route.path)
     .map(i => ({
       title: i.title,
       icon: i.icon,

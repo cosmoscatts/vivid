@@ -5,8 +5,8 @@ const tabStore = useTabStore()
 
 tabStore.createTabs()
 
-const tabs = $computed(() => tabStore.tabs)
-const chrome = $computed(() => uiStore.settings.tabShapeStyle === 'chrome')
+const tabs = computed(() => tabStore.tabs)
+const chrome = computed(() => uiStore.settings.tabShapeStyle === 'chrome')
 
 function isActive(path?: string) { // 判断是否为当前页面
   if (!path) return false
@@ -44,7 +44,7 @@ const activeTabIndex = computed(() => {
   const activePath = route.path.startsWith(redirectPrefix)
     ? route.path.substring(redirectPrefix.length)
     : route.path
-  return tabs.findIndex(i => i.path === activePath)
+  return tabs.value.findIndex(i => i.path === activePath)
 })
 
 function getActiveTabClientX() {

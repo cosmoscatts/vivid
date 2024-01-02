@@ -9,12 +9,12 @@ const tabList: BellTabData[] = [
   { name: '待办', color: '#165DFF', type: 'todo' },
 ]
 
-let notificationData = $ref<BellData[]>([])
-let messageData = $ref<BellData[]>([])
-let todoData = $ref<BellData[]>([])
+const notificationData = ref<BellData[]>([])
+const messageData = ref<BellData[]>([])
+const todoData = ref<BellData[]>([])
 
 function queryData() {
-  notificationData = [
+  notificationData.value = [
     { title: '你收到了5条新消息', date: new Date() },
     { title: '你收到了10条新消息', date: new Date() },
     { title: '你收到了8条新消息', date: new Date() },
@@ -22,23 +22,23 @@ function queryData() {
     { title: '你收到了5条新消息', date: new Date() },
     { title: '你收到了5条新消息', date: new Date() },
   ]
-  messageData = [{ title: '正在写页面...', date: new Date() }]
-  todoData = [
+  messageData.value = [{ title: '正在写页面...', date: new Date() }]
+  todoData.value = [
     { title: '缓存主题配置', date: new Date() },
     { title: '自适应页面', date: new Date() },
   ]
 }
 queryData()
 
-const getDataByKey = (key: number) => [notificationData, messageData, todoData][key]
+const getDataByKey = (key: number) => [notificationData.value, messageData.value, todoData.value][key]
 const totalCnt = computed(() => {
   let cnt = 0
-  if (notificationData?.length > 0)
-    cnt += notificationData.length
-  if (messageData?.length > 0)
-    cnt += messageData.length
-  if (todoData?.length > 0)
-    cnt += todoData.length
+  if (notificationData.value?.length > 0)
+    cnt += notificationData.value.length
+  if (messageData.value?.length > 0)
+    cnt += messageData.value.length
+  if (todoData.value?.length > 0)
+    cnt += todoData.value.length
   return cnt
 })
 

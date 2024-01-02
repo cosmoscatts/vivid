@@ -2,7 +2,7 @@
 import { APP_META, LAYOUT_PARAMS, LOGO } from '~/constants'
 
 const uiStore = useUiStore()
-const isShort = $computed(() => {
+const isShort = computed(() => {
   if (isMobile.value || uiStore.settings.layout === 'vertical-mix') return true
   if (uiStore.settings.layout === 'horizontal-mix') return false
   return uiStore.collapseSide.state

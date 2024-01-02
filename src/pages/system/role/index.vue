@@ -22,12 +22,12 @@ const {
 
 const { Loading } = useLoading()
 
-let tabledata = $ref<Role[]>([])
+const tabledata = ref<Role[]>([])
 function fetchTableData() {
   Loading.start()
   RoleApi.fetchPageList()
     .then(({ data: { records = [], total = 0 } }) => {
-      tabledata = records
+      tabledata.value = records
       pagination.total = total
     })
     .finally(() => useTimeoutFn(Loading.end, 1000))

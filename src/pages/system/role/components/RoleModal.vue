@@ -9,7 +9,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   (event: 'saveData', data: Role): void
 }>()
-const { visible } = defineModels<{ visible: boolean }>()
+const visible = defineModel<boolean>()
 const refForm = ref()
 function getBase() {
   return {
@@ -42,17 +42,17 @@ function handleOk() {
     emit('saveData', clone(formModel))
   })
 }
-const allCheckedKeys = $computed<number[]>(() => {
+const allCheckedKeys = computed<number[]>(() => {
   return flattenMenu(MENUS).map(item => item.id)
 })
-const isAllChecked = $computed(() => {
+const isAllChecked = computed(() => {
   return [
     formModel.menuIdList?.length,
-    formModel.menuIdList?.length === allCheckedKeys.length,
+    formModel.menuIdList?.length === allCheckedKeys.value.length,
   ].filter(Boolean).length === 2
 })
 function toggleChecked() {
-  formModel.menuIdList = [allCheckedKeys, []][Number(isAllChecked)]
+  formModel.menuIdList = [allCheckedKeys.value, []][Number(isAllChecked.value)]
 }
 defineExpose({ endLoading })
 </script>

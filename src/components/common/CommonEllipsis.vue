@@ -12,13 +12,13 @@ const { content, width = 100, tooltipPosition = 'lt', style = {} } = defineProps
 const refEl = ref()
 const { isOutside } = useMouseInElement(refEl)
 
-let scrollWidth = $ref(0)
-let offsetWidth = $ref(0)
+const scrollWidth = ref(0)
+const offsetWidth = ref(0)
 
 function setWidth() {
   if (!refEl.value) return
-  scrollWidth = refEl.value.scrollWidth
-  offsetWidth = refEl.value.offsetWidth
+  scrollWidth.value = refEl.value.scrollWidth
+  offsetWidth.value = refEl.value.offsetWidth
 }
 
 watch(() => content, (n, o) => {
@@ -27,10 +27,10 @@ watch(() => content, (n, o) => {
 
 onMounted(setWidth)
 
-const isEllipsis = $computed(() => scrollWidth > offsetWidth)
+const isEllipsis = computed(() => scrollWidth.value > offsetWidth.value)
 
 const visible = computed(() => {
-  if (!isEllipsis) return false
+  if (!isEllipsis.value) return false
   return !isOutside.value
 })
 </script>

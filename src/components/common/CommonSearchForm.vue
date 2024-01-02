@@ -11,22 +11,22 @@ const hasButtons = computed(() => {
   if (props.hideButtons === true) return false
   return true
 })
-const hasLabel = $computed(() => {
+const hasLabel = computed(() => {
   if (props.hideLabel === true) return false
   return true
 })
-const rows = $computed(() => (Math.ceil(Object.keys(props.formModel).length / 3)))
-const dividerHeight = computed(() => (`${34 + (rows - 1) * 50}px`))
-const buttonGroupFlex = computed(() => (['86px', '172px'][Number(rows === 1)]))
+const rows = computed(() => (Math.ceil(Object.keys(props.formModel).length / 3)))
+const dividerHeight = computed(() => (`${34 + (rows.value - 1) * 50}px`))
+const buttonGroupFlex = computed(() => (['86px', '172px'][Number(rows.value === 1)]))
 const direction = computed(() => {
-  return ['vertical', 'horizontal'][Number(rows === 1)] as 'vertical' | 'horizontal'
+  return ['vertical', 'horizontal'][Number(rows.value === 1)] as 'vertical' | 'horizontal'
 })
 const labelColProps = computed(() => {
-  const span = [0, 6][Number(hasLabel)]
+  const span = [0, 6][Number(hasLabel.value)]
   return { span }
 })
 const wrapperColProps = computed(() => {
-  const span = [24, 18][Number(hasLabel)]
+  const span = [24, 18][Number(hasLabel.value)]
   return { span }
 })
 </script>

@@ -5,6 +5,8 @@ import {
   presetUno,
   presetWebFonts,
   presetWind,
+  transformerDirectives,
+  transformerVariantGroup,
 } from 'unocss'
 
 export default defineConfig({
@@ -43,6 +45,10 @@ export default defineConfig({
         mono: 'DM Mono',
       },
     }),
+  ],
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup(),
   ],
   theme: {
     breakpoints: {
