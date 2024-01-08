@@ -1,33 +1,37 @@
 :root {
-  --c-border: #eee;
+  --c-border: #fffff;
+  --c-scrollbar: rgba(0, 0, 0, .25);
+  --c-scrollbar-hover: rgba(0, 0, 0, .4);
 }
 
 html.dark {
-  --c-border: #222;
+  --c-border: #232324;
+  --c-scrollbar: rgba(255, 255, 255, .1);
+  --c-scrollbar-hover: rgba(255, 255, 255, .2);
 }
 
 * {
-  scrollbar-color: #8885 var(--c-border);
+  scrollbar-color: var(--c-border);
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar:horizontal {
-  height: 10px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--c-border);
-  border-radius: 1px;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8885;
-  border-radius: 1px;
+  background: var(--c-scrollbar);
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8886;
+  background:  var(--c-scrollbar-hover);
 }
