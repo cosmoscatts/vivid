@@ -7,7 +7,7 @@ const uiStore = useUiStore()
 <template>
   <LayoutProvider>
     <template #side>
-      <LayoutSide v-if="isPC" absolute left-0 top-0 />
+      <LayoutSide v-if="isPC" absolute left-0 top-0 :show-logo="true" />
     </template>
     <template #header>
       <LayoutNav w-full :style="{ height: `${params.navHeight}px` }" />
