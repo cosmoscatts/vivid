@@ -7,7 +7,7 @@ export function useControlModal<T = any>() {
   const modalVisible = ref(false)
   const selectedItem = ref<T | null>(null)
 
-  const showModal = ({ type = 'add', data = null }: { type?: ModalAction; data?: T | null }) => {
+  const showModal = ({ type = 'add', data = null }: { type?: ModalAction, data?: T | null }) => {
     modalType.value = type
     selectedItem.value = data as UnwrapRef<T>
     modalVisible.value = true
