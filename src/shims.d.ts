@@ -14,3 +14,5 @@ declare module '*.vue' {
 }
 
 declare module '@arco-design/color'
+
+declare module '~icons/*'
