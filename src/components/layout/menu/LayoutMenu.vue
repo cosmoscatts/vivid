@@ -49,29 +49,7 @@ const menus = computed(() => {
       :breakpoint="['', 'lg'][Number(['vertical', 'horizontal-mix'].includes(mode))]"
       @collapse="uiStore.collapseSide.toggle"
     >
-      <template v-for="{ id, title, path, icon, children } of menus">
-        <a-sub-menu v-if="children?.length" :key="String(id)" :title="title">
-          <template v-if="hasMenuIcon(icon)" #icon>
-            <Component :is="formatMenuIcon(icon!)" />
-          </template>
-          <RouterLink v-for="child of children" :key="child.path" :to="child.path!">
-            <a-menu-item :key="String(child.id)">
-              <template v-if="hasMenuIcon(child.icon)" #icon>
-                <Component :is="formatMenuIcon(child.icon!)" />
-              </template>
-              {{ child.title }}
-            </a-menu-item>
-          </RouterLink>
-        </a-sub-menu>
-        <RouterLink v-else :key="path" :to="path!">
-          <a-menu-item :key="String(id)">
-            <template v-if="hasMenuIcon(icon)" #icon>
-              <Component :is="formatMenuIcon(icon!)" />
-            </template>
-            {{ title }}
-          </a-menu-item>
-        </RouterLink>
-      </template>
+      <LayoutMenuTree :menus="menus" />
     </a-menu>
   </div>
 </template>
