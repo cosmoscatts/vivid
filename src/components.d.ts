@@ -68,6 +68,7 @@ declare module 'vue' {
     LayoutLogo: typeof import('./components/layout/logo/LayoutLogo.vue')['default']
     LayoutMain: typeof import('./components/layout/main/LayoutMain.vue')['default']
     LayoutMenu: typeof import('./components/layout/menu/LayoutMenu.vue')['default']
+    LayoutMenuTree: typeof import('./components/layout/menu/LayoutMenuTree.vue')['default']
     LayoutMixSide: typeof import('./components/layout/side/LayoutMixSide.vue')['default']
     LayoutMixSideCollapse: typeof import('./components/layout/side/mix-side/LayoutMixSideCollapse.vue')['default']
     LayoutMixSideDetail: typeof import('./components/layout/side/mix-side/LayoutMixSideDetail.vue')['default']

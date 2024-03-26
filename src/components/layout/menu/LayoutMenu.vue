@@ -49,7 +49,7 @@ const menus = computed(() => {
       :breakpoint="['', 'lg'][Number(['vertical', 'horizontal-mix'].includes(mode))]"
       @collapse="uiStore.collapseSide.toggle"
     >
-      <LayoutMenuTree :menus="menus" />
+      <LayoutMenuTree :menus="menus" :mode="mode" first />
     </a-menu>
   </div>
 </template>
