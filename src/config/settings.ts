@@ -44,7 +44,7 @@ export const defaultSettings: Settings = {
    */
   animationMode: 'fade-slide',
 
-  primaryColor: 'blue',
+  primaryColor: 'arcoblue',
 
   cacheTabs: false,
   tabShapeStyle: 'chrome',
