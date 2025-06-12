@@ -33,7 +33,8 @@ function validatePassword() {
   return {
     validator: (_value: any | undefined, callback: (error?: string) => void) => {
       const { newPass, checkPass } = formModel
-      if ([newPass, checkPass].includes('')) callback()
+      if ([newPass, checkPass].includes('')) { callback()
+      }
       else {
         if (newPass !== checkPass) callback('两次密码输入不一致')
         else callback()

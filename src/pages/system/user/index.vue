@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { User } from '~/types'
+import { columns } from './columns'
 import UserModal from './components/UserModal.vue'
 import UserSearchForm from './components/UserSearchForm.vue'
-import { columns } from './columns'
-import type { User } from '~/types'
 
 const refSearchForm = ref()
 const refModal = ref()

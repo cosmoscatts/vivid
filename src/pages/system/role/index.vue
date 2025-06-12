@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RoleSearchForm from './components/RoleSearchForm.vue'
-import RoleModal from './components/RoleModal.vue'
-import { columns } from './columns'
 import type { Role } from '~/types'
+import { columns } from './columns'
+import RoleModal from './components/RoleModal.vue'
+import RoleSearchForm from './components/RoleSearchForm.vue'
 
 const refSearchForm = ref()
 const refModal = ref()

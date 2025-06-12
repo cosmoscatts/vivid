@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
-import LoginTips from './LoginTips.vue'
-import { Motion, getToRouteAfterLogin } from '~/utils'
 import type { User } from '~/types'
+import { getToRouteAfterLogin, Motion } from '~/utils'
+import LoginTips from './LoginTips.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -56,7 +56,8 @@ function submit({
           content: `你好，${values.username}。欢迎回来！`,
         })
       }, 1000)
-    }).finally(() => useTimeoutFn(endLoading, 1000))
+    })
+    .finally(() => useTimeoutFn(endLoading, 1000))
 }
 </script>
 

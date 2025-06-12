@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LoginForm from './components/LoginForm.vue'
+import { APP_META } from '~/constants'
 import bg from '~/images/login/bg.png'
 import illustration from '~/images/login/illustration.svg'
-import { APP_META } from '~/constants'
 import { Motion, TypeIt } from '~/utils'
+import LoginForm from './components/LoginForm.vue'
 </script>
 
 <template>

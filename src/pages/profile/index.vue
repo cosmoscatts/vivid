@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ProfileUserPanel from './components/ProfileUserPanel.vue'
 import ProfileBasicInformation from './components/ProfileBasicInformation.vue'
 import ProfileSecuritySettings from './components/ProfileSecuritySettings.vue'
+import ProfileUserPanel from './components/ProfileUserPanel.vue'
 
 const activeTabIdx = ref(1)
 const changeTabIdx = (key: string | number) => activeTabIdx.value = Number(key)
