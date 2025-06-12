@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { APP_META as meta, LAYOUT_PARAMS as params } from '~/constants'
 import type { Menu } from '~/types'
+import { APP_META as meta, LAYOUT_PARAMS as params } from '~/constants'
 
 const props = defineProps<{
   visible: boolean

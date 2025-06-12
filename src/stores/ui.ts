@@ -1,5 +1,5 @@
 import type { StoreDefinition } from 'pinia'
-import { type Settings, defaultSettings } from '~/config'
+import { defaultSettings, type Settings } from '~/config'
 import { CACHE_SETTINGS } from '~/constants'
 import { applyCachedSettings, cacheSettings, cacheTabs, clearCachedTabs, createPrimaryColor } from '~/utils'
 

@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
-import { NOT_FOUND, NO_PERMISSION } from '../constants'
 import { checkRoutePermission, getToRouteAfterLogin } from '~/utils'
+import { NO_PERMISSION, NOT_FOUND } from '../constants'
 
 export default function createPermissionGuard(
   to: RouteLocationNormalized,

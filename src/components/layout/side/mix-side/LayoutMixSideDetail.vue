@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { mixColor, mixRatio } from '../../tab/constants'
 import { defaultThemeColors } from '~/constants'
 import { useMixinColor } from '~/utils'
+import { mixColor, mixRatio } from '../../tab/constants'
 
 const props = defineProps<{
   title: string
@@ -22,10 +22,10 @@ const fillColor = computed(() => {
   const index = Number(isDark.value)
   return isActive.value
     ? useMixinColor(
-      mixColor[index],
-      defaultThemeColors.find(i => i.prop === uiStore.settings.primaryColor)!.hex,
-      mixRatio[index],
-    )
+        mixColor[index],
+        defaultThemeColors.find(i => i.prop === uiStore.settings.primaryColor)!.hex,
+        mixRatio[index],
+      )
     : 'transparent'
 })
 </script>

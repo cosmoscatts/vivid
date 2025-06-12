@@ -1,5 +1,5 @@
-import type { AxiosResponse } from 'axios'
 import type { SelectOptionData } from '@arco-design/web-vue'
+import type { AxiosResponse } from 'axios'
 
 type Key = keyof typeof keyPropertyMap
 

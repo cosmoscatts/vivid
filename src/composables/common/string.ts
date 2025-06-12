@@ -35,7 +35,7 @@ export function ensureSuffix(suffix: string, str: string) {
  * @category String
  */
 export function template(str: string, ...args: any[]): string {
-  return str.replace(/{(\d+)}/g, (match, key) => {
+  return str.replace(/\{(\d+)\}/g, (match, key) => {
     const index = Number(key)
     if (Number.isNaN(index))
       return match

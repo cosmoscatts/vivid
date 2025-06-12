@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { bgColor, hoverBgColor, mixColor, mixRatio } from './constants'
 import { useMixinColor } from '~/utils'
+import { bgColor, hoverBgColor, mixColor, mixRatio } from './constants'
 
 const props = defineProps<{
   hover: boolean
@@ -9,9 +9,11 @@ const props = defineProps<{
 }>()
 const fill = computed(() => {
   const index = Number(isDark.value)
-  if (!props.active) return props.hover
-    ? hoverBgColor[index]
-    : bgColor[index]
+  if (!props.active) {
+    return props.hover
+      ? hoverBgColor[index]
+      : bgColor[index]
+  }
   return useMixinColor(mixColor[index], props.primaryColor, mixRatio[index])
 })
 </script>

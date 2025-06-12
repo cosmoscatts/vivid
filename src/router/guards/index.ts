@@ -1,7 +1,7 @@
 import type { Router } from 'vue-router'
 import NProgress from 'nprogress'
-import createPermissionGuard from './permission'
 import { APP_META } from '~/constants'
+import createPermissionGuard from './permission'
 
 export default function createRouterGuard(router: Router) {
   router.beforeEach((to, from, next) => {

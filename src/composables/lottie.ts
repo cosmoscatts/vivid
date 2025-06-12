@@ -1,5 +1,5 @@
-import lottie from 'lottie-web'
 import type { RendererType } from 'lottie-web'
+import lottie from 'lottie-web'
 
 export interface LottieParams {
   containerId: string

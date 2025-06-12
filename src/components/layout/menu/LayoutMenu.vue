@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { LAYOUT_PARAMS } from '~/constants'
 import type { Menu } from '~/types'
+import { LAYOUT_PARAMS } from '~/constants'
 
 defineOptions({
   inheritAttrs: true,

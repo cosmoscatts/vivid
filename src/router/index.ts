@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import generatedRoutes from './format'
 import createRouterGuard from './guards'
 

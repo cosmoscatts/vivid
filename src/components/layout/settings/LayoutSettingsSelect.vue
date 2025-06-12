@@ -20,7 +20,7 @@ const modelValue = defineModel<string>()
       :model-value="modelValue"
       :options="options"
       :disabled="disabled"
-      @change="(value) => modelValue = String(value)"
+      @change="(value: string) => modelValue = String(value)"
     />
   </div>
 </template>

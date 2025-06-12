@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { APP_META, LAYOUT_PARAMS, defaultThemeColors } from '~/constants'
+import { APP_META, defaultThemeColors, LAYOUT_PARAMS } from '~/constants'
 
 const uiStore = useUiStore()
 const isShort = computed(() => {

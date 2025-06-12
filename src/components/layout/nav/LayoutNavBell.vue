@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { IconCalendar, IconMessage, IconNotification } from '@arco-design/web-vue/es/icon'
 import type { BellData, BellDataType, BellTabData } from './interfaces'
+import { IconCalendar, IconMessage, IconNotification } from '@arco-design/web-vue/es/icon'
 
 const activeKey = ref(0)
 const tabList: BellTabData[] = [

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import LayoutSettingsSelect from './LayoutSettingsSelect.vue'
-import LayoutSettingsSwitch from './LayoutSettingsSwitch.vue'
 import LayoutSettingsColorPicker from './LayoutSettingsColorPicker.vue'
 import LayoutSettingsLayoutMode from './LayoutSettingsLayoutMode.vue'
+import LayoutSettingsSelect from './LayoutSettingsSelect.vue'
+import LayoutSettingsSwitch from './LayoutSettingsSwitch.vue'
 import {
-  type Option,
-  type OptionRenderType,
   funcOptions,
   layoutOptions,
+  type Option,
+  type OptionRenderType,
   primaryColorOption,
 } from './options'
 

@@ -1,5 +1,5 @@
-import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+import axios from 'axios'
 
 const AXIOS_TIMEOUT = 5000
 

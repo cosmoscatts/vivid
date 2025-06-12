@@ -14,7 +14,9 @@ function logout() {
 }
 
 function onSelect<T extends string | number | Record<string, any> | undefined>(value: T) {
-  if (!isString(value)) return
+  if (!isString(value)) {
+    return
+  }
   ;[
     () => router.push('/profile'),
     logout,
